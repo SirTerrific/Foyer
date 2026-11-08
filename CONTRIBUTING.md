@@ -22,7 +22,7 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/meddouribadis/arclauncher.git
+   git clone https://github.com/SirTerrific/arclauncher.git
    cd arclauncher
    ```
 

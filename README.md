@@ -1,31 +1,34 @@
-# Arc Launcher
+# Foyer
 
 <picture>
-  <img alt="Arc Launcher Preview" src="docs/images/home.webp">
+  <img alt="Foyer Preview" src="docs/images/home.webp">
 </picture>
 
-[![Version](https://img.shields.io/github/v/release/meddouribadis/arclauncher?style=for-the-badge&color=7C4DFF&label=Version)](https://github.com/meddouribadis/arclauncher/releases/latest) [![Downloads](https://img.shields.io/github/downloads/meddouribadis/arclauncher/total?style=for-the-badge&color=7C4DFF&label=Downloads)](https://github.com/meddouribadis/arclauncher/releases) [![Stars](https://img.shields.io/github/stars/meddouribadis/arclauncher?style=for-the-badge&color=7C4DFF)](https://github.com/meddouribadis/arclauncher/stargazers) [![Sponsor](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/meddouribadis) [![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/omeda)
+**Foyer** is an open-source family launcher for Android TV with built-in parental control. It is a fork of [Arc Launcher](https://github.com/meddouribadis/arclauncher) by meddouribadis, itself built on [LTvLauncher](https://github.com/LeanBitLab/LtvLauncher) and originally [FLauncher](https://gitlab.com/flauncher/flauncher).
 
-**Arc Launcher** is an open-source launcher for Android TV, built as a fork of [LTvLauncher](https://github.com/LeanBitLab/LtvLauncher) (originally [FLauncher](https://gitlab.com/flauncher/flauncher)).
-
-It adds a modern grid layout, customizable video and slideshow wallpapers, OLED screensaver protection, and remote-friendly navigation.
-
-[![Get it on Google Play](https://img.shields.io/badge/Get_it_on-Google_Play-414141?style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.omeda.arc) [![Get it on GitHub](https://img.shields.io/badge/Get_it_on-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/meddouribadis/arclauncher/releases/latest) [![Downloader Code](https://img.shields.io/badge/Downloader_Code-6330120-FF6600?style=for-the-badge&logo=android&logoColor=white)](https://go.aftvnews.com/6330120)
+It keeps the modern grid layout, customizable video and slideshow wallpapers, OLED screensaver protection and remote-friendly navigation, and adds a parental control that locks chosen apps behind a code you enter with the remote's D-pad.
 
 ## Installation
 
-Arc Launcher is available on the Google Play Store as well as via direct APK downloads:
+Foyer is distributed as an APK built from this repository. Build it yourself, or download a release from the [Releases page](https://github.com/SirTerrific/arclauncher/releases) when one is published.
 
-- **Google Play Store** — Install directly on your Android TV or Google TV from [Google Play](https://play.google.com/store/apps/details?id=com.omeda.arc).
-- **GitHub Releases** — Download the latest APK release from [GitHub Releases](https://github.com/meddouribadis/arclauncher/releases/latest).
-- **Downloader App (Fire TV & Android TV)** — Enter quick code **`6330120`** in the [Downloader app](https://go.aftvnews.com/6330120) to download and install directly on your TV.
+```bash
+flutter pub get
+flutter gen-l10n
+flutter build apk --flavor github
+```
 
-### Beta Testing
+Requires Flutter 3.41.x and JDK 17. The app id is still `com.omeda.arc`, which keeps data and updates compatible with Foyer.
 
-If you'd like early access to new features and want to help test upcoming releases:
+## Parental Control
 
-1. Join the **[Arc Launcher Beta on Google Groups](https://groups.google.com/g/arc-launcher-beta/)** with your Google Play email.
-2. Enroll in the testing program via the **[Google Play testing link](https://play.google.com/apps/testing/com.omeda.arc)**.
+- **D-pad code** - The code is a combination of arrow keys (Up, Down, Left, Right) and digits, entered with the remote, like Projectivy.
+- **Protected apps** - Choose which apps (YouTube, etc.) need the code. Watch Next items from unknown apps are protected too.
+- **Grace period** - After a correct code, protected apps stay open for 15 minutes.
+- **Lockout** - 5 wrong codes lock entry, with a growing delay capped at 15 minutes.
+- **Time window** - Optional daily window (default 08:00-20:00) during which protection applies.
+- **Settings protection** - Optionally ask for the code before opening the launcher settings.
+- **Storage** - The code is stored as a salted SHA-256 hash and compared in constant time.
 
 ## Features
 
@@ -37,7 +40,7 @@ If you'd like early access to new features and want to help test upcoming releas
 - **Quick Status Bar** - Displays time, daily data usage, and a shortcut to system Wi-Fi settings.
 - **Auto-Hide Status Bar** - Hides the status bar when scrolling into the app grid to maximize screen space.
 - **Accent Colors** - Personalize the UI with multiple color presets.
-- **Multilingual** - Available in English, Spanish, Turkish, Vietnamese, and Simplified Chinese.
+- **Multilingual** - Available in English, French, Spanish, Turkish, Vietnamese, and Simplified Chinese.
 
 ### Wallpapers & Screensavers
 - **Video Wallpapers** - Set animated video files (MP4/WebM) as the home screen background.
@@ -52,7 +55,7 @@ If you'd like early access to new features and want to help test upcoming releas
 - **Brightness Scheduler (Experimental)** - Automatically adjust brightness based on time (requires ADB `WRITE_SETTINGS` permission).
 
 > [!NOTE]
-> Because Android's `WallpaperManager` is not available on some Android TV devices, Arc Launcher manages its own wallpapers. Changing the wallpaper requires a file explorer installed on the device.
+> Because Android's `WallpaperManager` is not available on some Android TV devices, Foyer manages its own wallpapers. Changing the wallpaper requires a file explorer installed on the device.
 
 > [!TIP]
 > **Video Wallpaper Performance:** Video wallpapers are loaded into memory for smooth playback. Use compressed clips (ideally under 10MB) on lower-powered TV sticks. If you experience UI stutter, disable the backdrop blur filter in settings.
@@ -92,22 +95,22 @@ If you'd like early access to new features and want to help test upcoming releas
   </tr>
 </table>
 
-## Set Arc Launcher as default launcher
+## Set Foyer as default launcher
 
 ### Method 1: Remap the Home button
 
-This is the "safer" and easiest way. Use [Button Mapper](https://play.google.com/store/apps/details?id=flar2.homebutton) to remap the Home button of the remote to launch Arc Launcher.
+This is the "safer" and easiest way. Use [Button Mapper](https://play.google.com/store/apps/details?id=flar2.homebutton) to remap the Home button of the remote to launch Foyer.
 
-### Method 2: Set Arc as the home activity over ADB
+### Method 2: Set Foyer as the home activity over ADB
 
-This is the recommended way to make Arc Launcher your actual home screen. It is a single command, it leaves the
+This is the recommended way to make Foyer your actual home screen. It is a single command, it leaves the
 stock launcher untouched, and it can be undone just as easily.
 
 ```shell
 $ adb shell cmd package set-home-activity com.omeda.arc/.MainActivity
 ```
 
-This assigns Arc to the system `HOME` role, so the Home button on the remote goes straight to Arc. Nothing gets
+This assigns Foyer to the system `HOME` role, so the Home button on the remote goes straight to Foyer. Nothing gets
 disabled, which means nothing needs to be re-enabled if you change your mind.
 
 To check which launcher is currently set as home:
@@ -142,7 +145,7 @@ $ adb shell cmd package set-home-activity <package>/<activity>
 
 #### TV Box Tools (Android TV / Google TV)
 
-TV Box Tools sets Arc Launcher as the home activity without typing ADB commands manually. Pick Arc
+TV Box Tools sets Foyer as the home activity without typing ADB commands manually. Pick Foyer
 Launcher in the tool, and it installs the latest release and sets it as the default launcher. It runs on
 Windows, macOS, Linux, Android phones, or directly in a TV browser:
 
@@ -153,7 +156,7 @@ Windows, macOS, Linux, Android phones, or directly in a TV browser:
 
 On Amazon Fire TV devices, standard Android launcher switching commands are restricted by Fire OS.
 Use **Launcher Manager (FireOS)** (available on [XDA Developers](https://xdaforums.com/t/app-firetv-noroot-launcher-manager-change-launcher-without-root.4176349/))
-to set Arc Launcher as your default home screen and override the stock Fire TV launcher.
+to set Foyer as your default home screen and override the stock Fire TV launcher.
 
 > [!NOTE]
 > Third-party tools are not affiliated with or endorsed by this project. Review device permissions and wireless debugging access before running external management utilities.
@@ -193,19 +196,10 @@ On Chromecast with Google TV (maybe others), the "YouTube" remote button will st
 
 Contributions are welcome! Please check our [Contributing Guidelines](CONTRIBUTING.md) to get started and learn about our commit conventions and Pull Request process.
 
-## Sponsor & Support
-
-If you enjoy using Arc Launcher and would like to support its ongoing development, consider sponsoring or buying a coffee! Your support helps keep the project active and maintained.
-
-[![Sponsor](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/meddouribadis) [![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/omeda)
-
-- **GitHub Sponsors**: [github.com/sponsors/meddouribadis](https://github.com/sponsors/meddouribadis)
-- **Ko-fi**: [ko-fi.com/omeda](https://ko-fi.com/omeda)
-
 ## Credits and contributors
 
-<a href="https://github.com/meddouribadis/arclauncher/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=meddouribadis/arclauncher" alt="Contributors" />
+<a href="https://github.com/SirTerrific/arclauncher/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SirTerrific/arclauncher" alt="Contributors" />
 </a>
 
 ### Original Projects
@@ -213,6 +207,6 @@ If you enjoy using Arc Launcher and would like to support its ongoing developmen
 - **[FLauncher](https://gitlab.com/flauncher/flauncher)** by [etienn01](https://github.com/etienn01) - The original project
 - **[FLauncher (Fork)](https://github.com/osrosal/flauncher)** by [osrosal](https://github.com/osrosal) - Community fork with additional features
 - **[LTvLauncher](https://github.com/LeanBitLab/LtvLauncher)** by [LeanBitLab](https://github.com/LeanBitLab) - The base for this fork
-- **[Arc Launcher](https://github.com/meddouribadis/arclauncher)** by [meddouribadis](https://github.com/meddouribadis)
+- **[Arc Launcher](https://github.com/meddouribadis/arclauncher)** by [meddouribadis](https://github.com/meddouribadis) - Direct upstream of this fork
 
 ---
