@@ -452,6 +452,9 @@ class AppsService extends ChangeNotifier
   Future<void> launchApp(App app) async {
     app.lastLaunchedAt = DateTime.now();
     await _database.updateApp(app.packageName, AppsCompanion(lastLaunchedAt: Value(app.lastLaunchedAt)));
+    for (final category in _categoriesById.values) {
+      if (category.sort == CategorySort.lastUsed) sortCategory(category);
+    }
     notifyListeners();
 
     Future<void> future;

@@ -42,6 +42,7 @@ class WallpaperService extends ChangeNotifier {
   bool _initialized = false;
   Timer? _timer;
   int _wallpaperRevision = 0;
+  String? _lastVideoPath;
 
   late UnsplashSlideshow _slideshow;
   Timer? _slideshowTimer;
@@ -292,7 +293,9 @@ class WallpaperService extends ChangeNotifier {
       newWallpaper = FileImage(_wallpaperFile);
     }
 
-    if (_wallpaper != newWallpaper || videoFile != null || force) {
+    final videoPath = videoFile?.path;
+    if (_wallpaper != newWallpaper || videoPath != _lastVideoPath || force) {
+      _lastVideoPath = videoPath;
       _wallpaper = newWallpaper;
       _wallpaperRevision++;
       notifyListeners();

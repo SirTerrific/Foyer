@@ -300,7 +300,7 @@ class RedditSlideshow {
         Uri.parse('https://www.reddit.com/api/v1/access_token'),
         headers: {'Authorization': authHeader, 'User-Agent': userAgent},
         body: body,
-      );
+      ).timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as Map<String, dynamic>;
@@ -449,7 +449,7 @@ class RedditSlideshow {
       final headers = {'Authorization': 'Bearer $token', 'User-Agent': userAgent};
 
       try {
-        final response = await _client.get(uri, headers: headers);
+        final response = await _client.get(uri, headers: headers).timeout(const Duration(seconds: 15));
         if (_noteRateLimit(response)) return [];
         if (response.statusCode == 200) {
           final wallpapers = _parseJsonListing(response.body);
@@ -470,7 +470,7 @@ class RedditSlideshow {
       var rssResponse = await _client.get(
         rssUri,
         headers: {'User-Agent': rssUserAgent, 'Accept': 'application/atom+xml,application/xml,text/xml'},
-      );
+      ).timeout(const Duration(seconds: 15));
 
       if (_noteRateLimit(rssResponse)) return [];
       if (rssResponse.statusCode != 200) {
@@ -478,7 +478,7 @@ class RedditSlideshow {
         rssResponse = await _client.get(
           rssUri,
           headers: {'User-Agent': browserUserAgent, 'Accept': 'application/atom+xml,application/xml,text/xml'},
-        );
+        ).timeout(const Duration(seconds: 15));
       }
 
       if (_noteRateLimit(rssResponse)) return [];
@@ -500,7 +500,7 @@ class RedditSlideshow {
       final jsonResponse = await _client.get(
         jsonUri,
         headers: {'User-Agent': browserUserAgent, 'Accept': 'application/json'},
-      );
+      ).timeout(const Duration(seconds: 15));
 
       if (_noteRateLimit(jsonResponse)) return [];
       if (jsonResponse.statusCode == 200) {
@@ -570,7 +570,7 @@ class RedditSlideshow {
 
     for (final post in candidatePosts) {
       try {
-        final imageResponse = await _client.get(Uri.parse(post.imageUrl), headers: {'User-Agent': browserUserAgent});
+        final imageResponse = await _client.get(Uri.parse(post.imageUrl), headers: {'User-Agent': browserUserAgent}).timeout(const Duration(seconds: 30));
         if (imageResponse.statusCode != 200 || imageResponse.bodyBytes.isEmpty) {
           debugPrint('Reddit: Failed to download ${post.imageUrl} (${imageResponse.statusCode})');
           continue;

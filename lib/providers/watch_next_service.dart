@@ -305,6 +305,7 @@ class WatchNextService extends ChangeNotifier {
 
       if (imageBytes != null && imageBytes.isNotEmpty) {
         _posterCache[uri] = imageBytes;
+        _trimPosterCache();
         _failedPosters.remove(uri);
         _schedulePosterCacheNotification();
       } else {
@@ -346,6 +347,7 @@ class WatchNextService extends ChangeNotifier {
         final bytes = await _generatePlaceholder(item);
         if (bytes != null && bytes.isNotEmpty) {
           _posterCache[key] = bytes;
+        _trimPosterCache();
           _schedulePosterCacheNotification();
         }
       } catch (e) {
@@ -501,6 +503,12 @@ class WatchNextService extends ChangeNotifier {
       return;
     }
     _posterNotifyDebounce = Timer(const Duration(milliseconds: 80), notifyListeners);
+  }
+
+  void _trimPosterCache() {
+    while (_posterCache.length > 150) {
+      _posterCache.remove(_posterCache.keys.first);
+    }
   }
 
   Uint8List? getCachedPoster(String? uri) {
