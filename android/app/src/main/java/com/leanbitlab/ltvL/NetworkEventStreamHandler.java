@@ -45,7 +45,7 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
                 _networkCallback = new NetworkCallbackImplApi31(events, null);
                 _connectivityManager.registerDefaultNetworkCallback(_networkCallback, _handler);
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 _networkCallback = new NetworkCallbackImpl(events, null);
                 _connectivityManager.registerDefaultNetworkCallback(_networkCallback, _handler);
             }
@@ -64,12 +64,20 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
 
     @Override
     public void onCancel(Object arguments) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            _connectivityManager.unregisterNetworkCallback(_networkCallback);
+        try {
+            if (_networkCallback instanceof NetworkCallbackImpl) {
+                ((NetworkCallbackImpl) _networkCallback).releasePhoneListeners();
+            }
+            if (_networkCallback != null) {
+                _connectivityManager.unregisterNetworkCallback(_networkCallback);
+                _networkCallback = null;
+            }
+            if (_networkChangeReceiver != null) {
+                _context.unregisterReceiver(_networkChangeReceiver);
+                _networkChangeReceiver = null;
+            }
         }
-        else {
-            _context.unregisterReceiver(_networkChangeReceiver);
-        }
+        catch (RuntimeException ignored) { }
     }
 
     private class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback
@@ -90,6 +98,15 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
             }
             else {
                 _eventSink.success(map);
+            }
+        }
+
+        void releasePhoneListeners() {
+            if (_phoneStateListener != null) {
+                TelephonyManager manager = (TelephonyManager) _context.getSystemService(Context.TELEPHONY_SERVICE);
+                //noinspection deprecation
+                manager.listen(_phoneStateListener, PhoneStateListener.LISTEN_NONE);
+                _phoneStateListener = null;
             }
         }
 
@@ -134,6 +151,16 @@ public class NetworkEventStreamHandler implements EventChannel.StreamHandler
         public NetworkCallbackImplApi31(EventChannel.EventSink eventSink, Handler handler)
         {
             super(eventSink, handler);
+        }
+
+        @Override
+        void releasePhoneListeners() {
+            super.releasePhoneListeners();
+            if (_telephonyCallback != null) {
+                TelephonyManager manager = (TelephonyManager) _context.getSystemService(Context.TELEPHONY_SERVICE);
+                manager.unregisterTelephonyCallback(_telephonyCallback);
+                _telephonyCallback = null;
+            }
         }
 
         @Override

@@ -106,7 +106,7 @@ class FLauncherDatabase extends _$FLauncherDatabase
         },
         onUpgrade: (migrator, from, to) async {
           if (from <= 1 && to >= 2) {
-            await migrator.alterTable(TableMigration(apps, newColumns: [apps.hidden]));
+            await migrator.alterTable(TableMigration(apps, newColumns: [apps.hidden, apps.lastLaunchedAt]));
           }
           if (from <= 2 && from != 1 && to >= 3) {
             await migrator.addColumn(apps, apps.hidden);
@@ -133,7 +133,7 @@ class FLauncherDatabase extends _$FLauncherDatabase
               await migrator.dropColumn(apps, "sideloaded");
             } catch (_) {}
           }
-          if (from < 8 && to >= 8) {
+          if (from >= 2 && from < 8 && to >= 8) {
             await migrator.addColumn(apps, apps.lastLaunchedAt);
           }
           if (from < 9 && to >= 9) {
@@ -254,7 +254,7 @@ class FLauncherDatabase extends _$FLauncherDatabase
       batch((batch) => batch.insertAll(appsCategories, value, mode: InsertMode.insertOrIgnore));
 
   Future<void> replaceAppsCategories(List<AppsCategoriesCompanion> value) =>
-      batch((batch) => batch.replaceAll(appsCategories, value));
+      batch((batch) => batch.insertAllOnConflictUpdate(appsCategories, value));
 
   Future<int> insertSpacer(Insertable<LauncherSpacer> spacer) => into(launcherSpacers).insert(spacer);
 

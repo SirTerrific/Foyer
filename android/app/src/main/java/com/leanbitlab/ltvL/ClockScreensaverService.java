@@ -80,7 +80,7 @@ public class ClockScreensaverService extends DreamService {
         // Update time every minute
         updateTimeRunnable = () -> {
             updateTime();
-            handler.postDelayed(updateTimeRunnable, 60000);
+            handler.postDelayed(updateTimeRunnable, 60000 - (System.currentTimeMillis() % 60000));
         };
 
         // Move clock every 30 seconds

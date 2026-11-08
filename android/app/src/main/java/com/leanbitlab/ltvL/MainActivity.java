@@ -80,6 +80,19 @@ public class MainActivity extends FlutterActivity {
     private static final int REQUEST_CODE_READ_TV_LISTINGS = 1001;
     private static final String COLUMN_ASPECT_RATIO = "aspect_ratio";
 
+    private final ExecutorService _backgroundExecutor = Executors.newFixedThreadPool(2);
+
+    private void runAsync(MethodChannel.Result result, java.util.concurrent.Callable<Object> task) {
+        _backgroundExecutor.execute(() -> {
+            try {
+                Object value = task.call();
+                runOnUiThread(() -> result.success(value));
+            } catch (Exception e) {
+                runOnUiThread(() -> result.error("ERROR", e.getMessage(), null));
+            }
+        });
+    }
+
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
@@ -88,9 +101,9 @@ public class MainActivity extends FlutterActivity {
 
         new MethodChannel(messenger, METHOD_CHANNEL).setMethodCallHandler((call, result) -> {
             switch (call.method) {
-                case "getApplications" -> result.success(getApplications());
-                case "getApplicationBanner" -> result.success(getApplicationBanner(call.arguments()));
-                case "getApplicationIcon" -> result.success(getApplicationIcon(call.arguments()));
+                case "getApplications" -> runAsync(result, () -> getApplications());
+                case "getApplicationBanner" -> runAsync(result, () -> getApplicationBanner(call.arguments()));
+                case "getApplicationIcon" -> runAsync(result, () -> getApplicationIcon(call.arguments()));
                 case "applicationExists" -> result.success(applicationExists(call.arguments()));
                 case "launchActivityFromAction" -> result.success(launchActivityFromAction(call.arguments()));
                 case "launchApp" -> result.success(launchApp(call.arguments()));
@@ -167,7 +180,7 @@ public class MainActivity extends FlutterActivity {
                 }
                 case "getWatchNextItems" -> {
                     int limit = call.arguments() != null ? (int) call.arguments() : 10;
-                    result.success(getWatchNextItems(limit));
+                    runAsync(result, () -> getWatchNextItems(limit));
                 }
                 case "launchWatchNextItem" -> {
                     @SuppressWarnings("unchecked")
@@ -184,12 +197,12 @@ public class MainActivity extends FlutterActivity {
                 case "loadContentUriImage" -> {
                     String contentUri = (String) call.arguments();
                     if (contentUri != null) {
-                        result.success(loadContentUriImage(contentUri));
+                        runAsync(result, () -> loadContentUriImage(contentUri));
                     } else {
                         result.success(new byte[0]);
                     }
                 }
-                default -> throw new IllegalArgumentException("Unknown method: " + call.method);
+                default -> result.notImplemented();
             }
         });
 
@@ -206,8 +219,8 @@ public class MainActivity extends FlutterActivity {
                 executor);
         queryIntentActivitiesCompletionService.submit(() -> Pair.create(false, queryIntentActivities(false)));
         queryIntentActivitiesCompletionService.submit(() -> Pair.create(true, queryIntentActivities(true)));
-        List<ResolveInfo> tvActivitiesInfo = null;
-        List<ResolveInfo> nonTvActivitiesInfo = null;
+        List<ResolveInfo> tvActivitiesInfo = new ArrayList<>();
+        List<ResolveInfo> nonTvActivitiesInfo = new ArrayList<>();
 
         int completed = 0;
         while (completed < 2) {
@@ -529,6 +542,9 @@ public class MainActivity extends FlutterActivity {
         Bitmap bitmap;
         if (drawable instanceof BitmapDrawable bitmapDrawable) {
             bitmap = bitmapDrawable.getBitmap();
+            if (bitmap == null) {
+                bitmap = drawableToBitmap(drawable);
+            }
         } else {
             bitmap = drawableToBitmap(drawable);
         }
@@ -903,6 +919,12 @@ public class MainActivity extends FlutterActivity {
                     intent = new Intent(action);
                 }
 
+                // The URI comes from other apps (Watch Next rows): strip anything that could
+                // target another component or grant URI permissions.
+                intent.setComponent(null);
+                intent.setSelector(null);
+                intent.setClipData(null);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 if (packageName != null) {
                     intent.setPackage(packageName);
                     android.util.Log.d("MainActivity", "Set package to: " + packageName);
@@ -911,7 +933,6 @@ public class MainActivity extends FlutterActivity {
                     intent.putExtra("contentId", contentId);
                     android.util.Log.d("MainActivity", "Added contentId extra: " + contentId);
                 }
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 android.util.Log.d("MainActivity", "Starting activity with intent: " + intent.toUri(0));
                 return tryStartActivity(intent);
             } catch (Exception e) {
@@ -964,6 +985,9 @@ public class MainActivity extends FlutterActivity {
                     byte[] buffer = new byte[8192];  // Increased buffer size
                     int length;
                     while ((length = inputStream.read(buffer)) != -1) {
+                        if (byteArrayOutputStream.size() + length > 5 * 1024 * 1024) {
+                            return new byte[0];
+                        }
                         byteArrayOutputStream.write(buffer, 0, length);
                     }
                     byte[] result = byteArrayOutputStream.toByteArray();
