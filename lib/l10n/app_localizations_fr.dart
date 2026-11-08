@@ -9,7 +9,7 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'À propos d\'Arc Launcher';
+  String get aboutFlauncher => 'À propos de Foyer';
 
   @override
   String get addCategory => 'Ajouter une catégorie';
@@ -277,7 +277,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get updateInstallPermissionBody =>
-      'Autorisez Arc Launcher à installer des applis inconnues, puis relancez la mise à jour.';
+      'Autorisez Foyer à installer des applis inconnues, puis relancez la mise à jour.';
 
   @override
   String get updateOpenPermissionSettingsButton =>
@@ -289,7 +289,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'Arc Launcher est un launcher open source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par Meddouri Badis.\nCode source disponible sur $repoUrl.';
+    return 'Foyer est un launcher open source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par Meddouri Badis.\nCode source disponible sur $repoUrl.';
   }
 
   @override

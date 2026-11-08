@@ -109,7 +109,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutFlauncher.
   ///
   /// In en, this message translates to:
-  /// **'About Arc Launcher'**
+  /// **'About Foyer'**
   String get aboutFlauncher;
 
   /// No description provided for @addCategory.
@@ -601,7 +601,7 @@ abstract class AppLocalizations {
   /// No description provided for @updateInstallPermissionBody.
   ///
   /// In en, this message translates to:
-  /// **'Allow Arc Launcher to install unknown apps, then retry the update.'**
+  /// **'Allow Foyer to install unknown apps, then retry the update.'**
   String get updateInstallPermissionBody;
 
   /// No description provided for @updateOpenPermissionSettingsButton.
@@ -619,7 +619,7 @@ abstract class AppLocalizations {
   /// No description provided for @textAboutDialog.
   ///
   /// In en, this message translates to:
-  /// **'Arc Launcher is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by Meddouri Badis.\nSource code available at {repoUrl}.'**
+  /// **'Foyer is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by Meddouri Badis.\nSource code available at {repoUrl}.'**
   String textAboutDialog(String repoUrl);
 
   /// No description provided for @textEmptyCategory.

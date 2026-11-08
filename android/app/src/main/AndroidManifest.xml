@@ -59,7 +59,7 @@
         android:allowBackup="false"
         android:banner="@drawable/banner"
         android:icon="@mipmap/ic_launcher"
-        android:label="Arc Launcher"
+        android:label="Foyer"
         android:requestLegacyExternalStorage="true">
         <!--
           Disable Impeller and fall back to the Skia renderer.
@@ -96,7 +96,7 @@
         <service
             android:name=".ClockScreensaverService"
             android:exported="true"
-            android:label="Arc Launcher Clock"
+            android:label="Foyer Clock"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />

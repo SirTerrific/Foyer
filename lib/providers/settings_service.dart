@@ -75,6 +75,7 @@ const String WIFI_USAGE_WEEKLY = "weekly";
 const String WIFI_USAGE_MONTHLY = "monthly";
 
 // Accent color presets (hex values)
+const String ACCENT_COLOR_FOYER = "F59E0B";
 const String ACCENT_COLOR_PURPLE = "7C4DFF";
 const String ACCENT_COLOR_TEAL = "00BFA5";
 const String ACCENT_COLOR_BLUE = "2979FF";
@@ -127,7 +128,7 @@ class SettingsService extends ChangeNotifier {
 
   bool get showNetworkIndicatorInStatusBar => _sharedPreferences.getBool(_showNetworkIndicatorInStatusBar) ?? true;
 
-  String get accentColorHex => _sharedPreferences.getString(_accentColor) ?? ACCENT_COLOR_WHITE;
+  String get accentColorHex => _sharedPreferences.getString(_accentColor) ?? ACCENT_COLOR_FOYER;
 
   String get screensaverClockStyle => _sharedPreferences.getString(_screensaverClockStyle) ?? "minimal";
 
