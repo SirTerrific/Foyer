@@ -121,7 +121,7 @@ String? cleanReleaseNotes(String? notes) {
 
 class UpdateService {
   static const String _owner = "SirTerrific";
-  static const String _repo = "arclauncher";
+  static const String _repo = "Foyer";
   final FLauncherChannel _fLauncherChannel;
 
   UpdateService({FLauncherChannel? fLauncherChannel})

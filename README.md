@@ -10,7 +10,7 @@ It keeps the modern grid layout, customizable video and slideshow wallpapers, OL
 
 ## Installation
 
-Foyer is distributed as an APK built from this repository. Build it yourself, or download a release from the [Releases page](https://github.com/SirTerrific/arclauncher/releases) when one is published.
+Foyer is distributed as an APK built from this repository. Build it yourself, or download a release from the [Releases page](https://github.com/SirTerrific/Foyer/releases) when one is published.
 
 ```bash
 flutter pub get
@@ -198,8 +198,8 @@ Contributions are welcome! Please check our [Contributing Guidelines](CONTRIBUTI
 
 ## Credits and contributors
 
-<a href="https://github.com/SirTerrific/arclauncher/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=SirTerrific/arclauncher" alt="Contributors" />
+<a href="https://github.com/SirTerrific/Foyer/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SirTerrific/Foyer" alt="Contributors" />
 </a>
 
 ### Original Projects

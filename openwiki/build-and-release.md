@@ -45,7 +45,7 @@ Tests are in `test/`: `database_test.dart`, `database_migration_test.dart` (with
 
 ## In-app updater
 
-`lib/providers/update_service.dart` checks the GitHub releases API of the fork (`SirTerrific/arclauncher`), picks an APK asset suited to the device, and downloads and installs it through the native `installApk` call.
+`lib/providers/update_service.dart` checks the GitHub releases API of the fork (`SirTerrific/Foyer`), picks an APK asset suited to the device, and downloads and installs it through the native `installApk` call.
 
 ## CI
 

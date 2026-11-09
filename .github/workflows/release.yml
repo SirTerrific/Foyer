@@ -27,7 +27,7 @@ permissions:
 
 env:
   FLUTTER_VERSION: "3.41.9"
-  RELEASE_APK_FILENAME_PREFIX: arclauncher
+  RELEASE_APK_FILENAME_PREFIX: foyer
   ARTIFACT_RETENTION_DAYS: 1
 
 jobs:
