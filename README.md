@@ -1,5 +1,17 @@
 # Foyer
 
+[![Release](https://img.shields.io/github/v/release/SirTerrific/Foyer?style=flat-square&color=C2410C)](https://github.com/SirTerrific/Foyer/releases/latest)
+[![CI](https://img.shields.io/github/actions/workflow/status/SirTerrific/Foyer/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/SirTerrific/Foyer/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/SirTerrific/Foyer?style=flat-square&color=blue)](LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/SirTerrific/Foyer/total?style=flat-square&color=2ea44f)](https://github.com/SirTerrific/Foyer/releases)
+[![Stars](https://img.shields.io/github/stars/SirTerrific/Foyer?style=flat-square)](https://github.com/SirTerrific/Foyer/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/SirTerrific/Foyer?style=flat-square)](https://github.com/SirTerrific/Foyer/commits/main)
+[![Flutter](https://img.shields.io/badge/Flutter-3.41-02569B?style=flat-square&logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-%3E%3D3.11-0175C2?style=flat-square&logo=dart&logoColor=white)](https://dart.dev)
+[![Android TV](https://img.shields.io/badge/Android%20TV-API%2024%2B-3DDC84?style=flat-square&logo=androidtv&logoColor=white)](https://www.android.com/tv/)
+[![Languages](https://img.shields.io/badge/languages-6-F59E0B?style=flat-square)](lib/l10n)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-menelikIII-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/menelikIII)
+
 <picture>
   <img alt="Foyer Preview" src="docs/images/home.webp">
 </picture>
