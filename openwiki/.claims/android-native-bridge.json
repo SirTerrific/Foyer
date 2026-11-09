@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:76f6f31596def5e49512ba24a47791d7234123ae4b54bf5e7594070f15586cc0",
+  "claims": [
+    {
+      "id": "claim_f164676e4ed548ad8f4b14a56e104532",
+      "statement": "MainActivity registers a MethodChannel named me.efesser.flauncher/method and handles app launching, icon and banner retrieval and settings calls.",
+      "evidence": [
+        {
+          "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/MainActivity.java",
+          "version": "repo-file-v1:sha256:6468bb6acf4fe5651b86667b214d2ff44861ccadc58fb7766d1bc3067909e29d"
+        }
+      ]
+    },
+    {
+      "id": "claim_7831869dc7bb47e3a7b12c647040ddf9",
+      "statement": "FLauncherChannel in lib/flauncher_channel.dart wraps the native method calls and exposes event streams for apps and network changes.",
+      "evidence": [
+        {
+          "resource": "repo://lib/flauncher_channel.dart",
+          "version": "repo-file-v1:sha256:60ba2d77d37198336f346cd747da41fd6f26e23226345e9e8d35f094ae67f3a4"
+        }
+      ]
+    },
+    {
+      "id": "claim_737beaa90e8e47ccb906d92cd7d0a0dd",
+      "statement": "WatchNextService requires READ_TV_LISTINGS and loads WatchNextItem models for the top carousel.",
+      "evidence": [
+        {
+          "resource": "repo://android/app/src/main/AndroidManifest.xml",
+          "version": "repo-file-v1:sha256:ce4a02637acf93a7fe4b7e06f61c7902a48efd7b8caf52c6540eed64ed5f90b8"
+        },
+        {
+          "resource": "repo://lib/providers/watch_next_service.dart",
+          "version": "repo-file-v1:sha256:03a9e70e0de603e3fa8ac487b138252f4c403edf4454cb79e401b3ada01ada38"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.3",
+    "at": "2026-11-09T00:13:56.093Z"
+  }
+}

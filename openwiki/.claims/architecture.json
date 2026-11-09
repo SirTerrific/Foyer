@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:e4eaf2eb3d4613ef91cee09a56e1d2c108cfac2d53b26b1a7a3d156d6881dfa8",
+  "claims": [
+    {
+      "id": "claim_7d3c860827bf4c74b011eba76a10988e",
+      "statement": "main() wires a MultiProvider of ChangeNotifier services: SettingsService, ParentalControlService, AppsService, LauncherState, NetworkService, WallpaperService, BrightnessService and WatchNextService.",
+      "evidence": [
+        {
+          "resource": "repo://lib/main.dart#L38-L70",
+          "version": "repo-lines-v1:sha256:6b620c14d09af88235df05032e81fb92c10ecd285749e7297cdd7e9463cf5a9a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2MjNhMWVlYTY0ZmI3MmZlYjk3OTlkYjdmZDc1MDJlNmRjODE5Nzk3YmNkZjk2NThmOGZiMmQ3MWI3Y2ZiZWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxMThlNDkwMGRmZjlmM2E2ZTg0MTk2NTJhNmZlN2IwNzI1Njk0MDRlYWVlZTIzZmEzYTJmNGZlZDUxMjQ1OTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjYzOGNkZDgwODMwOWEzMmFhYjU0NWQzMjIzMWIzOWYyODIxMDI3MjU4OTA4MDNjMjU2M2FjMzk5NDNmMzdhMjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1ZWQ2Yjg3ZmFjY2Q4MTcxYzFiY2FhZTA3Y2QyMTljMzAzNDBlOGVhZDY5NGEzZTY5NzdmZGRmYTk5MThiNDAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_75705ca081a44898a979e0cc633418e2",
+      "statement": "RowByRowTraversalPolicy implements D-pad focus traversal row by row using NodeSearcher.",
+      "evidence": [
+        {
+          "resource": "repo://lib/custom_traversal_policy.dart",
+          "version": "repo-file-v1:sha256:ac59f127f238a744dd33aa5e17d306902105c2d7b0aa5ba2c0120fc7eae42293"
+        }
+      ]
+    },
+    {
+      "id": "claim_0ecdc3e6b6b34d8c858ecce8c8f3bf73",
+      "statement": "actions.dart defines BackAction, BackIntent, MoveFocusToSettingsIntent and SoundFeedbackDirectionalFocusAction.",
+      "evidence": [
+        {
+          "resource": "repo://lib/actions.dart",
+          "version": "repo-file-v1:sha256:dc532dbc492bd02dfcd5d3f0bfc859521d2cb8ba4b11a99a89b68341848e42d4"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.3",
+    "at": "2026-11-09T00:13:56.093Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "/openwiki/android-native-bridge.md": {
+      "pageVersion": "sha256:76f6f31596def5e49512ba24a47791d7234123ae4b54bf5e7594070f15586cc0",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/architecture.md": {
+      "pageVersion": "sha256:e4eaf2eb3d4613ef91cee09a56e1d2c108cfac2d53b26b1a7a3d156d6881dfa8",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/build-and-release.md": {
+      "pageVersion": "sha256:1fd3d255e1ac91a46154a8653f474611871135886246eb80809fa9ed6ce960d1",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/data-layer.md": {
+      "pageVersion": "sha256:ffca3bbd2e08cbc0f2c460dca6299053bca8ff72cb979011d2e58bb4f81694ea",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/parental-control.md": {
+      "pageVersion": "sha256:ee3fc98d5ce2935721fda83ab442e765e4f5ac875239ea2daef7b42810a598f6",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/quickstart.md": {
+      "pageVersion": "sha256:ce698ae105df358eb09349348dda5aee34f4ed6c230195d164c92d2f8ed974e4",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    },
+    "/openwiki/settings-ui.md": {
+      "pageVersion": "sha256:0dd6864e2ad1081007ff78697bbf4621fd83250eb7c1144c2984c3bb4a03af04",
+      "completedBy": "claude-code",
+      "completedRunId": "554899e4-991e-43c0-b764-79a312f3b6c3",
+      "gitHead": "58a054cd49270d7865aa36de57840c84e10ba168",
+      "sourceFingerprint": "sha256:a295457a76e45da2cb439472a5ac3ebf23cf97caec813bb01d614edbbc4abe08"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ee3fc98d5ce2935721fda83ab442e765e4f5ac875239ea2daef7b42810a598f6",
+  "claims": [
+    {
+      "id": "claim_e2549fdbf2784f569401a1516bb15ee4",
+      "statement": "ParentalControlService uses minCodeLength 4, maxFailuresBeforeLock 5 and a 15 minute graceDuration.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/parental_control_service.dart#L29-L32",
+          "version": "repo-lines-v1:sha256:266e5a937a6cd217d279629da86e91c7fcd00eb0fe861f716dda42fe11392baa:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWY0ZWFkZDUxZjM4YmU3NGM4OTcyZWVhZGM2ZjQzNDdjNjlmZGU5N2FkMWZhNWM1NGE0YTlmNDM1YzEwYjk3NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGQ5OWQ2MThiNzQ0MTZkOThmYmFmYmE1ZDM3YzE2YTY5YjZkYWFlMWE3YjJkZjQ4ZjM5M2FmMzllOGU0MmVlMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWI0Zjg0ZDkzOWJkNGEyMGI3NGNiMDE3MzRlMGY4YTYwNDhjMzQ0N2I0MDAwNmIwYTk1Zjg3OGNjNzc5YjNkYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTg3OTgzNDFkZmUxY2QzYTQ4Zjc0MmEwOWIxYTMzZTJjOTEzNzA4MWZlOGRkNTc0NTliZDljODE2ZjA4YWJlYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_59fc1202eea444bf82d9b76db9bac9b8",
+      "statement": "requiresCode gates an unknown (null) package whenever protection is enabled, the window is active and any app is protected.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/parental_control_service.dart#L90-L96",
+          "version": "repo-lines-v1:sha256:b52c9a475b0bbfabd92cf0875f55b7f50f3182eb3e18427b7b8c32c9a9529578:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGM0MjkzNTU4ZDBjNjg5YTU3MTkzMDQxYTQxMjg1YzRhMTJjMGIxNGExMDE3YjUyMjJjYmExNTBiOTQ0YjNmNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzEzNDUxODAxMDViMGM2NmE3N2RhZDUxYmIzNzkwMWEzNzMyYzk2NTRiYTRkZTM5ODFmODFlMTgxNzUyNDhiZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTMzNTU4NmI3Nzk1YzgyYTFjMjhhZDVkOGFkZWIzMmNjNzMyMzZkYzcyNmFiYjhjODQ3ZGUxYWQ2NGMxMzI0NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjkwMTBkOGUzNmU0Yzc4Mzc1ZTUxYzFmMjE0YjM0MDA3MTczZTgxMGE3MTM3NDAxODRlZWUzMTk2MzFiOTkyYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_bffcfd62bca3403d986056e966561b0b",
+      "statement": "verify opens a 15 minute grace on success and after 5 failures locks for 30 seconds doubling, capped at 900 seconds.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/parental_control_service.dart#L133-L158",
+          "version": "repo-lines-v1:sha256:6ab0874d710c97ff8c57b755fe7a55044569d0ad8c59b22dc0b266f929846ed5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0Mzk5YWQ2MjE4MGRhY2FmOTA1ZjVhOTE0NDUwYTRjMjExYWNjNGQzODE4MjZmNGE0MmRhODc5MWY1MjE3MzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxMzQ1MTgwMTA1YjBjNjZhNzdkYWQ1MWJiMzc5MDFhMzczMmM5NjU0YmE0ZGUzOTgxZjgxZTE4MTc1MjQ4YmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI0ZGUzZDJmMWUxZDcxMjFhNzViNjNlNDA1MTMzMTIzMDdjODgyOThmYTMzMDhjZjg5MmNkMjcxNmNjZGE1NjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2YzMzYmVmNzhkNDJjZmNjZjRkNjlkMWIxNGQ4Mzk0NWY5OTIwODhjNjgwZGJmNGMzOGFjZjU0ZjZhMjdhYTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_250df067205842aeb51037b22d257ecf",
+      "statement": "parental_gate.dart exposes ensureAppUnlocked and ensureSettingsUnlocked.",
+      "evidence": [
+        {
+          "resource": "repo://lib/widgets/parental_gate.dart#L8-L15",
+          "version": "repo-lines-v1:sha256:ee88abf5a0354b1daa57a804824cf6745ecf8cb5f44fbad7b5b6d1def1c7dac7:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTFjNGFmYjg1MzgwZGYzOTcyN2QwYTczZTBlNDFjZjdhZjA3OWEzNjMwZWM2ZTk5ZjY4MDRlMDQyN2FiZmM1OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTlkMGZmOWEwMTA3NTdkYzcxMWJhOWVlZTFiNTI4NTIwNTBkY2FlZDIwZWFkOTljYThhYjRiZDFkMTg0M2E5ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzY0OWVlYzdhMThkMzQyZDIwYzY1Yjg5ZjU5MDc0MmQwNWIwMmI5NDQ1OWY4MmIxM2QzMThjYTdhNDBjNWIzNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjE1MGI4ZjA4ZmJmOTg5M2E0ZDY1MjAwOTJmNWVjNDIxYjg2ZTdmNjcxMDA5YjU4NTU5YmE0MzJiMjBiOTQ4ZiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.3",
+    "at": "2026-11-09T00:13:56.093Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:0dd6864e2ad1081007ff78697bbf4621fd83250eb7c1144c2984c3bb4a03af04",
+  "claims": [
+    {
+      "id": "claim_7629681f4b0049e0a9beaf509bac26bb",
+      "statement": "SettingsPanel uses a nested Navigator whose initialRoute defaults to SettingsPanelPage.routeName.",
+      "evidence": [
+        {
+          "resource": "repo://lib/widgets/settings/settings_panel.dart#L50-L105",
+          "version": "repo-lines-v1:sha256:886908dd5a8c5617e8bbe0e0b2ee797c9594c4aa7b74d6e36af43a883f3548e3:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2N2U1NzQ5MTM3NWJlOTA2ZTQ1OTU3NDQ4ZjM4YTk5NzZlNDM0Y2MyNDk0ZWE4NmRiMzNkZWFlNTNkNGMyMWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5YmNjNjUyMDNlYTQ0ZGQzMTEzMDZjNTY4OTk4NDdlZTY3OTQ0MDMwYWJjZWQzMmQ0MjhjNDg5MjRmYWM0YWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE3MjAxM2IyNzUwMDM3MDU4OGQxY2YwMTdiN2UxMjlkZGI1YjRiNDM0ZGNiZGYyMWM2YzFmMmM3NTYxYTIwOGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQzNDkwZGRiMTRmYjU0YjlkYzg2YmE5MGZjNjdjYjY4YjFiNmI3MjczMjhiMzA5ZWQwZWI1YzJjODQ2ZDNiYjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5e7e37f8ac7340e19574bc53726f4ace",
+      "statement": "The accent color defaults to ACCENT_COLOR_FOYER, F59E0B.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/settings_service.dart#L131-L131",
+          "version": "repo-lines-v1:sha256:b15a55a02235859923bee4d573d2426e77ae3f596998a2d36f95474998b71575:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjE1YTU1YTAyMjM1ODU5OTIzYmVlNGQ1NzNkMjQyNmU3N2FlM2Y1OTY5OThhMmQzNmY5NTQ3NDk5OGI3MTU3NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjE1YTU1YTAyMjM1ODU5OTIzYmVlNGQ1NzNkMjQyNmU3N2FlM2Y1OTY5OThhMmQzNmY5NTQ3NDk5OGI3MTU3NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjI0ZDliYjdhNDU0NTdhMTU1N2MwM2ZjMzJjNmQ4ZGU2M2NlMTBjNTFhNWRiOWYxMDE2YmJkOWJlZmY0NTUwYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjkyZjVjYTUzM2IzMzQwNWI5NTZlOGJiZjNkN2I5Y2Y4ZjY5NTBkZjM2MGVjMzFkNmRlYmEyOTc4NTY0MjZhYiJ9"
+        },
+        {
+          "resource": "repo://lib/providers/settings_service.dart#L78-L78",
+          "version": "repo-lines-v1:sha256:28ff7ad91afb433481cf90b07e55136c32b01da5a162ff6f2ed6848f88bfc358:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjhmZjdhZDkxYWZiNDMzNDgxY2Y5MGIwN2U1NTEzNmMzMmIwMWRhNWExNjJmZjZmMmVkNjg0OGY4OGJmYzM1OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjhmZjdhZDkxYWZiNDMzNDgxY2Y5MGIwN2U1NTEzNmMzMmIwMWRhNWExNjJmZjZmMmVkNjg0OGY4OGJmYzM1OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzhmZTRmMWU4OWI3ZDlkZjkwMjRkY2E0YjI3ZTBhYmRmZjZkOWFhNzQyMjA3YzllYTk0N2UzMmNmZDMxMGJhNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzE4ODE2YTkxOTMyZGZlOTQyNzUyYzM3MDIzNDcwYWZlZDg1MjJkYWMzN2ZmZGU1NTcyNTJiN2FjZjRiODY4NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_341c0d71cbce4ea9a5d13f47742933cf",
+      "statement": "l10n.yaml uses lib/l10n with app_en.arb as template and outputs app_localizations.dart.",
+      "evidence": [
+        {
+          "resource": "repo://l10n.yaml",
+          "version": "repo-file-v1:sha256:f042c4a4619d3445aa044d285b5289f8a01c73cba18873333dcf6b35aa2796cd"
+        }
+      ]
+    },
+    {
+      "id": "claim_fdeef4e14942497a9b40c204d801166f",
+      "statement": "tool/gen_brand.dart generates the Foyer icons and banner and runs with flutter test.",
+      "evidence": [
+        {
+          "resource": "repo://tool/gen_brand.dart#L1-L14",
+          "version": "repo-lines-v1:sha256:f312e2ad8f7c10f2adec1bdd1bad40dd43aa041d674a94e3817de9d965c6747e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiNTgyYWFmMWE5ZTNjMzViMTVhMTFhN2M0NzYzYWQwMTk0MWE3YjRiN2M5OGRjNWUyY2MyM2IzODViYzk5MzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdjODU0ZjJlYmFlMmZkOTgyNDg0NDUzMGVlNzM4MTIyMzRlZGNiZjcxYTMwOWI4ZmI4OGFjMzE0MWY1YjAxZGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3Yzk1NGUzZDUzYzQxZTQ4ZDFjOGQ3MjZjMWRiNDhlMjdlOTViMTRkM2JiZGJhODJmMzYyMzAzODI0NTNkMjMifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.3",
+    "at": "2026-11-09T00:13:56.093Z"
+  }
+}

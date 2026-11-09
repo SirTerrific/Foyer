@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ffca3bbd2e08cbc0f2c460dca6299053bca8ff72cb979011d2e58bb4f81694ea",
+  "claims": [
+    {
+      "id": "claim_3026bc06a5ae4a0191a16c68aecf3974",
+      "statement": "FLauncherDatabase declares tables Apps, Categories, AppsCategories and LauncherSpacers with schemaVersion 10.",
+      "evidence": [
+        {
+          "resource": "repo://lib/database.dart#L90-L100",
+          "version": "repo-lines-v1:sha256:9c800ee46f251741069615ed898f9539ec28cb4548d96f39154350be82aec2b1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkzMDY3NGU3MTQ0MDdjZjVmZGY1M2YyYzk2YWVjMDhiOWVmOGRjMzAzN2NkNWI4NWE0NzY5NDA5OGU2YmVjMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNmZGYyYTRkOTFmYWUxMzhjOTkxMjQ1NTRiNTJlMzQyMmZiMzk2ZWJmODk3MWRiYmMxNjZiYWM2ZTFjYTU0YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2YmFmYTIyZDBjNTVhMmYyMzVlZmFkNzZiNDA0MGNhZjUyODlkY2IzY2E4ZDRjZWQyNDU5ZWRiOWY4ODJhZDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVhNjU2MzU0NjkwM2Q3OTEzYjUzNDQ5OTk5NGViNmJkN2RkNjk5MTBjODFiY2JiODEyY2IxYjhmNWYyYTllZGIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_52caa6a38c244dc38ebc4e2aa77ed3c2",
+      "statement": "WatchNextItem has a nullable packageName along with poster, backdrop, progress and intent fields.",
+      "evidence": [
+        {
+          "resource": "repo://lib/models/watch_next_item.dart#L19-L32",
+          "version": "repo-lines-v1:sha256:37c28210ec87c45701ab21b213e2b64ba9ff3ac3b0f68e6aaea38b5607e04b85:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwZTM5ZWU3MTcxOWU4OTRjMjMzNGZhYmMyMzUwMDRlYmZjODg0M2RlYjE4OGNiZWIzZGViYWRlY2IwMmRhZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZmJlZWM5Y2Q0OWU0MjQ5MTQ1MzUzNTE1MDhiOTAyNTZlMzZjY2ZiZGYwNjU4YzYzMzIyZTUxMGZkNmNkNmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcxYTk3MmQ4MWRlZDM4NGU3MTlhZjFkNTViODA1M2UyYTc1MTEyN2EwNGNkNDE0NWZlZmUzMDMwMGRmNGZmNDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAwMDY3MTE3MzQ3NGRmNGY2OWYwMWNhNWI1YjE3YzFiNjYzZmM0MTk1MDNhNTBmY2UzOTFjZGIxYTYxNzk2NjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d931576239e345018aaff20a1a5ff260",
+      "statement": "SettingsService wraps SharedPreferences.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/settings_service.dart",
+          "version": "repo-file-v1:sha256:00f932077bdaae248e66fba7ec0c57eb640bc80e7c389d10f3e9dd5be2833b93"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.3",
+    "at": "2026-11-09T00:13:56.093Z"
+  }
+}
