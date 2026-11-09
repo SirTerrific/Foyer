@@ -134,7 +134,7 @@
     "updateInstallPermissionBody": "Permite que Foyer instale apps desconocidas y vuelve a intentar la actualización.",
     "updateOpenPermissionSettingsButton": "Abrir ajustes de permisos",
     "updateErrorGeneric": "La actualización falló. Inténtalo de nuevo.",
-    "textAboutDialog": "Foyer es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por Meddouri Badis.\nCódigo fuente disponible en {repoUrl}.",
+    "textAboutDialog": "Foyer es un lanzador familiar de código abierto para Android TV con control parental integrado: apps bloqueadas con un código del D-pad del mando, franja horaria, ajustes protegidos.\n\nMantenido por SirTerrific. Fork de Arc Launcher de Badis Meddouri.\nCódigo fuente: {repoUrl}",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -254,5 +254,14 @@
     "redditSubredditAdded": "Subreddit añadido",
     "redditSubredditInvalid": "Introduce un nombre de subreddit válido",
     "redditWallpaperUpdated": "Fondo de pantalla actualizado con éxito",
-    "redditWallpaperFailed": "Error al obtener el fondo. Si persiste, añade un ID de cliente de Reddit en los ajustes."
+    "redditWallpaperFailed": "Error al obtener el fondo. Si persiste, añade un ID de cliente de Reddit en los ajustes.",
+    "bingWallpaper": "Imagen del día de Bing",
+    "bingEnable": "Usar fondo de Bing",
+    "bingAutoDaily": "Seguir la imagen del día",
+    "bingAutoDailyHelp": "Cambia cada día. Elegir una imagen abajo la fija.",
+    "bingMarket": "Región",
+    "bingMarketAuto": "Auto",
+    "bingRecentImages": "Imágenes recientes",
+    "bingUnavailable": "No se puede acceder a Bing. Revisa la red.",
+    "bingDownloadFailed": "No se pudo descargar esta imagen."
 }

@@ -284,7 +284,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'Foyer là ứng dụng màn hình chính mã nguồn mở dành cho Android TV, được tùy chỉnh từ FLauncher.\n\nDo Meddouri Badis phát triển.\nMã nguồn tại $repoUrl.';
+    return 'Foyer là launcher gia đình mã nguồn mở cho Android TV, tích hợp kiểm soát của phụ huynh: khóa ứng dụng bằng mã D-pad trên điều khiển, khung giờ, bảo vệ cài đặt.\n\nDo SirTerrific duy trì. Bản fork của Arc Launcher (Badis Meddouri).\nMã nguồn: $repoUrl';
   }
 
   @override
@@ -840,4 +840,32 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Gỡ khỏi kiểm soát phụ huynh';
+
+  @override
+  String get bingWallpaper => 'Ảnh Bing trong ngày';
+
+  @override
+  String get bingEnable => 'Dùng hình nền Bing';
+
+  @override
+  String get bingAutoDaily => 'Theo ảnh trong ngày';
+
+  @override
+  String get bingAutoDailyHelp =>
+      'Đổi mỗi ngày. Chọn một ảnh bên dưới để cố định.';
+
+  @override
+  String get bingMarket => 'Khu vực';
+
+  @override
+  String get bingMarketAuto => 'Tự động';
+
+  @override
+  String get bingRecentImages => 'Ảnh gần đây';
+
+  @override
+  String get bingUnavailable => 'Không kết nối được Bing. Kiểm tra mạng.';
+
+  @override
+  String get bingDownloadFailed => 'Không tải được ảnh này.';
 }

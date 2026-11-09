@@ -284,7 +284,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'Foyer, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nGeliştiren: Meddouri Badis.\nKaynak kodu $repoUrl adresinde mevcuttur.';
+    return 'Foyer, yerleşik ebeveyn denetimine sahip, Android TV için açık kaynaklı bir aile başlatıcısıdır: kumandanın D-pad koduyla kilitlenen uygulamalar, zaman aralığı, korumalı ayarlar.\n\nGeliştiren: SirTerrific. Badis Meddouri\'nin Arc Launcher projesinin çatalı.\nKaynak kodu: $repoUrl';
   }
 
   @override
@@ -837,4 +837,32 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Remove from parental control';
+
+  @override
+  String get bingWallpaper => 'Bing günün görseli';
+
+  @override
+  String get bingEnable => 'Bing duvar kâğıdını kullan';
+
+  @override
+  String get bingAutoDaily => 'Günün görselini takip et';
+
+  @override
+  String get bingAutoDailyHelp =>
+      'Her gün değişir. Aşağıdan bir görsel seçmek onu sabitler.';
+
+  @override
+  String get bingMarket => 'Bölge';
+
+  @override
+  String get bingMarketAuto => 'Otomatik';
+
+  @override
+  String get bingRecentImages => 'Son görseller';
+
+  @override
+  String get bingUnavailable => 'Bing\'e ulaşılamıyor. Ağı kontrol edin.';
+
+  @override
+  String get bingDownloadFailed => 'Bu görsel indirilemedi.';
 }

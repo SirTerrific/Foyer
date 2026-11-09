@@ -279,7 +279,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'Foyer 是一款基于 FLauncher 为 Android TV 定制的开源启动器。\n\n由 Meddouri Badis 开发。\n源代码位于 $repoUrl。';
+    return 'Foyer 是一款面向 Android TV 的开源家庭启动器，内置家长控制：用遥控器方向键密码锁定应用、时间段限制、设置保护。\n\n由 SirTerrific 维护。基于 Badis Meddouri 的 Arc Launcher 分支。\n源代码：$repoUrl';
   }
 
   @override
@@ -817,4 +817,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => '移出家长控制';
+
+  @override
+  String get bingWallpaper => '必应每日图片';
+
+  @override
+  String get bingEnable => '使用必应壁纸';
+
+  @override
+  String get bingAutoDaily => '跟随每日图片';
+
+  @override
+  String get bingAutoDailyHelp => '每天更换。在下方选择图片即可固定。';
+
+  @override
+  String get bingMarket => '地区';
+
+  @override
+  String get bingMarketAuto => '自动';
+
+  @override
+  String get bingRecentImages => '最近图片';
+
+  @override
+  String get bingUnavailable => '无法连接必应，请检查网络。';
+
+  @override
+  String get bingDownloadFailed => '无法下载此图片。';
 }

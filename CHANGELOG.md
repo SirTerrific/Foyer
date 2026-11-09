@@ -6,14 +6,18 @@
 - **Watch Next** : les programmes de la carte « Watch Next » sont aussi bloqués quand leur app est protégée, ou inconnue.
 - **Désinstaller / Infos app** : protégés par le code.
 - **Réglages protégés** : une fois un code défini, l'accès aux réglages demande le code (option désactivable).
-- **Délai de grâce** : après un bon code, 15 min sans redemander.
+- **Délai de grâce** : après un bon code, 15 min sans redemander. Gardé en mémoire seulement : la mise en veille de la TV ou un redémarrage redemande le code.
 - **Anti-force brute** : 5 erreurs, puis blocage 30 s, doublé à chaque nouvelle série, plafonné à 15 min.
 - **Plage horaire** : option pour ne protéger que sur une plage de la journée (08:00–20:00 par défaut, passe minuit).
 - **Stockage** : code jamais gardé en clair (SHA-256 salé, comparaison à temps constant).
 - **Langues** : textes en français, anglais, espagnol, turc, vietnamien, chinois.
 
+### Fond d'écran Bing (nouveau)
+- **Image du jour Bing** : suivie automatiquement (vérifiée toutes les heures) ou image fixée parmi les 8 dernières, avec aperçus.
+- **Région** au choix (Auto, FR, CA, US, etc.), crédit photo affiché à l'écran, image gardée en cache hors ligne.
+
 ### Rebrand
-- Nouveau nom **Foyer**, nouvelle icône, bannière TV et palette ambre / terracotta sur fond sombre.
+- Nouveau nom **Foyer**, icône redessinée (maison, cheminée et âtre lumineux en dégradé), bannière TV et palette ambre / terracotta sur fond sombre.
 - README réécrit, liens et mises à jour pointent vers ce fork (`SirTerrific/Foyer`).
 
 ### Correctifs et robustesse (audit du code)

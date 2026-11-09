@@ -355,6 +355,7 @@ class SettingsService extends ChangeNotifier {
     await _sharedPreferences.setBool("unsplash_slideshow_enabled", enabled);
     if (enabled) {
       await _sharedPreferences.setBool("reddit_wallpaper_enabled", false);
+      await _sharedPreferences.setBool("bing_wallpaper_enabled", false);
     }
     notifyListeners();
   }
@@ -372,8 +373,48 @@ class SettingsService extends ChangeNotifier {
     await _sharedPreferences.setBool("reddit_wallpaper_enabled", enabled);
     if (enabled) {
       await _sharedPreferences.setBool("unsplash_slideshow_enabled", false);
+      await _sharedPreferences.setBool("bing_wallpaper_enabled", false);
     }
     notifyListeners();
+  }
+
+  // Bing Wallpaper Settings
+
+  bool get bingWallpaperEnabled => _sharedPreferences.getBool("bing_wallpaper_enabled") ?? false;
+
+  Future<void> setBingWallpaperEnabled(bool enabled) async {
+    await _sharedPreferences.setBool("bing_wallpaper_enabled", enabled);
+    if (enabled) {
+      await _sharedPreferences.setBool("unsplash_slideshow_enabled", false);
+      await _sharedPreferences.setBool("reddit_wallpaper_enabled", false);
+    }
+    notifyListeners();
+  }
+
+  /// Follow the image of the day; off once the user picks an older image by hand.
+  bool get bingAutoDaily => _sharedPreferences.getBool("bing_auto_daily") ?? true;
+
+  Future<void> setBingAutoDaily(bool enabled) async {
+    await _sharedPreferences.setBool("bing_auto_daily", enabled);
+    notifyListeners();
+  }
+
+  /// Bing market (e.g. "fr-FR"); empty lets Bing choose from the network location.
+  String get bingMarket => _sharedPreferences.getString("bing_market") ?? "";
+
+  Future<void> setBingMarket(String market) async {
+    await _sharedPreferences.setString("bing_market", market);
+    notifyListeners();
+  }
+
+  /// Publication date (yyyyMMdd) and copyright of the Bing image on screen, kept across restarts.
+  String? get bingCurrentDate => _sharedPreferences.getString("bing_current_date");
+
+  String? get bingCurrentCopyright => _sharedPreferences.getString("bing_current_copyright");
+
+  Future<void> setBingCurrentImage({required String date, required String copyright}) async {
+    await _sharedPreferences.setString("bing_current_date", date);
+    await _sharedPreferences.setString("bing_current_copyright", copyright);
   }
 
   static const List<int> redditIntervalChoices = [5, 10, 30, 60, 360, 720, 1440];

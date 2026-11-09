@@ -85,7 +85,7 @@
   "updateInstallPermissionBody": "Cho phép Foyer cài ứng dụng không rõ nguồn gốc, rồi thử cập nhật lại.",
   "updateOpenPermissionSettingsButton": "Mở cài đặt quyền",
   "updateErrorGeneric": "Không thể kiểm tra cập nhật. Vui lòng thử lại.",
-  "textAboutDialog": "Foyer là ứng dụng màn hình chính mã nguồn mở dành cho Android TV, được tùy chỉnh từ FLauncher.\n\nDo Meddouri Badis phát triển.\nMã nguồn tại {repoUrl}.",
+  "textAboutDialog": "Foyer là launcher gia đình mã nguồn mở cho Android TV, tích hợp kiểm soát của phụ huynh: khóa ứng dụng bằng mã D-pad trên điều khiển, khung giờ, bảo vệ cài đặt.\n\nDo SirTerrific duy trì. Bản fork của Arc Launcher (Badis Meddouri).\nMã nguồn: {repoUrl}",
   "textEmptyCategory": "Danh mục này đang trống.",
   "time": "Giờ",
   "titleStatusBarSettingsPage": "Chọn nội dung hiển thị trên thanh trạng thái",
@@ -255,5 +255,14 @@
   "parentalTooShort": "Ít nhất {count} ký hiệu",
   "parentalMismatch": "Mã không khớp, hãy nhập lại",
   "parentalAddApp": "Thêm vào kiểm soát phụ huynh",
-  "parentalRemoveApp": "Gỡ khỏi kiểm soát phụ huynh"
+  "parentalRemoveApp": "Gỡ khỏi kiểm soát phụ huynh",
+  "bingWallpaper": "Ảnh Bing trong ngày",
+  "bingEnable": "Dùng hình nền Bing",
+  "bingAutoDaily": "Theo ảnh trong ngày",
+  "bingAutoDailyHelp": "Đổi mỗi ngày. Chọn một ảnh bên dưới để cố định.",
+  "bingMarket": "Khu vực",
+  "bingMarketAuto": "Tự động",
+  "bingRecentImages": "Ảnh gần đây",
+  "bingUnavailable": "Không kết nối được Bing. Kiểm tra mạng.",
+  "bingDownloadFailed": "Không tải được ảnh này."
 }

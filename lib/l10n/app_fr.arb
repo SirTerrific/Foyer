@@ -84,7 +84,7 @@
     "updateInstallPermissionBody": "Autorisez Foyer à installer des applis inconnues, puis relancez la mise à jour.",
     "updateOpenPermissionSettingsButton": "Ouvrir les paramètres d'autorisation",
     "updateErrorGeneric": "La recherche de mise à jour a échoué. Veuillez réessayer.",
-    "textAboutDialog": "Foyer est un launcher open source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par Meddouri Badis.\nCode source disponible sur {repoUrl}.",
+    "textAboutDialog": "Foyer est un launcher familial open source pour Android TV avec contrôle parental intégré : apps verrouillées par un code au D-pad de la télécommande, plage horaire, réglages protégés.\n\nMaintenu par SirTerrific. Fork d'Arc Launcher de Badis Meddouri.\nCode source : {repoUrl}",
     "textEmptyCategory": "Cette catégorie est vide.",
     "time": "Heure",
     "titleStatusBarSettingsPage": "Choisir ce qui s'affiche dans la barre d'état",
@@ -253,5 +253,14 @@
     "parentalTooShort": "Au moins {count} symboles",
     "parentalMismatch": "Les codes ne correspondent pas, recommencez",
     "parentalAddApp": "Ajouter au contrôle parental",
-    "parentalRemoveApp": "Retirer du contrôle parental"
+    "parentalRemoveApp": "Retirer du contrôle parental",
+    "bingWallpaper": "Image du jour Bing",
+    "bingEnable": "Utiliser le fond Bing",
+    "bingAutoDaily": "Suivre l'image du jour",
+    "bingAutoDailyHelp": "Change chaque jour. Choisir une image ci-dessous la fixe.",
+    "bingMarket": "Région",
+    "bingMarketAuto": "Auto",
+    "bingRecentImages": "Images récentes",
+    "bingUnavailable": "Bing est injoignable. Vérifiez le réseau.",
+    "bingDownloadFailed": "Impossible de télécharger cette image."
 }

@@ -619,7 +619,7 @@ abstract class AppLocalizations {
   /// No description provided for @textAboutDialog.
   ///
   /// In en, this message translates to:
-  /// **'Foyer is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by Meddouri Badis.\nSource code available at {repoUrl}.'**
+  /// **'Foyer is an open-source family launcher for Android TV with built-in parental control: apps locked behind a remote D-pad code, time window, protected settings.\n\nMaintained by SirTerrific. Fork of Arc Launcher by Badis Meddouri.\nSource code: {repoUrl}'**
   String textAboutDialog(String repoUrl);
 
   /// No description provided for @textEmptyCategory.
@@ -1641,6 +1641,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove from parental control'**
   String get parentalRemoveApp;
+
+  /// No description provided for @bingWallpaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Bing image of the day'**
+  String get bingWallpaper;
+
+  /// No description provided for @bingEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Bing wallpaper'**
+  String get bingEnable;
+
+  /// No description provided for @bingAutoDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow the image of the day'**
+  String get bingAutoDaily;
+
+  /// No description provided for @bingAutoDailyHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes every day. Picking an image below pins it.'**
+  String get bingAutoDailyHelp;
+
+  /// No description provided for @bingMarket.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get bingMarket;
+
+  /// No description provided for @bingMarketAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get bingMarketAuto;
+
+  /// No description provided for @bingRecentImages.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent images'**
+  String get bingRecentImages;
+
+  /// No description provided for @bingUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Bing is unreachable. Check the network.'**
+  String get bingUnavailable;
+
+  /// No description provided for @bingDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not download this image.'**
+  String get bingDownloadFailed;
 }
 
 class _AppLocalizationsDelegate

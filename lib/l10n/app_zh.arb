@@ -85,7 +85,7 @@
   "updateInstallPermissionBody": "允许 Foyer 安装未知应用，然后重试更新。",
   "updateOpenPermissionSettingsButton": "打开权限设置",
   "updateErrorGeneric": "检查更新失败，请重试。",
-  "textAboutDialog": "Foyer 是一款基于 FLauncher 为 Android TV 定制的开源启动器。\n\n由 Meddouri Badis 开发。\n源代码位于 {repoUrl}。",
+  "textAboutDialog": "Foyer 是一款面向 Android TV 的开源家庭启动器，内置家长控制：用遥控器方向键密码锁定应用、时间段限制、设置保护。\n\n由 SirTerrific 维护。基于 Badis Meddouri 的 Arc Launcher 分支。\n源代码：{repoUrl}",
   "textEmptyCategory": "此分类为空。",
   "time": "时间",
   "titleStatusBarSettingsPage": "选择状态栏中显示的内容",
@@ -255,5 +255,14 @@
   "parentalTooShort": "至少 {count} 个符号",
   "parentalMismatch": "两次密码不一致，请重新输入",
   "parentalAddApp": "加入家长控制",
-  "parentalRemoveApp": "移出家长控制"
+  "parentalRemoveApp": "移出家长控制",
+  "bingWallpaper": "必应每日图片",
+  "bingEnable": "使用必应壁纸",
+  "bingAutoDaily": "跟随每日图片",
+  "bingAutoDailyHelp": "每天更换。在下方选择图片即可固定。",
+  "bingMarket": "地区",
+  "bingMarketAuto": "自动",
+  "bingRecentImages": "最近图片",
+  "bingUnavailable": "无法连接必应，请检查网络。",
+  "bingDownloadFailed": "无法下载此图片。"
 }

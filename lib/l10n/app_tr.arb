@@ -84,7 +84,7 @@
     "updateInstallPermissionBody": "Foyer'ın bilinmeyen uygulamaları yüklemesine izin verin, ardından güncellemeyi yeniden deneyin.",
     "updateOpenPermissionSettingsButton": "İzin ayarlarını aç",
     "updateErrorGeneric": "Güncelleme denetimi başarısız oldu. Lütfen tekrar deneyin.",
-    "textAboutDialog": "Foyer, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nGeliştiren: Meddouri Badis.\nKaynak kodu {repoUrl} adresinde mevcuttur.",
+    "textAboutDialog": "Foyer, yerleşik ebeveyn denetimine sahip, Android TV için açık kaynaklı bir aile başlatıcısıdır: kumandanın D-pad koduyla kilitlenen uygulamalar, zaman aralığı, korumalı ayarlar.\n\nGeliştiren: SirTerrific. Badis Meddouri'nin Arc Launcher projesinin çatalı.\nKaynak kodu: {repoUrl}",
     "textEmptyCategory": "Bu kategori boş.",
     "time": "Saat",
     "titleStatusBarSettingsPage": "Durum çubuğunda gösterilecekleri seçin",
@@ -197,5 +197,14 @@
     "redditSubredditAdded": "Subreddit eklendi",
     "redditSubredditInvalid": "Lütfen geçerli bir subreddit adı girin",
     "redditWallpaperUpdated": "Duvar kağıdı başarıyla güncellendi",
-    "redditWallpaperFailed": "Duvar kağıdı alınamadı. Sorun devam ederse ayarlardan bir Reddit İstemci Kimliği girin."
+    "redditWallpaperFailed": "Duvar kağıdı alınamadı. Sorun devam ederse ayarlardan bir Reddit İstemci Kimliği girin.",
+    "bingWallpaper": "Bing günün görseli",
+    "bingEnable": "Bing duvar kâğıdını kullan",
+    "bingAutoDaily": "Günün görselini takip et",
+    "bingAutoDailyHelp": "Her gün değişir. Aşağıdan bir görsel seçmek onu sabitler.",
+    "bingMarket": "Bölge",
+    "bingMarketAuto": "Otomatik",
+    "bingRecentImages": "Son görseller",
+    "bingUnavailable": "Bing'e ulaşılamıyor. Ağı kontrol edin.",
+    "bingDownloadFailed": "Bu görsel indirilemedi."
 }

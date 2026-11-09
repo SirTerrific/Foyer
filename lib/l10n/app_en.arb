@@ -134,7 +134,7 @@
     "updateInstallPermissionBody": "Allow Foyer to install unknown apps, then retry the update.",
     "updateOpenPermissionSettingsButton": "Open permission settings",
     "updateErrorGeneric": "Update check failed. Please try again.",
-    "textAboutDialog": "Foyer is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by Meddouri Badis.\nSource code available at {repoUrl}.",
+    "textAboutDialog": "Foyer is an open-source family launcher for Android TV with built-in parental control: apps locked behind a remote D-pad code, time window, protected settings.\n\nMaintained by SirTerrific. Fork of Arc Launcher by Badis Meddouri.\nSource code: {repoUrl}",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -395,5 +395,14 @@
     },
     "parentalMismatch": "Codes do not match, start again",
     "parentalAddApp": "Add to parental control",
-    "parentalRemoveApp": "Remove from parental control"
+    "parentalRemoveApp": "Remove from parental control",
+    "bingWallpaper": "Bing image of the day",
+    "bingEnable": "Use Bing wallpaper",
+    "bingAutoDaily": "Follow the image of the day",
+    "bingAutoDailyHelp": "Changes every day. Picking an image below pins it.",
+    "bingMarket": "Region",
+    "bingMarketAuto": "Auto",
+    "bingRecentImages": "Recent images",
+    "bingUnavailable": "Bing is unreachable. Check the network.",
+    "bingDownloadFailed": "Could not download this image."
 }

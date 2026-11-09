@@ -287,7 +287,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'Foyer es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por Meddouri Badis.\nCódigo fuente disponible en $repoUrl.';
+    return 'Foyer es un lanzador familiar de código abierto para Android TV con control parental integrado: apps bloqueadas con un código del D-pad del mando, franja horaria, ajustes protegidos.\n\nMantenido por SirTerrific. Fork de Arc Launcher de Badis Meddouri.\nCódigo fuente: $repoUrl';
   }
 
   @override
@@ -843,4 +843,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Remove from parental control';
+
+  @override
+  String get bingWallpaper => 'Imagen del día de Bing';
+
+  @override
+  String get bingEnable => 'Usar fondo de Bing';
+
+  @override
+  String get bingAutoDaily => 'Seguir la imagen del día';
+
+  @override
+  String get bingAutoDailyHelp =>
+      'Cambia cada día. Elegir una imagen abajo la fija.';
+
+  @override
+  String get bingMarket => 'Región';
+
+  @override
+  String get bingMarketAuto => 'Auto';
+
+  @override
+  String get bingRecentImages => 'Imágenes recientes';
+
+  @override
+  String get bingUnavailable => 'No se puede acceder a Bing. Revisa la red.';
+
+  @override
+  String get bingDownloadFailed => 'No se pudo descargar esta imagen.';
 }

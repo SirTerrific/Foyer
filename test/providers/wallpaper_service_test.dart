@@ -56,6 +56,11 @@ MockSettingsService _createSettingsService({
   when(s.redditCurrentTitle).thenReturn(redditCurrentTitle);
   when(s.redditCurrentAuthor).thenReturn(redditCurrentAuthor);
   when(s.redditCurrentSubreddit).thenReturn(redditCurrentSubreddit);
+  when(s.bingWallpaperEnabled).thenReturn(false);
+  when(s.bingAutoDaily).thenReturn(true);
+  when(s.bingMarket).thenReturn('');
+  when(s.bingCurrentDate).thenReturn(null);
+  when(s.bingCurrentCopyright).thenReturn(null);
   return s;
 }
 

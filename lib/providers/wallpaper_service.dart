@@ -23,6 +23,7 @@ import 'dart:typed_data';
 
 import 'package:flauncher/flauncher_channel.dart';
 import 'package:flauncher/gradients.dart';
+import 'package:flauncher/providers/bing_wallpaper.dart';
 import 'package:flauncher/providers/reddit_slideshow.dart';
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/providers/unsplash_slideshow.dart';
@@ -55,6 +56,18 @@ class WallpaperService extends ChangeNotifier {
   File? _redditFile;
 
   static const Duration redditConfigDebounce = Duration(seconds: 3);
+
+  late BingWallpaper _bing;
+  Timer? _bingTimer;
+  File? _bingFile;
+  bool _bingBusy = false;
+
+  /// How often the image of the day is checked while auto-daily is on.
+  static const Duration bingCheckInterval = Duration(hours: 1);
+
+  /// Copyright line to display while the Bing wallpaper is on screen.
+  String? get bingWallpaperCredit =>
+      _settingsService.bingWallpaperEnabled && _bingFile != null ? _settingsService.bingCurrentCopyright : null;
 
   /// Credit to display while the Reddit wallpaper is on screen.
   String? get redditWallpaperCredit {
@@ -111,6 +124,10 @@ class WallpaperService extends ChangeNotifier {
     _settingsService.redditSort,
   );
 
+  (bool, bool, String) _lastBingConfig = (false, true, '');
+  (bool, bool, String) get _bingConfig =>
+      (_settingsService.bingWallpaperEnabled, _settingsService.bingAutoDaily, _settingsService.bingMarket);
+
   void _onSettingsChanged() {
     final enabled = _settingsService.timeBasedWallpaperEnabled;
     if (enabled != _lastTimeBasedEnabled) {
@@ -135,6 +152,12 @@ class WallpaperService extends ChangeNotifier {
       }
       _updateWallpaper(force: true);
     }
+    if (_initialized && _bingConfig != _lastBingConfig) {
+      final marketChanged = _bingConfig.$3 != _lastBingConfig.$3;
+      _lastBingConfig = _bingConfig;
+      _updateBingState(forceRefresh: marketChanged);
+      _updateWallpaper(force: true);
+    }
   }
 
   @override
@@ -144,6 +167,7 @@ class WallpaperService extends ChangeNotifier {
     _slideshowTimer?.cancel();
     _redditTimer?.cancel();
     _redditDebounce?.cancel();
+    _bingTimer?.cancel();
     super.dispose();
   }
 
@@ -159,15 +183,74 @@ class WallpaperService extends ChangeNotifier {
     _slideshowFile = newestCachedImage(_slideshow.cacheDir);
     _redditSlideshow = RedditSlideshow(Directory("${directory.path}/reddit_slideshow"));
     _redditFile = newestCachedImage(_redditSlideshow.cacheDir);
+    _bing = BingWallpaper(Directory("${directory.path}/bing_wallpaper"));
+    _bingFile = newestCachedImage(_bing.cacheDir);
     _initialized = true;
 
     _lastTimeBasedEnabled = _settingsService.timeBasedWallpaperEnabled;
     _lastSlideshowConfig = _slideshowConfig;
     _lastRedditConfig = _redditConfig;
+    _lastBingConfig = _bingConfig;
     _updateWallpaper();
     _updateTimerState();
     _updateSlideshowState();
     _updateRedditState();
+    _updateBingState();
+  }
+
+  void _updateBingState({bool forceRefresh = false}) {
+    _bingTimer?.cancel();
+    _bingTimer = null;
+    if (!_settingsService.bingWallpaperEnabled) return;
+    if (_settingsService.bingAutoDaily) {
+      _bingTimer = Timer.periodic(bingCheckInterval, (_) => refreshBingWallpaper());
+      refreshBingWallpaper(force: forceRefresh);
+    } else if (_bingFile == null || !_bingFile!.existsSync()) {
+      // Manual mode without a cached image (e.g. cleared storage): show the latest one.
+      refreshBingWallpaper(force: true);
+    }
+  }
+
+  /// Images the user can pick from, newest first. Empty when offline.
+  Future<List<BingImage>> bingArchive() => _bing.archive(_settingsService.bingMarket);
+
+  /// Shows the latest image of the day unless it is already on screen.
+  Future<void> refreshBingWallpaper({bool force = false}) async {
+    if (_bingBusy) return;
+    _bingBusy = true;
+    try {
+      final images = await _bing.archive(_settingsService.bingMarket);
+      if (images.isEmpty || !_settingsService.bingWallpaperEnabled) return;
+      // The user pinned an image while this request was in flight.
+      if (!force && !_settingsService.bingAutoDaily) return;
+      final latest = images.first;
+      final cached = _bingFile;
+      if (!force && cached != null && cached.existsSync() && _settingsService.bingCurrentDate == latest.startDate) {
+        return;
+      }
+      await _showBingImage(latest);
+    } finally {
+      _bingBusy = false;
+    }
+  }
+
+  /// Pins [image] as the wallpaper: turns Bing on and auto-daily off. False when the download fails.
+  Future<bool> selectBingImage(BingImage image) async {
+    if (!await _showBingImage(image)) return false;
+    await _settingsService.setBingAutoDaily(false);
+    if (!_settingsService.bingWallpaperEnabled) {
+      await _settingsService.setBingWallpaperEnabled(true);
+    }
+    return true;
+  }
+
+  Future<bool> _showBingImage(BingImage image) async {
+    final file = await _bing.download(image);
+    if (file == null) return false;
+    _bingFile = file;
+    await _settingsService.setBingCurrentImage(date: image.startDate, copyright: image.copyright);
+    _updateWallpaper(force: true);
+    return true;
   }
 
   void _updateSlideshowState() {
@@ -239,6 +322,7 @@ class WallpaperService extends ChangeNotifier {
 
   File? _resolveActiveVideoFile() {
     if (!isInitialized) return null;
+    if (_settingsService.bingWallpaperEnabled) return null;
     if (_settingsService.redditWallpaperEnabled) return null;
     if (_settingsService.unsplashSlideshowEnabled) return null;
 
@@ -275,7 +359,10 @@ class WallpaperService extends ChangeNotifier {
 
     final slideshowFile = _slideshowFile;
     final redditFile = _redditFile;
-    if (_settingsService.redditWallpaperEnabled && redditFile != null && redditFile.existsSync()) {
+    final bingFile = _bingFile;
+    if (_settingsService.bingWallpaperEnabled && bingFile != null && bingFile.existsSync()) {
+      newWallpaper = FileImage(bingFile);
+    } else if (_settingsService.redditWallpaperEnabled && redditFile != null && redditFile.existsSync()) {
       newWallpaper = FileImage(redditFile);
     } else if (_settingsService.unsplashSlideshowEnabled && slideshowFile != null && slideshowFile.existsSync()) {
       newWallpaper = FileImage(slideshowFile);
@@ -366,6 +453,9 @@ class WallpaperService extends ChangeNotifier {
     if (_settingsService.unsplashSlideshowEnabled) {
       await _settingsService.setUnsplashSlideshowEnabled(false);
     }
+    if (_settingsService.bingWallpaperEnabled) {
+      await _settingsService.setBingWallpaperEnabled(false);
+    }
     await _replacePairedVideo(targetFile);
 
     final readStream = sourceFile.openRead();
@@ -385,6 +475,9 @@ class WallpaperService extends ChangeNotifier {
     }
     if (_settingsService.unsplashSlideshowEnabled) {
       await _settingsService.setUnsplashSlideshowEnabled(false);
+    }
+    if (_settingsService.bingWallpaperEnabled) {
+      await _settingsService.setBingWallpaperEnabled(false);
     }
 
     await _replacePairedVideo(targetFile);
@@ -421,6 +514,9 @@ class WallpaperService extends ChangeNotifier {
     if (_settingsService.unsplashSlideshowEnabled) {
       await _settingsService.setUnsplashSlideshowEnabled(false);
     }
+    if (_settingsService.bingWallpaperEnabled) {
+      await _settingsService.setBingWallpaperEnabled(false);
+    }
 
     final readStream = sourceFile.openRead();
     final writeStream = targetVideoFile.openWrite();
@@ -445,6 +541,9 @@ class WallpaperService extends ChangeNotifier {
     }
     if (_settingsService.unsplashSlideshowEnabled) {
       await _settingsService.setUnsplashSlideshowEnabled(false);
+    }
+    if (_settingsService.bingWallpaperEnabled) {
+      await _settingsService.setBingWallpaperEnabled(false);
     }
 
     await _settingsService.setGradientUuid(fLauncherGradient.uuid);

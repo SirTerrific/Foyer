@@ -102,7 +102,7 @@ class _FLauncherState extends State<FLauncher> with WidgetsBindingObserver {
             child: Consumer3<WallpaperService, SettingsService, WatchNextService>(
               builder: (_, wallpaperService, settingsService, watchNextService, __) {
                 final author = wallpaperService.slideshowAuthor;
-                final redditCredit = wallpaperService.redditWallpaperCredit;
+                final redditCredit = wallpaperService.bingWallpaperCredit ?? wallpaperService.redditWallpaperCredit;
                 final isBigPicture = settingsService.showWatchNextSection && settingsService.watchNextBigPictureMode;
                 final activeItem = isBigPicture ? watchNextService.activeHeroItem : null;
                 final heroUri = isBigPicture ? watchNextService.getPosterUriForItem(activeItem) : null;
@@ -159,11 +159,18 @@ class _FLauncherState extends State<FLauncher> with WidgetsBindingObserver {
                         top: 64,
                         child: Material(
                           type: MaterialType.transparency,
-                          child: Text(
-                            redditCredit,
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Colors.white70,
-                              shadows: const [Shadow(blurRadius: 4)],
+                          // Bing copyright lines are long: cap the width so they wrap instead of overflowing.
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: screenSize.width * 0.45),
+                            child: Text(
+                              redditCredit,
+                              textAlign: TextAlign.right,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: Colors.white70,
+                                shadows: const [Shadow(blurRadius: 4)],
+                              ),
                             ),
                           ),
                         ),

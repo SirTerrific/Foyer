@@ -20,6 +20,7 @@ import 'dart:io';
 
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/providers/wallpaper_service.dart';
+import 'package:flauncher/widgets/settings/bing_wallpaper_panel_page.dart';
 import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
 import 'package:flauncher/widgets/settings/gradient_panel_page.dart';
 import 'package:flauncher/widgets/settings/reddit_wallpaper_panel_page.dart';
@@ -113,6 +114,11 @@ class WallpaperPanelPage extends StatelessWidget {
                     );
                   }
                 },
+              ),
+              FocusableSettingsTile(
+                leading: const Icon(Icons.travel_explore),
+                title: Text(localizations.bingWallpaper),
+                onPressed: () => Navigator.of(context).pushNamed(BingWallpaperPanelPage.routeName),
               ),
               FocusableSettingsTile(
                 leading: const Icon(Icons.slideshow),
