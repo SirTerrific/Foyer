@@ -64,7 +64,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.omeda.arc"
+        applicationId "com.sirterrific.foyer"
         compileSdk 36
         minSdkVersion flutter.minSdkVersion
         targetSdk 35
@@ -130,7 +130,7 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    namespace 'com.omeda.arc'
+    namespace 'com.sirterrific.foyer'
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->

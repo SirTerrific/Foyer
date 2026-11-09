@@ -1,4 +1,4 @@
-package com.omeda.arc;
+package com.sirterrific.foyer;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

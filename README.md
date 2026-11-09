@@ -18,7 +18,7 @@ flutter gen-l10n
 flutter build apk --flavor github
 ```
 
-Requires Flutter 3.41.x and JDK 17. The app id is still `com.omeda.arc`, which keeps data and updates compatible with Foyer.
+Requires Flutter 3.41.x and JDK 17. The app id is `com.sirterrific.foyer`.
 
 ## Parental Control
 
@@ -107,7 +107,7 @@ This is the recommended way to make Foyer your actual home screen. It is a singl
 stock launcher untouched, and it can be undone just as easily.
 
 ```shell
-$ adb shell cmd package set-home-activity com.omeda.arc/.MainActivity
+$ adb shell cmd package set-home-activity com.sirterrific.foyer/.MainActivity
 ```
 
 This assigns Foyer to the system `HOME` role, so the Home button on the remote goes straight to Foyer. Nothing gets

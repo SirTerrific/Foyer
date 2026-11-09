@@ -28,7 +28,7 @@
 - Workflow CI (`flutter analyze` + tests), testé avec `act`.
 - Wiki OpenWiki et `AGENTS.md` ajoutés.
 - APK signés : universel, `arm64-v8a`, `armeabi-v7a`.
-- Même identifiant `com.omeda.arc` : installable par-dessus Arc Launcher.
+- Nouvel identifiant `com.sirterrific.foyer` : projet distinct, s'installe à côté d'Arc Launcher (données séparées).
 
 ---
 

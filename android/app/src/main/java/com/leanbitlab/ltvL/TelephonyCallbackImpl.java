@@ -1,4 +1,4 @@
-package com.omeda.arc;
+package com.sirterrific.foyer;
 
 import android.os.Build;
 import android.telephony.TelephonyCallback;

@@ -17,7 +17,7 @@ generated: { by: "claude-code", at: "2026-11-09T00:13:56.093Z" }
 
 # Quickstart
 
-Foyer is an open-source Android TV launcher built with Flutter. It is a fork of Arc Launcher (itself based on LTvLauncher and FLauncher) that adds a parental control: chosen apps are locked behind a code entered with the remote's D-pad. The app id is still `com.omeda.arc`.
+Foyer is an open-source Android TV launcher built with Flutter. It is a fork of Arc Launcher (itself based on LTvLauncher and FLauncher) that adds a parental control: chosen apps are locked behind a code entered with the remote's D-pad. The app id is still `com.sirterrific.foyer`.
 
 ## Repository layout
 

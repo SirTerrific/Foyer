@@ -4,7 +4,7 @@
   "claims": [
     {
       "id": "claim_f46c54b122b5487ebf87ee54d9a83f2d",
-      "statement": "build.gradle defines a store flavor dimension with play and github flavors and application id com.omeda.arc.",
+      "statement": "build.gradle defines a store flavor dimension with play and github flavors and application id com.sirterrific.foyer.",
       "evidence": [
         {
           "resource": "repo://android/app/build.gradle#L48-L67",

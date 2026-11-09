@@ -50,4 +50,4 @@ Two `EventChannel`s (`APPS_EVENT_CHANNEL` and `NETWORK_EVENT_CHANNEL`) push syst
 
 ## Manifest
 
-`AndroidManifest.xml` declares the `LEANBACK_LAUNCHER` and `HOME` categories and permissions including `READ_EPG_DATA`, `WRITE_EPG_DATA`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE`, `CHANGE_WIFI_STATE`, `REQUEST_DELETE_PACKAGES` and `WRITE_SETTINGS`. The app id remains `com.omeda.arc`.
+`AndroidManifest.xml` declares the `LEANBACK_LAUNCHER` and `HOME` categories and permissions including `READ_EPG_DATA`, `WRITE_EPG_DATA`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE`, `CHANGE_WIFI_STATE`, `REQUEST_DELETE_PACKAGES` and `WRITE_SETTINGS`. The app id remains `com.sirterrific.foyer`.

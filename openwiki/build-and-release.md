@@ -27,7 +27,7 @@ The Dart package is still named `flauncher` and the version in `pubspec.yaml` is
 
 ## Flavors and app id
 
-`android/app/build.gradle` declares one flavor dimension, `store`, with two flavors: `play` and `github`. The application id is `com.omeda.arc` for both, and debug builds add the suffix `.debug`.
+`android/app/build.gradle` declares one flavor dimension, `store`, with two flavors: `play` and `github`. The application id is `com.sirterrific.foyer` for both, and debug builds add the suffix `.debug`.
 
 Build steps:
 
