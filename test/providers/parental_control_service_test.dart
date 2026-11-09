@@ -76,6 +76,29 @@ void main() {
     expect(service.lockRemaining, greaterThan(Duration.zero));
   });
 
+  test("grace period does not survive a restart (reboot, TV off)", () async {
+    await service.setCode(code);
+    await service.setEnabled(true);
+    await service.setPackageProtected("com.youtube", true);
+    expect(await service.verify(code), ParentalCheckResult.ok);
+    expect(service.requiresCode("com.youtube"), isFalse);
+
+    // Same storage, new process one minute later.
+    now = now.add(const Duration(minutes: 1));
+    final restarted = ParentalControlService(prefs, now: () => now);
+    expect(restarted.requiresCode("com.youtube"), isTrue);
+  });
+
+  test("legacy persisted grace is purged at startup", () async {
+    SharedPreferences.setMockInitialValues({
+      "parental_control_grace_until": DateTime(2030).millisecondsSinceEpoch,
+    });
+    final legacyPrefs = await SharedPreferences.getInstance();
+    ParentalControlService(legacyPrefs, now: () => now);
+    await Future<void>.delayed(Duration.zero);
+    expect(legacyPrefs.containsKey("parental_control_grace_until"), isFalse);
+  });
+
   test("relock ends grace period", () async {
     await service.setCode(code);
     await service.setEnabled(true);

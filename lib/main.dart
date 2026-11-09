@@ -42,13 +42,16 @@ Future<void> main() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final fLauncherChannel = FLauncherChannel();
   final fLauncherDatabase = FLauncherDatabase(connect());
+  // Created eagerly so the screen-off relock is wired before anything is unlocked.
+  final parentalControlService = ParentalControlService(sharedPreferences);
+  fLauncherChannel.setScreenOffListener(parentalControlService.relock);
 
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(
             create: (_) => SettingsService(sharedPreferences),
             lazy: false),
-        ChangeNotifierProvider(create: (_) => ParentalControlService(sharedPreferences)),
+        ChangeNotifierProvider.value(value: parentalControlService),
         ChangeNotifierProvider(create: (_) => AppsService(fLauncherChannel, fLauncherDatabase)),
         ChangeNotifierProvider(create: (_) => LauncherState()),
         ChangeNotifierProvider(create: (_) => NetworkService(fLauncherChannel)),

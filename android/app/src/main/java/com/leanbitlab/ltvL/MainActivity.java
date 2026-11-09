@@ -76,6 +76,17 @@ public class MainActivity extends FlutterActivity {
     private final String METHOD_CHANNEL = "me.efesser.flauncher/method";
     private final String APPS_EVENT_CHANNEL = "me.efesser.flauncher/event_apps";
     private final String NETWORK_EVENT_CHANNEL = "me.efesser.flauncher/event_network";
+    private static final String SCREEN_CHANNEL = "me.efesser.flauncher/screen";
+    private android.content.BroadcastReceiver _screenOffReceiver;
+
+    @Override
+    public void cleanUpFlutterEngine(@NonNull FlutterEngine flutterEngine) {
+        if (_screenOffReceiver != null) {
+            try { getApplicationContext().unregisterReceiver(_screenOffReceiver); } catch (IllegalArgumentException ignored) { }
+            _screenOffReceiver = null;
+        }
+        super.cleanUpFlutterEngine(flutterEngine);
+    }
     private static final String PERMISSION_READ_TV_LISTINGS = "android.permission.READ_TV_LISTINGS";
     private static final int REQUEST_CODE_READ_TV_LISTINGS = 1001;
     private static final String COLUMN_ASPECT_RATIO = "aspect_ratio";
@@ -98,6 +109,24 @@ public class MainActivity extends FlutterActivity {
         super.configureFlutterEngine(flutterEngine);
 
         BinaryMessenger messenger = flutterEngine.getDartExecutor().getBinaryMessenger();
+
+        // Tells Dart when the TV goes to standby, so the parental control grace period ends.
+        MethodChannel screenChannel = new MethodChannel(messenger, SCREEN_CHANNEL);
+        if (_screenOffReceiver != null) {
+            try { getApplicationContext().unregisterReceiver(_screenOffReceiver); } catch (IllegalArgumentException ignored) { }
+        }
+        _screenOffReceiver = new android.content.BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                screenChannel.invokeMethod("screenOff", null);
+            }
+        };
+        android.content.IntentFilter screenOffFilter = new android.content.IntentFilter(Intent.ACTION_SCREEN_OFF);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getApplicationContext().registerReceiver(_screenOffReceiver, screenOffFilter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            getApplicationContext().registerReceiver(_screenOffReceiver, screenOffFilter);
+        }
 
         new MethodChannel(messenger, METHOD_CHANNEL).setMethodCallHandler((call, result) -> {
             switch (call.method) {

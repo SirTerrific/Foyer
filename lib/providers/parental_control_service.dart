@@ -34,7 +34,14 @@ class ParentalControlService extends ChangeNotifier {
   final SharedPreferences _prefs;
   final DateTime Function() _now;
 
-  ParentalControlService(this._prefs, {DateTime Function()? now}) : _now = now ?? DateTime.now;
+  /// End of the grace period, in memory only: a reboot or a launcher restart
+  /// always asks for the code again, and [relock] runs when the screen turns off.
+  DateTime? _graceUntil;
+
+  ParentalControlService(this._prefs, {DateTime Function()? now}) : _now = now ?? DateTime.now {
+    // Older builds persisted the grace period, which survived power cycles.
+    _prefs.remove(_graceUntilKey);
+  }
 
   bool get hasCode => _prefs.getString(_hashKey) != null;
 
@@ -82,8 +89,8 @@ class ParentalControlService extends ChangeNotifier {
       enabled && windowActiveNow && packageName != null && protectedPackages.contains(packageName);
 
   bool get graceActive {
-    final until = _prefs.getInt(_graceUntilKey);
-    return until != null && _now().millisecondsSinceEpoch < until;
+    final until = _graceUntil;
+    return until != null && _now().isBefore(until);
   }
 
   /// True if launching [packageName] needs the code right now.
@@ -126,7 +133,7 @@ class ParentalControlService extends ChangeNotifier {
     await _prefs.setString(_hashKey, _hash(salt, code));
     await _prefs.remove(_failuresKey);
     await _prefs.remove(_lockedUntilKey);
-    await _prefs.remove(_graceUntilKey);
+    _graceUntil = null;
     notifyListeners();
   }
 
@@ -139,7 +146,7 @@ class ParentalControlService extends ChangeNotifier {
     if (_constantTimeEquals(_hash(salt, code), hash)) {
       await _prefs.remove(_failuresKey);
       await _prefs.remove(_lockedUntilKey);
-      await _prefs.setInt(_graceUntilKey, _now().add(graceDuration).millisecondsSinceEpoch);
+      _graceUntil = _now().add(graceDuration);
       return ParentalCheckResult.ok;
     }
 
@@ -159,7 +166,7 @@ class ParentalControlService extends ChangeNotifier {
 
   /// Ends the grace period so the code is asked again immediately.
   Future<void> relock() async {
-    await _prefs.remove(_graceUntilKey);
+    _graceUntil = null;
     notifyListeners();
   }
 

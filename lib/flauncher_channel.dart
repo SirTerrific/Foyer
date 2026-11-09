@@ -25,7 +25,16 @@ class FLauncherChannel {
   static const _appsEventChannel = EventChannel('me.efesser.flauncher/event_apps');
   static const _networkEventChannel = EventChannel('me.efesser.flauncher/event_network');
 
+  static const _screenChannel = MethodChannel('me.efesser.flauncher/screen');
+
   static const _watchNextMaxItems = 50;
+
+  /// Calls [listener] each time the screen turns off (TV standby).
+  void setScreenOffListener(void Function() listener) {
+    _screenChannel.setMethodCallHandler((call) async {
+      if (call.method == "screenOff") listener();
+    });
+  }
 
   Future<List<Map<dynamic, dynamic>>> getApplications() async {
     List<Map<dynamic, dynamic>>? applications = await _methodChannel.invokeListMethod("getApplications");
