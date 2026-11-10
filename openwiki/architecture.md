@@ -2,9 +2,6 @@
 type: "Reference"
 title: "App architecture and state"
 openwiki_generated: true
-verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-09T00:13:56.093Z
 sources:
   - id: openwiki-source-bdf660d029923d2d5c2cfb25
     resource: repo://lib/actions.dart
@@ -12,7 +9,12 @@ sources:
     resource: repo://lib/custom_traversal_policy.dart
   - id: openwiki-source-d1d82248fd190cf516d65121
     resource: repo://lib/main.dart
-generated: { by: "claude-code", at: "2026-11-09T00:13:56.093Z" }
+  - id: openwiki-source-9a52d8ee972137c97c51aa8e
+    resource: repo://lib/providers/bing_wallpaper.dart
+generated: { by: "claude-code", at: "2026-11-10T16:49:31.024Z" }
+verified:
+  - by: openwiki/0.7.3
+    at: 2026-11-10T16:49:31.024Z
 ---
 
 # App architecture and state
@@ -25,10 +27,11 @@ Foyer is a single Flutter app. State lives in `ChangeNotifier` services exposed 
 
 - `SettingsService` (backed by `SharedPreferences`)
 - `ParentalControlService` (see [Parental control](parental-control.md))
+- `ParentalGuard` (bridge to the native accessibility guard, in `lib/providers/parental_guard.dart`)
 - `AppsService` (uses the channel and the database)
 - `LauncherState`
 - `NetworkService`
-- `WallpaperService` (built from `SettingsService`)
+- `WallpaperService` (built from `SettingsService`; it also runs the Bing image-of-the-day wallpaper through `BingWallpaper`, whose HTTP requests time out after 30 seconds so a hung request cannot freeze it)
 - `BrightnessService`
 - `WatchNextService` (channel plus `SettingsService`)
 

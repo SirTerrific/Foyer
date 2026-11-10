@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:1fd3d255e1ac91a46154a8653f474611871135886246eb80809fa9ed6ce960d1",
+  "pageVersion": "sha256:8c62d09d4eb938d4622a3338288d81f16ce5808372b271f1b63817c9597ebbf2",
   "claims": [
     {
       "id": "claim_f46c54b122b5487ebf87ee54d9a83f2d",
       "statement": "build.gradle defines a store flavor dimension with play and github flavors and application id com.sirterrific.foyer.",
       "evidence": [
         {
-          "resource": "repo://android/app/build.gradle#L48-L67",
-          "version": "repo-lines-v1:sha256:5df5ea1f556b7c15af53619cc83a751b599e15bcdef6b3c2495063f55b992374:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2NDI0YzZhYmE5YjdkNDNmNWY3ZTI1MzFhMzZlZWNlMGJkOTYxNGVhZTk4ZTk1YWU0Mzg0ZjY5MzliNDMwYWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0NjI1NzkzNmIxOWFmZTAxOWEyZTk3ZmUwN2UyNzI1NDJiY2ViMmZiMjlmZjYyZTcwYTZiNDE0MWI3MGE5NGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyNWM2NDNkMWMzYmRiMzNmOWU5NTA5Njg3ODI0NmMwMzA1OWNkN2IyZGM1YzU4MDc1NDZiNDc2OWUxZDM3N2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEwMzI3YTRhZmYwYWI3YjE4ZWNhZjM4MGZmN2RiNTRjYzJhZGFkZWI3Y2ZmZmFhMzJiNDI3ODUzNDY1N2YxMmYifQ"
+          "resource": "repo://android/app/build.gradle",
+          "version": "repo-file-v1:sha256:e23c51105a1b82cb04fcaf3462ed470e1557eb768a6c9d23ca9e384a53015428"
         }
       ]
     },
@@ -22,17 +22,17 @@
         },
         {
           "resource": "repo://pubspec.yaml",
-          "version": "repo-file-v1:sha256:e53875d76753525d8660c3e8d5f3b21790b62c21925b93a8439d78126e7fab33"
+          "version": "repo-file-v1:sha256:2f89b30f3be794e8fdd2b610566c2b1c1845350f520aa4b2aa97ec33636cc7ba"
         }
       ]
     },
     {
       "id": "claim_74959bd0746f41c4b0ca69a4e804967f",
-      "statement": "UpdateService queries the GitHub releases API of SirTerrific/arclauncher.",
+      "statement": "UpdateService queries the GitHub releases API of SirTerrific/Foyer.",
       "evidence": [
         {
-          "resource": "repo://lib/providers/update_service.dart#L123-L124",
-          "version": "repo-lines-v1:sha256:967fedb7b5d84381531b95d217d13d7a1651ee1ba3d13fddd4ea21744010d559:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTI0M2I1ZmRmNjcyMWZjOTNkZjNhZTg3YzczMjNiYzllZjMxZGI2ZGI0MWQxZmVlNTI4NWU1MTEwOGNmNWM3OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjBhOTFhN2Y3MDYzZmUxMzhmOWM5OTNmNGM5MTY5OWFlYzhmNTk3NzAwMWM4YTk5OTJiMWJjM2JhNzA3NGU1NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTc0M2ZlYzBiZGVhNmM2MmZiOTVmMzExMjQ3NDNiOTY4OWYyNWRiYmExZTEzNGE4ODM3N2JjNWIzODYxNDI2ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWZjNmM3ZDg5Y2RiNDk3OGE4MWZhMDMxYWY5ZDUzMzhkNjY0N2JlMWQxNTQwZTI2NDFlZjJhMzcxMjk0OWY0MCJ9"
+          "resource": "repo://lib/providers/update_service.dart",
+          "version": "repo-file-v1:sha256:0f32c58ce8f9a01aa034cd6041b4dc219b741032eaa86db3569d058d6f6abcc9"
         }
       ]
     },
@@ -42,13 +42,23 @@
       "evidence": [
         {
           "resource": "repo://.github/workflows/release.yml",
-          "version": "repo-file-v1:sha256:8437702a5f337981c829b80d681a25e32254ed3a903b05c9e312864fe05b67b5"
+          "version": "repo-file-v1:sha256:64b4592f0f061b8650ab9bb4af240a73075b3065b4e61ee285f6369c47ea59ba"
+        }
+      ]
+    },
+    {
+      "id": "claim_fd1a3587d24b4c078b95abf0ccb90fc0",
+      "statement": "The package version in pubspec.yaml is 1.2.3+4130.",
+      "evidence": [
+        {
+          "resource": "repo://pubspec.yaml",
+          "version": "repo-file-v1:sha256:2f89b30f3be794e8fdd2b610566c2b1c1845350f520aa4b2aa97ec33636cc7ba"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.3",
-    "at": "2026-11-09T00:13:56.093Z"
+    "at": "2026-11-10T16:49:31.024Z"
   }
 }

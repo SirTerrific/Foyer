@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:0dd6864e2ad1081007ff78697bbf4621fd83250eb7c1144c2984c3bb4a03af04",
+  "pageVersion": "sha256:3a1ad3c976c678dca4a405c2c2a188ce79510cb9a4fc757224cd367faf554334",
   "claims": [
     {
       "id": "claim_7629681f4b0049e0a9beaf509bac26bb",
       "statement": "SettingsPanel uses a nested Navigator whose initialRoute defaults to SettingsPanelPage.routeName.",
       "evidence": [
         {
-          "resource": "repo://lib/widgets/settings/settings_panel.dart#L50-L105",
+          "resource": "repo://lib/widgets/settings/settings_panel.dart#L51-L106",
           "version": "repo-lines-v1:sha256:886908dd5a8c5617e8bbe0e0b2ee797c9594c4aa7b74d6e36af43a883f3548e3:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2N2U1NzQ5MTM3NWJlOTA2ZTQ1OTU3NDQ4ZjM4YTk5NzZlNDM0Y2MyNDk0ZWE4NmRiMzNkZWFlNTNkNGMyMWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5YmNjNjUyMDNlYTQ0ZGQzMTEzMDZjNTY4OTk4NDdlZTY3OTQ0MDMwYWJjZWQzMmQ0MjhjNDg5MjRmYWM0YWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE3MjAxM2IyNzUwMDM3MDU4OGQxY2YwMTdiN2UxMjlkZGI1YjRiNDM0ZGNiZGYyMWM2YzFmMmM3NTYxYTIwOGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQzNDkwZGRiMTRmYjU0YjlkYzg2YmE5MGZjNjdjYjY4YjFiNmI3MjczMjhiMzA5ZWQwZWI1YzJjODQ2ZDNiYjIifQ"
         }
       ]
@@ -41,14 +41,34 @@
       "statement": "tool/gen_brand.dart generates the Foyer icons and banner and runs with flutter test.",
       "evidence": [
         {
-          "resource": "repo://tool/gen_brand.dart#L1-L14",
-          "version": "repo-lines-v1:sha256:f312e2ad8f7c10f2adec1bdd1bad40dd43aa041d674a94e3817de9d965c6747e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiNTgyYWFmMWE5ZTNjMzViMTVhMTFhN2M0NzYzYWQwMTk0MWE3YjRiN2M5OGRjNWUyY2MyM2IzODViYzk5MzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdjODU0ZjJlYmFlMmZkOTgyNDg0NDUzMGVlNzM4MTIyMzRlZGNiZjcxYTMwOWI4ZmI4OGFjMzE0MWY1YjAxZGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3Yzk1NGUzZDUzYzQxZTQ4ZDFjOGQ3MjZjMWRiNDhlMjdlOTViMTRkM2JiZGJhODJmMzYyMzAzODI0NTNkMjMifQ"
+          "resource": "repo://tool/gen_brand.dart",
+          "version": "repo-file-v1:sha256:89490dab2dce43c4913b25f33129c024ef5819fda3b9905002576981306c4a50"
+        }
+      ]
+    },
+    {
+      "id": "claim_08b5577382b44b52a12f1500896006bb",
+      "statement": "ParentalControlPage asks for the current code before opening, and offers protection, change code, new recovery code, protect settings, time window, per-app switches and the accessibility guard entry.",
+      "evidence": [
+        {
+          "resource": "repo://lib/widgets/settings/parental_control_page.dart",
+          "version": "repo-file-v1:sha256:1daaf6de51d95e347c286d45f739978809400f9266fe0176168125b1ca11aec2"
+        }
+      ]
+    },
+    {
+      "id": "claim_a4158416c54b4c56b87101a80ff1f880",
+      "statement": "The Bing wallpaper panel stores the market in SettingsService.bingMarket and lists the archive from WallpaperService.bingArchive().",
+      "evidence": [
+        {
+          "resource": "repo://lib/widgets/settings/bing_wallpaper_panel_page.dart",
+          "version": "repo-file-v1:sha256:75c19a8e169c17ee38340b9fd140e2a147a3104c0d38969c2e7404c53a25a41b"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.3",
-    "at": "2026-11-09T00:13:56.093Z"
+    "at": "2026-11-10T16:49:31.024Z"
   }
 }

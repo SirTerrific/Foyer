@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:e4eaf2eb3d4613ef91cee09a56e1d2c108cfac2d53b26b1a7a3d156d6881dfa8",
+  "pageVersion": "sha256:8d109b8109c4dbb66cb858125a5571e8a7053f9afb5d09473914438dafbf7ac3",
   "claims": [
     {
       "id": "claim_7d3c860827bf4c74b011eba76a10988e",
-      "statement": "main() wires a MultiProvider of ChangeNotifier services: SettingsService, ParentalControlService, AppsService, LauncherState, NetworkService, WallpaperService, BrightnessService and WatchNextService.",
+      "statement": "main() wires a MultiProvider of ChangeNotifier services: SettingsService, ParentalControlService, ParentalGuard, AppsService, LauncherState, NetworkService, WallpaperService, BrightnessService and WatchNextService.",
       "evidence": [
         {
-          "resource": "repo://lib/main.dart#L38-L70",
-          "version": "repo-lines-v1:sha256:6b620c14d09af88235df05032e81fb92c10ecd285749e7297cdd7e9463cf5a9a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2MjNhMWVlYTY0ZmI3MmZlYjk3OTlkYjdmZDc1MDJlNmRjODE5Nzk3YmNkZjk2NThmOGZiMmQ3MWI3Y2ZiZWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxMThlNDkwMGRmZjlmM2E2ZTg0MTk2NTJhNmZlN2IwNzI1Njk0MDRlYWVlZTIzZmEzYTJmNGZlZDUxMjQ1OTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjYzOGNkZDgwODMwOWEzMmFhYjU0NWQzMjIzMWIzOWYyODIxMDI3MjU4OTA4MDNjMjU2M2FjMzk5NDNmMzdhMjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1ZWQ2Yjg3ZmFjY2Q4MTcxYzFiY2FhZTA3Y2QyMTljMzAzNDBlOGVhZDY5NGEzZTY5NzdmZGRmYTk5MThiNDAifQ"
+          "resource": "repo://lib/main.dart",
+          "version": "repo-file-v1:sha256:d3eea99ab0a3e98869f78753a4c8f79887e9453280c13c4cabc8c9c11751d965"
         }
       ]
     },
@@ -31,10 +31,20 @@
           "version": "repo-file-v1:sha256:dc532dbc492bd02dfcd5d3f0bfc859521d2cb8ba4b11a99a89b68341848e42d4"
         }
       ]
+    },
+    {
+      "id": "claim_e3d891033f17450fb7a8fe1769bd8a8d",
+      "statement": "BingWallpaper applies a 30 second request timeout (requestTimeout) to its archive and image downloads.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/bing_wallpaper.dart",
+          "version": "repo-file-v1:sha256:41bfa333f8f3c1616d953e6be074fc02792c09e0fc532953a556006c13a6426b"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.3",
-    "at": "2026-11-09T00:13:56.093Z"
+    "at": "2026-11-10T16:49:31.024Z"
   }
 }

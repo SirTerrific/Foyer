@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:76f6f31596def5e49512ba24a47791d7234123ae4b54bf5e7594070f15586cc0",
+  "pageVersion": "sha256:b35154829882dca089eba4abd08e0da880c1dea2e52a4f472ebf3bc756bf128b",
   "claims": [
     {
       "id": "claim_f164676e4ed548ad8f4b14a56e104532",
@@ -8,7 +8,7 @@
       "evidence": [
         {
           "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/MainActivity.java",
-          "version": "repo-file-v1:sha256:6468bb6acf4fe5651b86667b214d2ff44861ccadc58fb7766d1bc3067909e29d"
+          "version": "repo-file-v1:sha256:d477ea180ec5d70a9f355bb136587f5ed3f919e88ac34c6d4af910fc9add968b"
         }
       ]
     },
@@ -18,7 +18,7 @@
       "evidence": [
         {
           "resource": "repo://lib/flauncher_channel.dart",
-          "version": "repo-file-v1:sha256:60ba2d77d37198336f346cd747da41fd6f26e23226345e9e8d35f094ae67f3a4"
+          "version": "repo-file-v1:sha256:1b92dd6e3de374bda6344238f4912978583591df01d7f393818904ebafddc7b9"
         }
       ]
     },
@@ -35,10 +35,38 @@
           "version": "repo-file-v1:sha256:03a9e70e0de603e3fa8ac487b138252f4c403edf4454cb79e401b3ada01ada38"
         }
       ]
+    },
+    {
+      "id": "claim_fad0584953a84357bab99448420cd1bc",
+      "statement": "ParentalGuardService is an AccessibilityService declared only in the GitHub flavor manifest; it brings MainActivity forward with EXTRA_LOCKED_PACKAGE when a protected app reaches the foreground.",
+      "evidence": [
+        {
+          "resource": "repo://android/app/src/github/AndroidManifest.xml",
+          "version": "repo-file-v1:sha256:7226178c2e9f0039b317c5c7f294e9ad9c5fd9be0b9ca7b732c1a077be68803f"
+        },
+        {
+          "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/ParentalGuardService.java",
+          "version": "repo-file-v1:sha256:d2587486cc4fc3255ae8eba45ff0f2f8aa2cd13d1975c483ed24e71ea8d81394"
+        }
+      ]
+    },
+    {
+      "id": "claim_c6ce29f2bbcb44e18d7567c06430e2ef",
+      "statement": "MainActivity exposes syncParentalGuard, takeParentalLock, resumeLockedApp and openAccessibilitySettings on the method channel, and a screen channel that reports screen-off.",
+      "evidence": [
+        {
+          "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/MainActivity.java",
+          "version": "repo-file-v1:sha256:d477ea180ec5d70a9f355bb136587f5ed3f919e88ac34c6d4af910fc9add968b"
+        },
+        {
+          "resource": "repo://lib/flauncher_channel.dart",
+          "version": "repo-file-v1:sha256:1b92dd6e3de374bda6344238f4912978583591df01d7f393818904ebafddc7b9"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.3",
-    "at": "2026-11-09T00:13:56.093Z"
+    "at": "2026-11-10T16:49:31.024Z"
   }
 }

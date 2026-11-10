@@ -2,9 +2,6 @@
 type: "Reference"
 title: "Data layer"
 openwiki_generated: true
-verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-09T00:13:56.093Z
 sources:
   - id: openwiki-source-5ec5d55a2e3f289066e4f057
     resource: repo://lib/database.dart
@@ -13,6 +10,9 @@ sources:
   - id: openwiki-source-7207b3270799be263d4a2e17
     resource: repo://lib/providers/settings_service.dart
 generated: { by: "claude-code", at: "2026-11-09T00:13:56.093Z" }
+verified:
+  - by: openwiki/0.7.3
+    at: 2026-11-10T16:49:31.024Z
 ---
 
 # Data layer

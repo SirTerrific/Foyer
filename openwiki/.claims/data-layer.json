@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:ffca3bbd2e08cbc0f2c460dca6299053bca8ff72cb979011d2e58bb4f81694ea",
+  "pageVersion": "sha256:d340c5e00c0e49ad3156af8db07236662a67e57c7d65519488c9680bf45dcefc",
   "claims": [
     {
       "id": "claim_3026bc06a5ae4a0191a16c68aecf3974",
@@ -28,13 +28,13 @@
       "evidence": [
         {
           "resource": "repo://lib/providers/settings_service.dart",
-          "version": "repo-file-v1:sha256:00f932077bdaae248e66fba7ec0c57eb640bc80e7c389d10f3e9dd5be2833b93"
+          "version": "repo-file-v1:sha256:355db5603035b7a8270ffcd078b5d2c3c30edb189d1e0f1d5b299cd929ae0ac8"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.7.3",
-    "at": "2026-11-09T00:13:56.093Z"
+    "at": "2026-11-10T16:49:31.024Z"
   }
 }

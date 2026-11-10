@@ -2,19 +2,23 @@
 type: "Reference"
 title: "Settings UI and localization"
 openwiki_generated: true
-verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-09T00:13:56.093Z
 sources:
   - id: openwiki-source-4ead7baa3b3e5396f0a6a07e
     resource: repo://l10n.yaml
   - id: openwiki-source-7207b3270799be263d4a2e17
     resource: repo://lib/providers/settings_service.dart
+  - id: openwiki-source-2e9e750ae30235ca7fd656c6
+    resource: repo://lib/widgets/settings/bing_wallpaper_panel_page.dart
+  - id: openwiki-source-d9ffd3918993dd2817ed1006
+    resource: repo://lib/widgets/settings/parental_control_page.dart
   - id: openwiki-source-5debb80f8179d323cf091183
     resource: repo://lib/widgets/settings/settings_panel.dart
   - id: openwiki-source-ea20cfe01e671ffa34c636b0
     resource: repo://tool/gen_brand.dart
-generated: { by: "claude-code", at: "2026-11-09T00:13:56.093Z" }
+generated: { by: "claude-code", at: "2026-11-10T16:49:31.024Z" }
+verified:
+  - by: openwiki/0.7.3
+    at: 2026-11-10T16:49:31.024Z
 ---
 
 # Settings UI and localization
@@ -31,7 +35,11 @@ Other pages in `lib/widgets/settings/` cover the accent color, back-button actio
 
 ## Wallpapers
 
-`WallpaperService` (a `ChangeNotifier` built from `SettingsService`) manages the gradient, image, video and slideshow backgrounds. Slideshows come from Reddit or Unsplash providers.
+`WallpaperService` (a `ChangeNotifier` built from `SettingsService`) manages the gradient, image, video and slideshow backgrounds. Slideshows come from Reddit or Unsplash providers. The Bing image of the day is chosen in `bing_wallpaper_panel_page.dart` (route `bing_wallpaper_panel`): the user picks a market stored as `SettingsService.bingMarket` and an image from the recent archive that `WallpaperService.bingArchive()` loads; a failed download shows a snackbar.
+
+## Parental control page
+
+`lib/widgets/settings/parental_control_page.dart` (`ParentalControlPage`) opens only after the current code is asked, if one is set. It offers: enable protection (creating a code the first time), change the code, a new recovery code, protect launcher settings, the time window with start and end times, a switch for each installed app, and on the GitHub flavor an entry that opens Android's accessibility settings to turn the guard on (it shows whether the guard is enabled). See [Parental control](parental-control.md).
 
 ## Localization
 
