@@ -776,13 +776,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parentalChangeCode => 'Change the code';
 
   @override
+  String get parentalRecoveryTitle => 'Recovery code';
+
+  @override
+  String get parentalRecoveryHint =>
+      'Write this code down and keep it away from children. It replaces a forgotten code, once. Press OK.';
+
+  @override
+  String get parentalRecoveryAccepted =>
+      'Recovery code accepted. Choose a new code.';
+
+  @override
+  String get parentalForgotHint => 'Forgot the code? Enter the recovery code.';
+
+  @override
+  String get parentalNewRecovery => 'New recovery code';
+
+  @override
+  String get parentalNoRecovery => 'none';
+
+  @override
   String get parentalProtectApps => 'Protect selected apps';
 
   @override
   String get parentalProtectSettings => 'Protect launcher settings';
-
-  @override
-  String get parentalAskAgain => 'Ask the code again now';
 
   @override
   String get parentalTimeWindow => 'Only during a time window';
@@ -835,6 +852,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Remove from parental control';
+
+  @override
+  String get parentalGuard => 'Also block outside Foyer';
+
+  @override
+  String get parentalGuardOn => 'On';
+
+  @override
+  String get parentalGuardOff => 'Off — turn on in Accessibility';
 
   @override
   String get bingWallpaper => 'Bing image of the day';

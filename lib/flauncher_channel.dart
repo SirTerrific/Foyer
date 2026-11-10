@@ -29,12 +29,59 @@ class FLauncherChannel {
 
   static const _watchNextMaxItems = 50;
 
-  /// Calls [listener] each time the screen turns off (TV standby).
-  void setScreenOffListener(void Function() listener) {
+  static void Function()? _onScreenOff;
+  static void Function()? _onParentalLock;
+
+  void _listenScreenChannel() {
     _screenChannel.setMethodCallHandler((call) async {
-      if (call.method == "screenOff") listener();
+      if (call.method == "screenOff") {
+        _onScreenOff?.call();
+      } else if (call.method == "parentalLock") {
+        _onParentalLock?.call();
+      }
     });
   }
+
+  /// Calls [listener] each time the screen turns off (TV standby).
+  void setScreenOffListener(void Function() listener) {
+    _onScreenOff = listener;
+    _listenScreenChannel();
+  }
+
+  /// Calls [listener] when the accessibility guard brought Foyer up over a
+  /// protected app; [takeParentalLock] then gives that app's package.
+  void setParentalLockListener(void Function() listener) {
+    _onParentalLock = listener;
+    _listenScreenChannel();
+  }
+
+  Future<void> syncParentalGuard({
+    required bool active,
+    required List<String> packages,
+    required bool protectSettings,
+    required bool windowEnabled,
+    required int windowStart,
+    required int windowEnd,
+  }) =>
+      _methodChannel.invokeMethod('syncParentalGuard', {
+        'active': active,
+        'packages': packages,
+        'protectSettings': protectSettings,
+        'windowEnabled': windowEnabled,
+        'windowStart': windowStart,
+        'windowEnd': windowEnd,
+      });
+
+  Future<String?> takeParentalLock() => _methodChannel.invokeMethod<String>('takeParentalLock');
+
+  /// Reopens the app the guard covered, Android settings included.
+  Future<void> resumeLockedApp(String packageName) => _methodChannel.invokeMethod('resumeLockedApp', packageName);
+
+  /// {available: declared in this build, enabled: switched on in accessibility settings}.
+  Future<Map<dynamic, dynamic>> parentalGuardStatus() async =>
+      await _methodChannel.invokeMapMethod('parentalGuardStatus') ?? const {};
+
+  Future<void> openAccessibilitySettings() => _methodChannel.invokeMethod('openAccessibilitySettings');
 
   Future<List<Map<dynamic, dynamic>>> getApplications() async {
     List<Map<dynamic, dynamic>>? applications = await _methodChannel.invokeListMethod("getApplications");

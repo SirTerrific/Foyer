@@ -36,8 +36,11 @@ Requires Flutter 3.41.x and JDK 17. The app id is `com.sirterrific.foyer`.
 
 - **D-pad code** - The code is a combination of arrow keys (Up, Down, Left, Right) and digits, entered with the remote, like Projectivy.
 - **Protected apps** - Choose which apps (YouTube, etc.) need the code. Watch Next items from unknown apps are protected too.
-- **Grace period** - After a correct code, protected apps stay open for 15 minutes.
+- **Always asked** - There is no "unlocked" state: every launch of a protected app, and every entry into the settings, asks the code. Opening Android's own screens from Foyer (Wi-Fi, app info, uninstall) asks it too while the launcher settings are protected. On the GitHub build, the accessibility guard also asks it when a protected app is reached from recents or another app; a system prompt (permission, account picker) shown over an unlocked app does not.
+- **Block outside Foyer** (GitHub build) - An accessibility service, switched on once in Settings > Accessibility, asks the code even when a protected app opens from recent apps, another app or the voice assistant. It only reads which app is on screen. With "Protect launcher settings" on, Android settings ask the code too, so a child cannot force-stop Foyer or switch the service off.
+  - Optional, once per TV: `adb shell pm grant com.sirterrific.foyer android.permission.WRITE_SECURE_SETTINGS`. Foyer then switches the service on by itself, and back on after a force-stop.
 - **Lockout** - 5 wrong codes lock entry, with a growing delay capped at 15 minutes.
+- **Recovery code** - 12 arrows, shown once when the code is set (or from Parental control > New recovery code). Typed in place of a forgotten code, it lets you choose a new one. Single use; a new one is shown right after.
 - **Time window** - Optional daily window (default 08:00-20:00) during which protection applies.
 - **Settings protection** - Optionally ask for the code before opening the launcher settings.
 - **Storage** - The code is stored as a salted SHA-256 hash and compared in constant time.

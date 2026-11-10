@@ -109,7 +109,7 @@ class AppDetailsPage extends StatelessWidget {
                 icon: Icons.info_outlined,
                 title: localizations.appInfo,
                 onTap: () async {
-                  if (!await ensureAppUnlocked(context, application.packageName)) return;
+                  if (!await ensureAppAdminUnlocked(context, application.packageName)) return;
                   await appsService.openAppInfo(application);
                 },
               ),
@@ -118,7 +118,7 @@ class AppDetailsPage extends StatelessWidget {
                 icon: Icons.delete_outlined,
                 title: localizations.uninstall,
                 onTap: () async {
-                    if (!await ensureAppUnlocked(context, application.packageName)) return;
+                    if (!await ensureAppAdminUnlocked(context, application.packageName)) return;
                     await appsService.uninstallApp(application);
                     if (!context.mounted) return;
                     Navigator.of(context).pop();

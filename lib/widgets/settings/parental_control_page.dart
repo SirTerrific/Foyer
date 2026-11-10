@@ -1,6 +1,7 @@
 import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/parental_control_service.dart';
+import 'package:flauncher/providers/parental_guard.dart';
 import 'package:flauncher/widgets/parental_code_dialog.dart';
 import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
 import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
@@ -13,9 +14,12 @@ Future<void> openParentalControlPage(BuildContext context) async {
   final service = context.read<ParentalControlService>();
   final navigator = Navigator.of(context);
   if (service.hasCode) {
-    // Always ask the code here, even during the 15 min grace period.
     final ok = await showParentalCodeDialog(context, mode: ParentalCodeDialogMode.verify);
     if (!ok) return;
+    // Codes set before recovery codes existed have none: hand one out now.
+    if (!service.hasRecoveryCode && context.mounted) {
+      await showParentalCodeDialog(context, mode: ParentalCodeDialogMode.recovery);
+    }
   }
   navigator.pushNamed(ParentalControlPage.routeName);
 }
@@ -41,6 +45,12 @@ class ParentalControlPage extends StatelessWidget {
     final apps = context.watch<AppsService>().applications;
     final textStyle = Theme.of(context).textTheme.bodyMedium;
     final protectedPackages = service.protectedPackages;
+    ParentalGuard? guard;
+    try {
+      guard = context.watch<ParentalGuard>();
+    } on ProviderNotFoundException {
+      guard = null;
+    }
 
     return Column(
       children: [
@@ -58,6 +68,13 @@ class ParentalControlPage extends StatelessWidget {
                   if (created) await service.setEnabled(true);
                 },
               ),
+              if (service.hasCode)
+                FocusableSettingsTile(
+                  leading: const Icon(Icons.key_outlined),
+                  title: Text(l.parentalNewRecovery, style: textStyle),
+                  trailing: Text(service.hasRecoveryCode ? "" : l.parentalNoRecovery, style: textStyle),
+                  onPressed: () => showParentalCodeDialog(context, mode: ParentalCodeDialogMode.recovery),
+                ),
               RoundedSwitchListTile(
                 value: service.enabled,
                 onChanged: (value) {
@@ -96,11 +113,13 @@ class ParentalControlPage extends StatelessWidget {
                   onPressed: () => service.setWindowEndMinutes(service.windowEndMinutes + timeStepMinutes),
                 ),
               ],
-              FocusableSettingsTile(
-                leading: const Icon(Icons.lock_reset),
-                title: Text(l.parentalAskAgain, style: textStyle),
-                onPressed: () => service.relock(),
-              ),
+              if (guard != null && guard.available)
+                FocusableSettingsTile(
+                  leading: const Icon(Icons.shield_outlined),
+                  title: Text(l.parentalGuard, style: textStyle),
+                  trailing: Text(guard.enabled ? l.parentalGuardOn : l.parentalGuardOff, style: textStyle),
+                  onPressed: () => guard?.openAccessibilitySettings(),
+                ),
               const SettingsSectionDivider(),
               for (final app in apps)
                 RoundedSwitchListTile(

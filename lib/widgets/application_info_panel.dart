@@ -339,7 +339,7 @@ onPressed: () async {
                      ),
                      onPressed: () async {
                        final appsService = context.read<AppsService>();
-                       if (!await ensureAppUnlocked(context, widget.application.packageName)) return;
+                       if (!await ensureAppAdminUnlocked(context, widget.application.packageName)) return;
                        await appsService.openAppInfo(widget.application);
                      },
                    ),
@@ -354,7 +354,7 @@ onPressed: () async {
                      onPressed: () async {
                        final appsService = context.read<AppsService>();
                        // Protected apps cannot be uninstalled without the code.
-                       if (!await ensureAppUnlocked(context, widget.application.packageName)) return;
+                       if (!await ensureAppAdminUnlocked(context, widget.application.packageName)) return;
                        await appsService.uninstallApp(widget.application);
                        if (!context.mounted) return;
                        Navigator.of(context).pop(ApplicationInfoPanelResult.none);

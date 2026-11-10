@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="parental_guard_label">Foyer parental control</string>
+    <string name="parental_guard_description">Asks the parental code whenever a protected app opens, even from recent apps, another app or the voice assistant. Foyer only reads which app is on screen, never its content.</string>
+</resources>

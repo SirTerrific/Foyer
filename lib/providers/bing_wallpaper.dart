@@ -65,7 +65,11 @@ class BingWallpaper {
   final Directory cacheDir;
   final http.Client _client;
 
-  BingWallpaper(this.cacheDir, {http.Client? client}) : _client = client ?? http.Client();
+  /// A hung request would keep the "busy" flag of the wallpaper service up forever.
+  final Duration requestTimeout;
+
+  BingWallpaper(this.cacheDir, {http.Client? client, this.requestTimeout = const Duration(seconds: 30)})
+      : _client = client ?? http.Client();
 
   /// The [bingArchiveSize] most recent images, newest first. Empty on any failure.
   Future<List<BingImage>> archive(String market) async {
@@ -75,7 +79,7 @@ class BingWallpaper {
         'idx': '0',
         'n': '$bingArchiveSize',
         if (market.isNotEmpty) 'mkt': market,
-      }));
+      })).timeout(requestTimeout);
       if (response.statusCode != 200) return const [];
       final images = (jsonDecode(response.body) as Map<String, dynamic>)['images'];
       if (images is! List) return const [];
@@ -90,7 +94,7 @@ class BingWallpaper {
   /// so the caller keeps the current wallpaper.
   Future<File?> download(BingImage image) async {
     try {
-      final response = await _client.get(Uri.parse(image.imageUrl));
+      final response = await _client.get(Uri.parse(image.imageUrl)).timeout(requestTimeout);
       if (response.statusCode != 200 || response.bodyBytes.isEmpty) return null;
       await cacheDir.create(recursive: true);
       // Write to a temp name first so a half-written file is never displayed.

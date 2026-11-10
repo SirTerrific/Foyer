@@ -789,13 +789,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String get parentalChangeCode => 'Changer le code';
 
   @override
+  String get parentalRecoveryTitle => 'Code de secours';
+
+  @override
+  String get parentalRecoveryHint =>
+      'Notez ce code et gardez-le hors de portée des enfants. Il remplace un code oublié, une seule fois. Appuyez sur OK.';
+
+  @override
+  String get parentalRecoveryAccepted =>
+      'Code de secours accepté. Choisissez un nouveau code.';
+
+  @override
+  String get parentalForgotHint =>
+      'Code oublié ? Saisissez le code de secours.';
+
+  @override
+  String get parentalNewRecovery => 'Nouveau code de secours';
+
+  @override
+  String get parentalNoRecovery => 'aucun';
+
+  @override
   String get parentalProtectApps => 'Protéger les applis sélectionnées';
 
   @override
   String get parentalProtectSettings => 'Protéger les paramètres du launcher';
-
-  @override
-  String get parentalAskAgain => 'Redemander le code maintenant';
 
   @override
   String get parentalTimeWindow => 'Seulement sur une plage horaire';
@@ -849,6 +867,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Retirer du contrôle parental';
+
+  @override
+  String get parentalGuard => 'Bloquer aussi hors de Foyer';
+
+  @override
+  String get parentalGuardOn => 'Actif';
+
+  @override
+  String get parentalGuardOff => 'Désactivé — à activer dans Accessibilité';
 
   @override
   String get bingWallpaper => 'Image du jour Bing';

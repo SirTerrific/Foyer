@@ -759,13 +759,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get parentalChangeCode => '更改密码';
 
   @override
+  String get parentalRecoveryTitle => '恢复码';
+
+  @override
+  String get parentalRecoveryHint => '请记下此码并远离儿童保管。它可替代遗忘的密码，仅限一次。按 OK。';
+
+  @override
+  String get parentalRecoveryAccepted => '恢复码已接受。请设置新密码。';
+
+  @override
+  String get parentalForgotHint => '忘记密码？请输入恢复码。';
+
+  @override
+  String get parentalNewRecovery => '新的恢复码';
+
+  @override
+  String get parentalNoRecovery => '无';
+
+  @override
   String get parentalProtectApps => '保护所选应用';
 
   @override
   String get parentalProtectSettings => '保护启动器设置';
-
-  @override
-  String get parentalAskAgain => '立即重新询问密码';
 
   @override
   String get parentalTimeWindow => '仅在时间段内';
@@ -817,6 +832,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => '移出家长控制';
+
+  @override
+  String get parentalGuard => '在 Foyer 之外也拦截';
+
+  @override
+  String get parentalGuardOn => '已开启';
+
+  @override
+  String get parentalGuardOff => '已关闭 — 请在无障碍设置中开启';
 
   @override
   String get bingWallpaper => '必应每日图片';

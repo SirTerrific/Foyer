@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="parental_guard_label">Contrôle parental Foyer</string>
+    <string name="parental_guard_description">Demande le code parental à chaque ouverture d\'une appli protégée, même depuis les applis récentes, une autre appli ou l\'assistant vocal. Foyer lit seulement quelle appli est à l\'écran, jamais son contenu.</string>
+</resources>

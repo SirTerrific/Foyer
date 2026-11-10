@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flauncher/providers/update_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -153,6 +155,42 @@ Arc Launcher v1.0.10
       expect(cleaned, contains("Fix icon rendering — #42"));
       expect(cleaned, isNot(contains("Full Changelog")));
       expect(cleaned, isNot(contains("https://github.com")));
+    });
+  });
+
+  group("compareVersions", () {
+    test("orders plain versions", () {
+      expect(UpdateService.compareVersions("1.2.10", "1.2.9"), greaterThan(0));
+      expect(UpdateService.compareVersions("1.2.2", "1.2.2"), 0);
+      expect(UpdateService.compareVersions("v1.3", "1.2.9"), greaterThan(0));
+    });
+
+    test("a suffix does not change the number", () {
+      // "1.2.2-fix1" used to read as 1.2.21, newer than 1.2.10.
+      expect(UpdateService.compareVersions("1.2.2-fix1", "1.2.10"), lessThan(0));
+      expect(UpdateService.compareVersions("1.2.2+4129", "1.2.2"), 0);
+    });
+  });
+
+  group("freshUpdatesDirectory", () {
+    late Directory root;
+    setUp(() => root = Directory.systemTemp.createTempSync("foyer_updates_test"));
+    tearDown(() => root.deleteSync(recursive: true));
+
+    test("drops older APKs and returns an empty directory", () async {
+      final updates = Directory("${root.path}/updates")..createSync();
+      File("${updates.path}/foyer-1.2.1.apk").writeAsStringSync("old");
+      File("${updates.path}/foyer-1.2.2.apk").writeAsStringSync("old");
+
+      final fresh = await freshUpdatesDirectory(updates);
+
+      expect(fresh.path, updates.path);
+      expect(fresh.listSync(), isEmpty);
+    });
+
+    test("creates the directory when it is missing", () async {
+      final fresh = await freshUpdatesDirectory(Directory("${root.path}/a/updates"));
+      expect(fresh.existsSync(), isTrue);
     });
   });
 }

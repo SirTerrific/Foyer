@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -63,5 +64,21 @@ void main() {
     final client = MockClient((request) async => http.Response('', 404));
     const image = BingImage(startDate: '20261108', urlBase: '/th?id=OHR.Fox', title: '', copyright: '');
     expect(await BingWallpaper(dir, client: client).download(image), isNull);
+  });
+
+  // A request that never answers: the wallpaper service keeps a "busy" flag
+  // while one is in flight, so it must give up by itself.
+  final hung = MockClient((_) => Completer<http.Response>().future);
+
+  test("archive gives up on a hung request instead of waiting forever", () async {
+    final bing = BingWallpaper(dir, client: hung, requestTimeout: const Duration(milliseconds: 50));
+    expect(await bing.archive('fr-FR'), isEmpty);
+  });
+
+  test("download gives up on a hung request and leaves the cache clean", () async {
+    final bing = BingWallpaper(dir, client: hung, requestTimeout: const Duration(milliseconds: 50));
+    const image = BingImage(startDate: '20261108', urlBase: '/th?id=OHR.X', title: 't', copyright: 'c');
+    expect(await bing.download(image), isNull);
+    expect(dir.listSync(), isEmpty);
   });
 }

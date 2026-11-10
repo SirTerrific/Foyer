@@ -1534,6 +1534,42 @@ abstract class AppLocalizations {
   /// **'Change the code'**
   String get parentalChangeCode;
 
+  /// No description provided for @parentalRecoveryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery code'**
+  String get parentalRecoveryTitle;
+
+  /// No description provided for @parentalRecoveryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write this code down and keep it away from children. It replaces a forgotten code, once. Press OK.'**
+  String get parentalRecoveryHint;
+
+  /// No description provided for @parentalRecoveryAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery code accepted. Choose a new code.'**
+  String get parentalRecoveryAccepted;
+
+  /// No description provided for @parentalForgotHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot the code? Enter the recovery code.'**
+  String get parentalForgotHint;
+
+  /// No description provided for @parentalNewRecovery.
+  ///
+  /// In en, this message translates to:
+  /// **'New recovery code'**
+  String get parentalNewRecovery;
+
+  /// No description provided for @parentalNoRecovery.
+  ///
+  /// In en, this message translates to:
+  /// **'none'**
+  String get parentalNoRecovery;
+
   /// No description provided for @parentalProtectApps.
   ///
   /// In en, this message translates to:
@@ -1545,12 +1581,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Protect launcher settings'**
   String get parentalProtectSettings;
-
-  /// No description provided for @parentalAskAgain.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask the code again now'**
-  String get parentalAskAgain;
 
   /// No description provided for @parentalTimeWindow.
   ///
@@ -1641,6 +1671,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove from parental control'**
   String get parentalRemoveApp;
+
+  /// No description provided for @parentalGuard.
+  ///
+  /// In en, this message translates to:
+  /// **'Also block outside Foyer'**
+  String get parentalGuard;
+
+  /// No description provided for @parentalGuardOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get parentalGuardOn;
+
+  /// No description provided for @parentalGuardOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off — turn on in Accessibility'**
+  String get parentalGuardOff;
 
   /// No description provided for @bingWallpaper.
   ///

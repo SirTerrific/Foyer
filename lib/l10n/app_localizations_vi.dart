@@ -782,13 +782,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get parentalChangeCode => 'Đổi mã';
 
   @override
+  String get parentalRecoveryTitle => 'Mã khôi phục';
+
+  @override
+  String get parentalRecoveryHint =>
+      'Hãy ghi lại mã này và để xa tầm tay trẻ em. Mã thay thế mã đã quên, chỉ một lần. Nhấn OK.';
+
+  @override
+  String get parentalRecoveryAccepted =>
+      'Mã khôi phục được chấp nhận. Hãy chọn mã mới.';
+
+  @override
+  String get parentalForgotHint => 'Quên mã? Nhập mã khôi phục.';
+
+  @override
+  String get parentalNewRecovery => 'Mã khôi phục mới';
+
+  @override
+  String get parentalNoRecovery => 'không có';
+
+  @override
   String get parentalProtectApps => 'Bảo vệ ứng dụng đã chọn';
 
   @override
   String get parentalProtectSettings => 'Bảo vệ cài đặt launcher';
-
-  @override
-  String get parentalAskAgain => 'Hỏi lại mã ngay';
 
   @override
   String get parentalTimeWindow => 'Chỉ trong khung giờ';
@@ -840,6 +857,15 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get parentalRemoveApp => 'Gỡ khỏi kiểm soát phụ huynh';
+
+  @override
+  String get parentalGuard => 'Chặn cả bên ngoài Foyer';
+
+  @override
+  String get parentalGuardOn => 'Bật';
+
+  @override
+  String get parentalGuardOff => 'Tắt — bật trong Hỗ trợ tiếp cận';
 
   @override
   String get bingWallpaper => 'Ảnh Bing trong ngày';

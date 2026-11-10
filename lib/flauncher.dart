@@ -26,6 +26,8 @@ import 'package:flauncher/actions.dart';
 import 'package:flauncher/custom_traversal_policy.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
+import 'package:flauncher/providers/parental_guard.dart';
+import 'package:flauncher/widgets/parental_code_dialog.dart';
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/providers/wallpaper_service.dart';
 import 'package:flauncher/providers/watch_next_service.dart';
@@ -66,15 +68,33 @@ class _FLauncherState extends State<FLauncher> with WidgetsBindingObserver {
   final GlobalKey _dockKey = GlobalKey();
   late final _HeroBackdropBaker _heroBackdropBaker = _HeroBackdropBaker();
 
+  ParentalGuard? _parentalGuard;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    try {
+      _parentalGuard = context.read<ParentalGuard>();
+    } on ProviderNotFoundException {
+      _parentalGuard = null; // widget tests without the native guard
+    }
+    _parentalGuard?.onLockRequested = _handleParentalLock;
+    // Cold start: the guard may have started Foyer over a protected app.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _handleParentalLock());
+  }
+
+  /// The accessibility guard caught a protected app opened outside Foyer.
+  Future<void> _handleParentalLock() async {
+    // The native guard already decided it is locked (app or Android settings).
+    await _parentalGuard?.handleLock(
+        () async => mounted && await showParentalCodeDialog(context, mode: ParentalCodeDialogMode.verify));
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    if (_parentalGuard?.onLockRequested == _handleParentalLock) _parentalGuard?.onLockRequested = null;
     _scrollController.dispose();
     _heroBackdropBaker.dispose();
     super.dispose();
@@ -84,6 +104,8 @@ class _FLauncherState extends State<FLauncher> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       context.read<WatchNextService>().refreshPermissionAndItems();
+      // Back from the accessibility settings: show the new guard state.
+      _parentalGuard?.refreshStatus();
     }
   }
 

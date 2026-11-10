@@ -119,6 +119,15 @@ String? cleanReleaseNotes(String? notes) {
   return text.isEmpty ? null : text;
 }
 
+/// Empty `updates/` directory: older APKs are useless once a newer one is
+/// downloaded, so they must not pile up on the TV's storage.
+Future<Directory> freshUpdatesDirectory(Directory directory) async {
+  if (await directory.exists()) {
+    await directory.delete(recursive: true);
+  }
+  return directory.create(recursive: true);
+}
+
 class UpdateService {
   static const String _owner = "SirTerrific";
   static const String _repo = "Foyer";
@@ -166,10 +175,7 @@ class UpdateService {
       }
 
       final directory = await getApplicationSupportDirectory();
-      final updatesDirectory = Directory("${directory.path}/updates");
-      if (!await updatesDirectory.exists()) {
-        await updatesDirectory.create(recursive: true);
-      }
+      final updatesDirectory = await freshUpdatesDirectory(Directory("${directory.path}/updates"));
 
       final fileName =
           update.apkName ?? "arclauncher-${update.latestVersion}.apk";
@@ -251,7 +257,7 @@ class UpdateService {
     }
   }
 
-  String _normalizeVersion(String version) {
+  static String _normalizeVersion(String version) {
     var normalized = version.trim();
     if (normalized.startsWith("v") || normalized.startsWith("V")) {
       normalized = normalized.substring(1);
@@ -259,7 +265,10 @@ class UpdateService {
     return normalized;
   }
 
-  int _compareVersions(String left, String right) {
+  /// Compares dotted versions; "1.2.2-fix1" and "1.2.2+4" count as 1.2.2.
+  static int compareVersions(String left, String right) => _compareVersions(left, right);
+
+  static int _compareVersions(String left, String right) {
     final leftParts = _versionParts(left);
     final rightParts = _versionParts(right);
     final maxLength = leftParts.length > rightParts.length
@@ -275,8 +284,11 @@ class UpdateService {
     return 0;
   }
 
-  List<int> _versionParts(String version) {
+  static List<int> _versionParts(String version) {
+    // "1.2.2-fix1" and "1.2.2+4" are 1.2.2: cut at the first suffix marker.
     return _normalizeVersion(version)
+        .split(RegExp(r"[-+]"))
+        .first
         .split(".")
         .map(
             (part) => int.tryParse(part.replaceAll(RegExp(r"[^0-9]"), "")) ?? 0)

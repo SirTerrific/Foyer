@@ -6,8 +6,10 @@
 - **Watch Next** : les programmes de la carte « Watch Next » sont aussi bloqués quand leur app est protégée, ou inconnue.
 - **Désinstaller / Infos app** : protégés par le code.
 - **Réglages protégés** : une fois un code défini, l'accès aux réglages demande le code (option désactivable).
-- **Délai de grâce** : après un bon code, 15 min sans redemander. Gardé en mémoire seulement : la mise en veille de la TV ou un redémarrage redemande le code.
+- **Code toujours demandé** : plus de période déverrouillée. Chaque lancement d'une app protégée et chaque entrée dans les réglages demandent le code. L'icône réseau, « Infos de l'app » et « Désinstaller » le demandent aussi tant que les réglages du launcher sont protégés. Sur la version GitHub, la garde d'accessibilité le redemande si on rejoint une app protégée depuis les récentes ou une autre app ; un écran système (permission, choix de compte) par-dessus une app déverrouillée ne le redemande pas.
+- **Blocage hors de Foyer** (version GitHub) : un service d'accessibilité, à activer une fois dans Paramètres > Accessibilité, demande le code même quand l'app protégée s'ouvre depuis les applis récentes, une autre app ou l'assistant vocal. Il ne lit que le nom de l'app à l'écran. Avec « Protéger les paramètres », les Paramètres Android demandent aussi le code (forcer l'arrêt, désactiver le service). Option : `adb shell pm grant com.sirterrific.foyer android.permission.WRITE_SECURE_SETTINGS` une fois, et Foyer réactive lui-même le service, y compris après un arrêt forcé.
 - **Anti-force brute** : 5 erreurs, puis blocage 30 s, doublé à chaque nouvelle série, plafonné à 15 min.
+- **Code de secours** : 12 flèches, affiché une fois à la création du code (ou via Contrôle parental > Nouveau code de secours). Saisi à la place d'un code oublié, il permet d'en choisir un nouveau. Usage unique, un nouveau est affiché aussitôt.
 - **Plage horaire** : option pour ne protéger que sur une plage de la journée (08:00–20:00 par défaut, passe minuit).
 - **Stockage** : code jamais gardé en clair (SHA-256 salé, comparaison à temps constant).
 - **Langues** : textes en français, anglais, espagnol, turc, vietnamien, chinois.

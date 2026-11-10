@@ -20,6 +20,7 @@ package com.sirterrific.foyer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.content.pm.*;
 import android.graphics.Bitmap;
@@ -104,6 +105,24 @@ public class MainActivity extends FlutterActivity {
         });
     }
 
+    private MethodChannel _screenChannel;
+
+    /** A force-stop switches the guard off: put it back whenever Foyer shows. */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ParentalGuardService.tryReenable(this);
+    }
+
+    /** The parental guard service brought Foyer up over a protected app. */
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.hasExtra(ParentalGuardService.EXTRA_LOCKED_PACKAGE) && _screenChannel != null) {
+            _screenChannel.invokeMethod("parentalLock", null);
+        }
+    }
+
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
@@ -112,6 +131,7 @@ public class MainActivity extends FlutterActivity {
 
         // Tells Dart when the TV goes to standby, so the parental control grace period ends.
         MethodChannel screenChannel = new MethodChannel(messenger, SCREEN_CHANNEL);
+        _screenChannel = screenChannel;
         if (_screenOffReceiver != null) {
             try { getApplicationContext().unregisterReceiver(_screenOffReceiver); } catch (IllegalArgumentException ignored) { }
         }
@@ -136,6 +156,35 @@ public class MainActivity extends FlutterActivity {
                 case "applicationExists" -> result.success(applicationExists(call.arguments()));
                 case "launchActivityFromAction" -> result.success(launchActivityFromAction(call.arguments()));
                 case "launchApp" -> result.success(launchApp(call.arguments()));
+                case "syncParentalGuard" -> {
+                    ParentalGuardService.saveConfig(this,
+                            Boolean.TRUE.equals(call.argument("active")),
+                            call.argument("packages"),
+                            Boolean.TRUE.equals(call.argument("protectSettings")),
+                            Boolean.TRUE.equals(call.argument("windowEnabled")),
+                            call.argument("windowStart"),
+                            call.argument("windowEnd"));
+                    ParentalGuardService.tryReenable(this);
+                    result.success(null);
+                }
+                case "takeParentalLock" -> result.success(ParentalGuardService.takePendingLock());
+                case "resumeLockedApp" -> {
+                    // The code was entered: reopen the app the guard covered. System
+                    // settings have no launcher entry, hence the ACTION_SETTINGS fallback.
+                    String pkg = call.arguments();
+                    PackageManager pm = getPackageManager();
+                    Intent intent = pkg == null ? null : pm.getLeanbackLaunchIntentForPackage(pkg);
+                    if (intent == null && pkg != null) intent = pm.getLaunchIntentForPackage(pkg);
+                    if (intent == null) intent = new Intent(Settings.ACTION_SETTINGS);
+                    result.success(tryStartActivity(intent));
+                }
+                case "parentalGuardStatus" -> {
+                    Map<String, Boolean> status = new HashMap<>();
+                    status.put("available", ParentalGuardService.isAvailable(this));
+                    status.put("enabled", ParentalGuardService.isEnabled(this));
+                    result.success(status);
+                }
+                case "openAccessibilitySettings" -> result.success(launchActivityFromAction(Settings.ACTION_ACCESSIBILITY_SETTINGS));
                 case "openSettings" -> result.success(openSettings());
                 case "installApk" -> result.success(installApk(call.arguments()));
                 case "requestInstallUnknownAppsPermission" -> {
@@ -555,6 +604,10 @@ public class MainActivity extends FlutterActivity {
         boolean success = true;
 
         try {
+            // Dart already checked the code for whatever Foyer opens (app, system
+            // settings, app info...): the accessibility guard must let it through.
+            ComponentName target = intent.resolveActivity(getPackageManager());
+            if (target != null) ParentalGuardService.allow(target.getPackageName());
             startActivity(intent);
         } catch (Exception ignored) {
             success = false;

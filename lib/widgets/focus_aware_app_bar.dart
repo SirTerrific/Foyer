@@ -124,7 +124,12 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
                   ? Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: AppBarFocusRing(
-                        onPressed: () => context.read<NetworkService>().openWifiSettings(),
+                        onPressed: () async {
+                          final network = context.read<NetworkService>();
+                          // Android's Wi-Fi screen is a way out of the launcher: same rule as Settings.
+                          if (!await ensureSettingsUnlocked(context)) return;
+                          await network.openWifiSettings();
+                        },
                         semanticLabel: 'Network',
                         child: const NetworkWidget(),
                       ),

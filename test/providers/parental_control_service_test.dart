@@ -32,7 +32,7 @@ void main() {
     expect(() => service.setCode(["U", "D"]), throwsArgumentError);
   });
 
-  test("protected app requires code until correct code, then grace for 15 min", () async {
+  test("a correct code never unlocks anything: the next launch asks again", () async {
     await service.setCode(code);
     await service.setEnabled(true);
     await service.setPackageProtected("com.youtube", true);
@@ -41,13 +41,14 @@ void main() {
     expect(service.requiresCode("com.other"), isFalse);
 
     expect(await service.verify(code), ParentalCheckResult.ok);
-    expect(service.requiresCode("com.youtube"), isFalse);
+    expect(service.requiresCode("com.youtube"), isTrue);
+    expect(service.settingsRequireCode, isTrue);
 
     now = now.add(const Duration(minutes: 16));
     expect(service.requiresCode("com.youtube"), isTrue);
   });
 
-  test("wrong code does not open grace", () async {
+  test("wrong code is refused", () async {
     await service.setCode(code);
     await service.setEnabled(true);
     await service.setPackageProtected("com.youtube", true);
@@ -74,38 +75,6 @@ void main() {
       now = now.add(const Duration(seconds: 1));
     }
     expect(service.lockRemaining, greaterThan(Duration.zero));
-  });
-
-  test("grace period does not survive a restart (reboot, TV off)", () async {
-    await service.setCode(code);
-    await service.setEnabled(true);
-    await service.setPackageProtected("com.youtube", true);
-    expect(await service.verify(code), ParentalCheckResult.ok);
-    expect(service.requiresCode("com.youtube"), isFalse);
-
-    // Same storage, new process one minute later.
-    now = now.add(const Duration(minutes: 1));
-    final restarted = ParentalControlService(prefs, now: () => now);
-    expect(restarted.requiresCode("com.youtube"), isTrue);
-  });
-
-  test("legacy persisted grace is purged at startup", () async {
-    SharedPreferences.setMockInitialValues({
-      "parental_control_grace_until": DateTime(2030).millisecondsSinceEpoch,
-    });
-    final legacyPrefs = await SharedPreferences.getInstance();
-    ParentalControlService(legacyPrefs, now: () => now);
-    await Future<void>.delayed(Duration.zero);
-    expect(legacyPrefs.containsKey("parental_control_grace_until"), isFalse);
-  });
-
-  test("relock ends grace period", () async {
-    await service.setCode(code);
-    await service.setEnabled(true);
-    await service.setPackageProtected("com.youtube", true);
-    await service.verify(code);
-    await service.relock();
-    expect(service.requiresCode("com.youtube"), isTrue);
   });
 
   test("settings gate on by default once a code exists, off when disabled", () async {
@@ -141,7 +110,40 @@ void main() {
     await service.setEnabled(true);
     expect(service.requiresCode(null), isFalse);
     await service.setPackageProtected("com.youtube", true);
-    await service.relock();
     expect(service.requiresCode(null), isTrue);
+  });
+
+  test("recovery code is 12 arrows, stored hashed, single use", () async {
+    await service.setCode(["U", "D", "L", "R"]);
+    final recovery = await service.generateRecoveryCode();
+    expect(recovery.length, ParentalControlService.recoveryCodeLength);
+    expect(recovery.every(["U", "D", "L", "R"].contains), isTrue);
+    expect(service.hasRecoveryCode, isTrue);
+    final stored = prefs.getKeys().map((k) => prefs.get(k).toString()).join("|");
+    expect(stored.contains(recovery.join()), isFalse);
+
+    // Still valid while no new code was chosen, and it opens nothing by itself.
+    expect(await service.verify(recovery), ParentalCheckResult.recovered);
+    expect(service.hasRecoveryCode, isTrue);
+    await service.setPackageProtected("com.youtube", true);
+    await service.setEnabled(true);
+    expect(service.requiresCode("com.youtube"), isTrue);
+    expect(await service.verify(recovery), ParentalCheckResult.recovered);
+
+    // Burnt by the new code.
+    await service.setCode(["1", "2", "3", "4"]);
+    expect(service.hasRecoveryCode, isFalse);
+    expect(await service.verify(recovery), ParentalCheckResult.wrong);
+    expect(await service.verify(["1", "2", "3", "4"]), ParentalCheckResult.ok);
+  });
+
+  test("a new recovery code replaces the old one", () async {
+    await service.setCode(["U", "D", "L", "R"]);
+    final first = await service.generateRecoveryCode();
+    final second = await service.generateRecoveryCode();
+    if (first.join() != second.join()) {
+      expect(await service.verify(first), ParentalCheckResult.wrong);
+    }
+    expect(await service.verify(second), ParentalCheckResult.recovered);
   });
 }

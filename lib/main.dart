@@ -33,6 +33,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'package:flauncher/providers/parental_guard.dart';
+
 import 'flauncher_app.dart';
 
 Future<void> main() async {
@@ -42,9 +44,8 @@ Future<void> main() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final fLauncherChannel = FLauncherChannel();
   final fLauncherDatabase = FLauncherDatabase(connect());
-  // Created eagerly so the screen-off relock is wired before anything is unlocked.
   final parentalControlService = ParentalControlService(sharedPreferences);
-  fLauncherChannel.setScreenOffListener(parentalControlService.relock);
+  final parentalGuard = ParentalGuard(fLauncherChannel, parentalControlService);
 
   runApp(MultiProvider(
       providers: [
@@ -52,6 +53,7 @@ Future<void> main() async {
             create: (_) => SettingsService(sharedPreferences),
             lazy: false),
         ChangeNotifierProvider.value(value: parentalControlService),
+        ChangeNotifierProvider.value(value: parentalGuard),
         ChangeNotifierProvider(create: (_) => AppsService(fLauncherChannel, fLauncherDatabase)),
         ChangeNotifierProvider(create: (_) => LauncherState()),
         ChangeNotifierProvider(create: (_) => NetworkService(fLauncherChannel)),
