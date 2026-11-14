@@ -29,6 +29,8 @@
 - Cache des affiches plafonné, délais d'attente sur Reddit.
 - Corrections base de données (lots et migration).
 - Tick de l'horloge économisé.
+- Contrôle parental : la ligne « Bloquer aussi hors de Foyer » s'affichait lettre par lettre. L'état est maintenant sous le titre.
+- Contrôle parental : si la TV n'a pas de page Accessibilité directe, la ligne ouvre les réglages de la TV au lieu de ne rien faire.
 
 ### Technique
 - Workflow CI (`flutter analyze` + tests), testé avec `act`.

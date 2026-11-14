@@ -184,7 +184,7 @@ public class MainActivity extends FlutterActivity {
                     status.put("enabled", ParentalGuardService.isEnabled(this));
                     result.success(status);
                 }
-                case "openAccessibilitySettings" -> result.success(launchActivityFromAction(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+                case "openAccessibilitySettings" -> result.success(openAccessibilitySettings());
                 case "openSettings" -> result.success(openSettings());
                 case "installApk" -> result.success(installApk(call.arguments()));
                 case "requestInstallUnknownAppsPermission" -> {
@@ -509,6 +509,13 @@ public class MainActivity extends FlutterActivity {
         }
 
         return tryStartActivity(intent);
+    }
+
+    // Some TV builds ship no handler for ACTION_ACCESSIBILITY_SETTINGS: fall back to the TV settings home.
+    private boolean openAccessibilitySettings() {
+        return launchActivityFromAction(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                || launchActivityFromAction("com.android.tv.settings.ACCESSIBILITY")
+                || openSettings();
     }
 
     private boolean openSettings() {

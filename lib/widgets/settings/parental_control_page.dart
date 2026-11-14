@@ -117,7 +117,8 @@ class ParentalControlPage extends StatelessWidget {
                 FocusableSettingsTile(
                   leading: const Icon(Icons.shield_outlined),
                   title: Text(l.parentalGuard, style: textStyle),
-                  trailing: Text(guard.enabled ? l.parentalGuardOn : l.parentalGuardOff, style: textStyle),
+                  // Status goes in the subtitle: a long trailing text squeezes the title to one letter per line.
+                  subtitle: Text(guard.enabled ? l.parentalGuardOn : l.parentalGuardOff, style: textStyle),
                   onPressed: () => guard?.openAccessibilitySettings(),
                 ),
               const SettingsSectionDivider(),
