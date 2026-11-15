@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:b35154829882dca089eba4abd08e0da880c1dea2e52a4f472ebf3bc756bf128b",
+  "pageVersion": "sha256:21cae26ee0c232ef79ff4c3f79ca00b6ea56a3331a5221d8d6dbaa93a1028637",
   "claims": [
     {
       "id": "claim_f164676e4ed548ad8f4b14a56e104532",
@@ -8,7 +8,7 @@
       "evidence": [
         {
           "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/MainActivity.java",
-          "version": "repo-file-v1:sha256:d477ea180ec5d70a9f355bb136587f5ed3f919e88ac34c6d4af910fc9add968b"
+          "version": "repo-file-v1:sha256:2ab56878094ee69f9fdfa1b5ef425c5f6032e4f419111ed5b0c9bebd992fff00"
         }
       ]
     },
@@ -18,7 +18,7 @@
       "evidence": [
         {
           "resource": "repo://lib/flauncher_channel.dart",
-          "version": "repo-file-v1:sha256:1b92dd6e3de374bda6344238f4912978583591df01d7f393818904ebafddc7b9"
+          "version": "repo-file-v1:sha256:1c46340180815e45e3fb3b82ab94642a494f1f08f00c07cf5136db4242c6390c"
         }
       ]
     },
@@ -56,17 +56,17 @@
       "evidence": [
         {
           "resource": "repo://android/app/src/main/java/com/leanbitlab/ltvL/MainActivity.java",
-          "version": "repo-file-v1:sha256:d477ea180ec5d70a9f355bb136587f5ed3f919e88ac34c6d4af910fc9add968b"
+          "version": "repo-file-v1:sha256:2ab56878094ee69f9fdfa1b5ef425c5f6032e4f419111ed5b0c9bebd992fff00"
         },
         {
           "resource": "repo://lib/flauncher_channel.dart",
-          "version": "repo-file-v1:sha256:1b92dd6e3de374bda6344238f4912978583591df01d7f393818904ebafddc7b9"
+          "version": "repo-file-v1:sha256:1c46340180815e45e3fb3b82ab94642a494f1f08f00c07cf5136db4242c6390c"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.3",
-    "at": "2026-11-10T16:49:31.024Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T03:24:50.556Z"
   }
 }

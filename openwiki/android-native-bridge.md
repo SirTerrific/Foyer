@@ -3,8 +3,8 @@ title: Android native bridge
 type: "Reference"
 openwiki_generated: true
 verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-10T16:49:31.024Z
+  - by: openwiki/0.9.0
+    at: 2026-11-15T03:24:50.556Z
 sources:
   - id: openwiki-source-0e16dfd6d4995b1bd6e1a95b
     resource: repo://android/app/src/github/AndroidManifest.xml

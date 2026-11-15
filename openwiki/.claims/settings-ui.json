@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:3a1ad3c976c678dca4a405c2c2a188ce79510cb9a4fc757224cd367faf554334",
+  "pageVersion": "sha256:ac3e9af2481bb044bbaa258f8d8d820804d70c85b521460e28d9e67cd632eca6",
   "claims": [
     {
       "id": "claim_7629681f4b0049e0a9beaf509bac26bb",
@@ -52,7 +52,7 @@
       "evidence": [
         {
           "resource": "repo://lib/widgets/settings/parental_control_page.dart",
-          "version": "repo-file-v1:sha256:1daaf6de51d95e347c286d45f739978809400f9266fe0176168125b1ca11aec2"
+          "version": "repo-file-v1:sha256:c9b87d21993ca7bae61d7a1f7d08a785826090730fab559780646b49d69c3c27"
         }
       ]
     },
@@ -65,10 +65,24 @@
           "version": "repo-file-v1:sha256:75c19a8e169c17ee38340b9fd140e2a147a3104c0d38969c2e7404c53a25a41b"
         }
       ]
+    },
+    {
+      "id": "claim_f236cfaece954c96b9cf8d327290b729",
+      "statement": "maybeShowSetupWizard shows the five-step SetupWizard dialog once on first launch, and skips it when setupDone is true or a parental code already exists.",
+      "evidence": [
+        {
+          "resource": "repo://lib/flauncher.dart",
+          "version": "repo-file-v1:sha256:0d22519767c247ca9d805ac952f509c47736b0df37942943e879cb297b4628c1"
+        },
+        {
+          "resource": "repo://lib/widgets/setup_wizard.dart",
+          "version": "repo-file-v1:sha256:9eb157bfdf50c33ecc168377727c79f2d706bf48597041ee0342c3eedc813b55"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.3",
-    "at": "2026-11-10T16:49:31.024Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T03:24:50.556Z"
   }
 }

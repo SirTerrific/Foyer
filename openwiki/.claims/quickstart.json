@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:3e214cf5704aedfdad11c76c0c106b5243170f0082d94d5223bb1b4fde6c42ba",
+  "pageVersion": "sha256:74472f9ece732fb76eddb2490857381b51e514c8e6b02e6677f500555bd11af6",
   "claims": [
     {
       "id": "claim_84487571db8b49aa87054ce2e6dd916b",
@@ -8,7 +8,7 @@
       "evidence": [
         {
           "resource": "repo://README.md",
-          "version": "repo-file-v1:sha256:7ee9e64b47a7e97fca515a845e99b5e0a3401aad33b80bb27364d9c5bf8e0ea8"
+          "version": "repo-file-v1:sha256:fdfbe59066c2b5c595d1f604db4145be8a28e81bbc0dd9fc9f7a77a44a47e8c2"
         }
       ]
     },
@@ -22,13 +22,23 @@
         },
         {
           "resource": "repo://pubspec.yaml",
-          "version": "repo-file-v1:sha256:2f89b30f3be794e8fdd2b610566c2b1c1845350f520aa4b2aa97ec33636cc7ba"
+          "version": "repo-file-v1:sha256:69c803577b19f1d56dbb923952a8f11c673443b217c98809f72f5bc583a8b9d0"
+        }
+      ]
+    },
+    {
+      "id": "claim_7adf19b83b834f3887d1d52bcd42d7cb",
+      "statement": "On a fresh install Foyer shows a skippable first-run setup wizard covering default launcher, wallpaper and parental code.",
+      "evidence": [
+        {
+          "resource": "repo://lib/widgets/setup_wizard.dart",
+          "version": "repo-file-v1:sha256:9eb157bfdf50c33ecc168377727c79f2d706bf48597041ee0342c3eedc813b55"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.3",
-    "at": "2026-11-10T16:49:31.024Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T03:24:50.556Z"
   }
 }

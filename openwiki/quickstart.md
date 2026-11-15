@@ -5,14 +5,16 @@ openwiki_generated: true
 sources:
   - id: openwiki-source-d1d82248fd190cf516d65121
     resource: repo://lib/main.dart
+  - id: openwiki-source-0f7e5075f1f3c2af8a7233ae
+    resource: repo://lib/widgets/setup_wizard.dart
   - id: openwiki-source-429b743e157b356f0cca4982
     resource: repo://pubspec.yaml
   - id: openwiki-source-23775c3de52f3ab95a13cb8b
     resource: repo://README.md
-generated: { by: "claude-code", at: "2026-11-10T16:49:31.024Z" }
+generated: { by: "claude-code", at: "2026-11-15T03:24:50.556Z" }
 verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-10T16:49:31.024Z
+  - by: openwiki/0.9.0
+    at: 2026-11-15T03:24:50.556Z
 ---
 
 # Quickstart
@@ -26,6 +28,10 @@ Foyer is an open-source Android TV launcher built with Flutter. It is a fork of 
 - `test/` - unit and widget tests.
 - `tool/gen_brand.dart` - generates the launcher icons and banner.
 - `drift_schemas/` - database schema snapshots for migration tests.
+
+## First launch
+
+On a fresh install Foyer shows a short setup wizard (default launcher, wallpaper, parental code). Every step can be skipped and it is shown once; see [Settings UI](settings-ui.md).
 
 ## Build and run
 

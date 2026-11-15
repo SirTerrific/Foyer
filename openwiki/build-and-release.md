@@ -13,17 +13,17 @@ sources:
     resource: repo://lib/providers/update_service.dart
   - id: openwiki-source-429b743e157b356f0cca4982
     resource: repo://pubspec.yaml
-generated: { by: "claude-code", at: "2026-11-10T16:49:31.024Z" }
+generated: { by: "claude-code", at: "2026-11-15T03:24:50.556Z" }
 verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-10T16:49:31.024Z
+  - by: openwiki/0.9.0
+    at: 2026-11-15T03:24:50.556Z
 ---
 
 # Build, test and release
 
 ## Toolchain
 
-The Dart package is still named `flauncher` and the version in `pubspec.yaml` is `1.2.3+4130`. Flutter is pinned to `3.41.9` in `pubspec.yaml` and `.fvmrc`. Android builds use JDK 17.
+The Dart package is still named `flauncher` and the version in `pubspec.yaml` is `1.2.5+4132`. Flutter is pinned to `3.41.9` in `pubspec.yaml` and `.fvmrc`. Android builds use JDK 17.
 
 ## Flavors and app id
 

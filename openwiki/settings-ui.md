@@ -5,6 +5,8 @@ openwiki_generated: true
 sources:
   - id: openwiki-source-4ead7baa3b3e5396f0a6a07e
     resource: repo://l10n.yaml
+  - id: openwiki-source-fcb65badbffb4a145760b755
+    resource: repo://lib/flauncher.dart
   - id: openwiki-source-7207b3270799be263d4a2e17
     resource: repo://lib/providers/settings_service.dart
   - id: openwiki-source-2e9e750ae30235ca7fd656c6
@@ -13,12 +15,14 @@ sources:
     resource: repo://lib/widgets/settings/parental_control_page.dart
   - id: openwiki-source-5debb80f8179d323cf091183
     resource: repo://lib/widgets/settings/settings_panel.dart
+  - id: openwiki-source-0f7e5075f1f3c2af8a7233ae
+    resource: repo://lib/widgets/setup_wizard.dart
   - id: openwiki-source-ea20cfe01e671ffa34c636b0
     resource: repo://tool/gen_brand.dart
-generated: { by: "claude-code", at: "2026-11-10T16:49:31.024Z" }
+generated: { by: "claude-code", at: "2026-11-15T03:24:50.556Z" }
 verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-10T16:49:31.024Z
+  - by: openwiki/0.9.0
+    at: 2026-11-15T03:24:50.556Z
 ---
 
 # Settings UI and localization
@@ -36,6 +40,10 @@ Other pages in `lib/widgets/settings/` cover the accent color, back-button actio
 ## Wallpapers
 
 `WallpaperService` (a `ChangeNotifier` built from `SettingsService`) manages the gradient, image, video and slideshow backgrounds. Slideshows come from Reddit or Unsplash providers. The Bing image of the day is chosen in `bing_wallpaper_panel_page.dart` (route `bing_wallpaper_panel`): the user picks a market stored as `SettingsService.bingMarket` and an image from the recent archive that `WallpaperService.bingArchive()` loads; a failed download shows a snackbar.
+
+## First-run wizard
+
+`maybeShowSetupWizard` (called from `lib/flauncher.dart`) shows the full-screen `SetupWizard` dialog once, on first launch. It is skipped when `SettingsService.setupDone` is true or a parental code already exists. Five steps: welcome, default launcher (opens Android settings through the native bridge), wallpaper (Bing image of the day or gradient), parental code, done. Every step can be skipped; Back goes one step back. The wizard keeps the focus inside its own `FocusScope` so the home grid behind it cannot take it.
 
 ## Parental control page
 

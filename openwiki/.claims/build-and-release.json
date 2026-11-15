@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:8c62d09d4eb938d4622a3338288d81f16ce5808372b271f1b63817c9597ebbf2",
+  "pageVersion": "sha256:90031bda1eaaca3ee24dcc57c0d02b140b642e806947f6f77023f8f2055e38e1",
   "claims": [
     {
       "id": "claim_f46c54b122b5487ebf87ee54d9a83f2d",
@@ -22,7 +22,7 @@
         },
         {
           "resource": "repo://pubspec.yaml",
-          "version": "repo-file-v1:sha256:2f89b30f3be794e8fdd2b610566c2b1c1845350f520aa4b2aa97ec33636cc7ba"
+          "version": "repo-file-v1:sha256:69c803577b19f1d56dbb923952a8f11c673443b217c98809f72f5bc583a8b9d0"
         }
       ]
     },
@@ -48,17 +48,17 @@
     },
     {
       "id": "claim_fd1a3587d24b4c078b95abf0ccb90fc0",
-      "statement": "The package version in pubspec.yaml is 1.2.3+4130.",
+      "statement": "The package version in pubspec.yaml is 1.2.5+4132.",
       "evidence": [
         {
           "resource": "repo://pubspec.yaml",
-          "version": "repo-file-v1:sha256:2f89b30f3be794e8fdd2b610566c2b1c1845350f520aa4b2aa97ec33636cc7ba"
+          "version": "repo-file-v1:sha256:69c803577b19f1d56dbb923952a8f11c673443b217c98809f72f5bc583a8b9d0"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.3",
-    "at": "2026-11-10T16:49:31.024Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T03:24:50.556Z"
   }
 }

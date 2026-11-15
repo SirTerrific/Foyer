@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d340c5e00c0e49ad3156af8db07236662a67e57c7d65519488c9680bf45dcefc",
+  "pageVersion": "sha256:dcca52e01ae8d6b27836c2a51ecbe2366564546aa716861bfe28d04e91fab732",
   "claims": [
     {
       "id": "claim_3026bc06a5ae4a0191a16c68aecf3974",
@@ -28,13 +28,23 @@
       "evidence": [
         {
           "resource": "repo://lib/providers/settings_service.dart",
-          "version": "repo-file-v1:sha256:355db5603035b7a8270ffcd078b5d2c3c30edb189d1e0f1d5b299cd929ae0ac8"
+          "version": "repo-file-v1:sha256:8bd52d7b49a781f9adf3bb7ec9092699fd79f9decd1c3e3bf950e139aecf3902"
+        }
+      ]
+    },
+    {
+      "id": "claim_b1a789f67b5b4c6b917f317276d8d4ef",
+      "statement": "SettingsService stores the setup_done flag that records whether the first-run wizard has been shown.",
+      "evidence": [
+        {
+          "resource": "repo://lib/providers/settings_service.dart",
+          "version": "repo-file-v1:sha256:8bd52d7b49a781f9adf3bb7ec9092699fd79f9decd1c3e3bf950e139aecf3902"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.3",
-    "at": "2026-11-10T16:49:31.024Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T03:24:50.556Z"
   }
 }

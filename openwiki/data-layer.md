@@ -9,10 +9,10 @@ sources:
     resource: repo://lib/models/watch_next_item.dart
   - id: openwiki-source-7207b3270799be263d4a2e17
     resource: repo://lib/providers/settings_service.dart
-generated: { by: "claude-code", at: "2026-11-09T00:13:56.093Z" }
+generated: { by: "claude-code", at: "2026-11-15T03:24:50.556Z" }
 verified:
-  - by: openwiki/0.7.3
-    at: 2026-11-10T16:49:31.024Z
+  - by: openwiki/0.9.0
+    at: 2026-11-15T03:24:50.556Z
 ---
 
 # Data layer
@@ -39,4 +39,4 @@ The schema version is `10`. The `onUpgrade` strategy applies one migration block
 
 ## Settings
 
-`SettingsService` wraps a `SharedPreferences` instance and notifies listeners on change. `ParentalControlService` also stores its state in `SharedPreferences` and needs no database migration; see [Parental control](parental-control.md).
+`SettingsService` wraps a `SharedPreferences` instance and notifies listeners on change. It also stores the `setup_done` flag (`setupDone` / `setSetupDone`) that tells whether the first-run wizard has been shown. `ParentalControlService` also stores its state in `SharedPreferences` and needs no database migration; see [Parental control](parental-control.md).
