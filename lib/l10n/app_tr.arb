@@ -206,5 +206,19 @@
     "bingMarketAuto": "Otomatik",
     "bingRecentImages": "Son görseller",
     "bingUnavailable": "Bing'e ulaşılamıyor. Ağı kontrol edin.",
-    "bingDownloadFailed": "Bu görsel indirilemedi."
+    "bingDownloadFailed": "Bu görsel indirilemedi.",
+    "setupWelcomeTitle": "Foyer'e hoş geldiniz",
+    "setupWelcomeText": "Başlamadan önce birkaç hızlı ayar. Hepsini daha sonra ayarlardan değiştirebilirsiniz.",
+    "setupStart": "Başlayalım",
+    "setupDefaultTitle": "Varsayılan başlatıcı",
+    "setupDefaultText": "Ana ekran düğmesinin Foyer'i açması için Foyer'i ana ekran uygulaması olarak seçin. Bazı TV'ler (Google TV) bu seçeneği sunmaz.",
+    "setupDefaultYes": "Foyer varsayılan ana ekran uygulaması.",
+    "setupDefaultNo": "Foyer henüz varsayılan ana ekran uygulaması değil.",
+    "setupOpenSettings": "Ayarları aç",
+    "setupWallpaperText": "Ana ekranın arka planını seçin.",
+    "setupParentalText": "Uygulamaları kilitlemek için kumandayla girilen bir kod belirleyin.",
+    "setupDoneTitle": "Her şey hazır",
+    "setupDoneText": "Bu ayarları istediğiniz zaman Foyer ayarlarında bulabilirsiniz.",
+    "setupNext": "İleri",
+    "setupFinish": "Bitir"
 }

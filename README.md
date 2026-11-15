@@ -32,6 +32,10 @@ flutter build apk --flavor github
 
 Requires Flutter 3.41.x and JDK 17. The app id is `com.sirterrific.foyer`.
 
+## First-run setup
+
+On first launch Foyer shows a short wizard: default launcher, wallpaper (Bing image of the day or gradient) and parental code. Every step can be skipped and it never shows again.
+
 ## Parental Control
 
 - **D-pad code** - The code is a combination of arrow keys (Up, Down, Left, Right) and digits, entered with the remote, like Projectivy.

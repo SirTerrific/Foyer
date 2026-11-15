@@ -263,5 +263,19 @@
     "bingMarketAuto": "Auto",
     "bingRecentImages": "Imágenes recientes",
     "bingUnavailable": "No se puede acceder a Bing. Revisa la red.",
-    "bingDownloadFailed": "No se pudo descargar esta imagen."
+    "bingDownloadFailed": "No se pudo descargar esta imagen.",
+    "setupWelcomeTitle": "Bienvenido a Foyer",
+    "setupWelcomeText": "Unos ajustes rápidos antes de empezar. Podrás cambiarlo todo más tarde en los ajustes.",
+    "setupStart": "Vamos",
+    "setupDefaultTitle": "Launcher predeterminado",
+    "setupDefaultText": "Elige Foyer como aplicación de inicio para que el botón Inicio lo abra. Algunos televisores (Google TV) no ofrecen esta opción.",
+    "setupDefaultYes": "Foyer es la aplicación de inicio predeterminada.",
+    "setupDefaultNo": "Foyer aún no es la aplicación de inicio predeterminada.",
+    "setupOpenSettings": "Abrir ajustes",
+    "setupWallpaperText": "Elige el fondo de la pantalla de inicio.",
+    "setupParentalText": "Define un código que se introduce con el mando para bloquear aplicaciones.",
+    "setupDoneTitle": "Todo listo",
+    "setupDoneText": "Encontrarás estos ajustes en cualquier momento en los ajustes de Foyer.",
+    "setupNext": "Siguiente",
+    "setupFinish": "Finalizar"
 }

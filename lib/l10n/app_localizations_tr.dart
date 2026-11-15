@@ -891,4 +891,51 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get bingDownloadFailed => 'Bu görsel indirilemedi.';
+
+  @override
+  String get setupWelcomeTitle => 'Foyer\'e hoş geldiniz';
+
+  @override
+  String get setupWelcomeText =>
+      'Başlamadan önce birkaç hızlı ayar. Hepsini daha sonra ayarlardan değiştirebilirsiniz.';
+
+  @override
+  String get setupStart => 'Başlayalım';
+
+  @override
+  String get setupDefaultTitle => 'Varsayılan başlatıcı';
+
+  @override
+  String get setupDefaultText =>
+      'Ana ekran düğmesinin Foyer\'i açması için Foyer\'i ana ekran uygulaması olarak seçin. Bazı TV\'ler (Google TV) bu seçeneği sunmaz.';
+
+  @override
+  String get setupDefaultYes => 'Foyer varsayılan ana ekran uygulaması.';
+
+  @override
+  String get setupDefaultNo =>
+      'Foyer henüz varsayılan ana ekran uygulaması değil.';
+
+  @override
+  String get setupOpenSettings => 'Ayarları aç';
+
+  @override
+  String get setupWallpaperText => 'Ana ekranın arka planını seçin.';
+
+  @override
+  String get setupParentalText =>
+      'Uygulamaları kilitlemek için kumandayla girilen bir kod belirleyin.';
+
+  @override
+  String get setupDoneTitle => 'Her şey hazır';
+
+  @override
+  String get setupDoneText =>
+      'Bu ayarları istediğiniz zaman Foyer ayarlarında bulabilirsiniz.';
+
+  @override
+  String get setupNext => 'İleri';
+
+  @override
+  String get setupFinish => 'Bitir';
 }

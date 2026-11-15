@@ -26,6 +26,7 @@ import 'package:flauncher/actions.dart';
 import 'package:flauncher/custom_traversal_policy.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
+import 'package:flauncher/widgets/setup_wizard.dart';
 import 'package:flauncher/providers/parental_guard.dart';
 import 'package:flauncher/widgets/parental_code_dialog.dart';
 import 'package:flauncher/providers/settings_service.dart';
@@ -81,7 +82,10 @@ class _FLauncherState extends State<FLauncher> with WidgetsBindingObserver {
     }
     _parentalGuard?.onLockRequested = _handleParentalLock;
     // Cold start: the guard may have started Foyer over a protected app.
-    WidgetsBinding.instance.addPostFrameCallback((_) => _handleParentalLock());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleParentalLock();
+      maybeShowSetupWizard(context);
+    });
   }
 
   /// The accessibility guard caught a protected app opened outside Foyer.

@@ -378,6 +378,13 @@ class SettingsService extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// The first-run setup wizard was shown (finished or skipped).
+  bool get setupDone => _sharedPreferences.getBool("setup_done") ?? false;
+
+  Future<void> setSetupDone() async {
+    await _sharedPreferences.setBool("setup_done", true);
+  }
+
   // Bing Wallpaper Settings
 
   bool get bingWallpaperEnabled => _sharedPreferences.getBool("bing_wallpaper_enabled") ?? false;

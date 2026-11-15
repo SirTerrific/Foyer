@@ -357,6 +357,93 @@ class _FakeImageStreamCompleter_27 extends _i1.SmartFake
 /// See the documentation for Mockito's code generation for more information.
 class MockFLauncherChannel extends _i1.Mock implements _i12.FLauncherChannel {
   @override
+  void setScreenOffListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #setScreenOffListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void setParentalLockListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #setParentalLockListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i9.Future<void> syncParentalGuard({
+    required bool? active,
+    required List<String>? packages,
+    required bool? protectSettings,
+    required bool? windowEnabled,
+    required int? windowStart,
+    required int? windowEnd,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #syncParentalGuard,
+          [],
+          {
+            #active: active,
+            #packages: packages,
+            #protectSettings: protectSettings,
+            #windowEnabled: windowEnabled,
+            #windowStart: windowStart,
+            #windowEnd: windowEnd,
+          },
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<String?> takeParentalLock() => (super.noSuchMethod(
+        Invocation.method(
+          #takeParentalLock,
+          [],
+        ),
+        returnValue: _i9.Future<String?>.value(),
+        returnValueForMissingStub: _i9.Future<String?>.value(),
+      ) as _i9.Future<String?>);
+
+  @override
+  _i9.Future<void> resumeLockedApp(String? packageName) => (super.noSuchMethod(
+        Invocation.method(
+          #resumeLockedApp,
+          [packageName],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<Map<dynamic, dynamic>> parentalGuardStatus() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #parentalGuardStatus,
+          [],
+        ),
+        returnValue:
+            _i9.Future<Map<dynamic, dynamic>>.value(<dynamic, dynamic>{}),
+        returnValueForMissingStub:
+            _i9.Future<Map<dynamic, dynamic>>.value(<dynamic, dynamic>{}),
+      ) as _i9.Future<Map<dynamic, dynamic>>);
+
+  @override
+  _i9.Future<void> openAccessibilitySettings() => (super.noSuchMethod(
+        Invocation.method(
+          #openAccessibilitySettings,
+          [],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
   _i9.Future<List<Map<dynamic, dynamic>>> getApplications() =>
       (super.noSuchMethod(
         Invocation.method(
@@ -435,6 +522,16 @@ class MockFLauncherChannel extends _i1.Mock implements _i12.FLauncherChannel {
         returnValue: _i9.Future<void>.value(),
         returnValueForMissingStub: _i9.Future<void>.value(),
       ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<bool> openHomeSettings() => (super.noSuchMethod(
+        Invocation.method(
+          #openHomeSettings,
+          [],
+        ),
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   _i9.Future<void> openAppInfo(String? packageName) => (super.noSuchMethod(
@@ -1192,6 +1289,16 @@ class MockAppsService extends _i1.Mock implements _i17.AppsService {
         returnValue: _i9.Future<void>.value(),
         returnValueForMissingStub: _i9.Future<void>.value(),
       ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<bool> openHomeSettings() => (super.noSuchMethod(
+        Invocation.method(
+          #openHomeSettings,
+          [],
+        ),
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   _i9.Future<bool> isDefaultLauncher() => (super.noSuchMethod(
@@ -1978,6 +2085,13 @@ class MockSettingsService extends _i1.Mock implements _i19.SettingsService {
       ) as bool);
 
   @override
+  bool get setupDone => (super.noSuchMethod(
+        Invocation.getter(#setupDone),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
   bool get bingWallpaperEnabled => (super.noSuchMethod(
         Invocation.getter(#bingWallpaperEnabled),
         returnValue: false,
@@ -2466,6 +2580,16 @@ class MockSettingsService extends _i1.Mock implements _i19.SettingsService {
         Invocation.method(
           #setRedditWallpaperEnabled,
           [enabled],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> setSetupDone() => (super.noSuchMethod(
+        Invocation.method(
+          #setSetupDone,
+          [],
         ),
         returnValue: _i9.Future<void>.value(),
         returnValueForMissingStub: _i9.Future<void>.value(),

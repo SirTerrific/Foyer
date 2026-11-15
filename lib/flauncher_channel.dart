@@ -107,6 +107,12 @@ class FLauncherChannel {
 
   Future<void> openSettings() async => await _methodChannel.invokeMethod('openSettings');
 
+  /// Opens Android's "default home app" screen. TVs without it get the TV settings.
+  Future<bool> openHomeSettings() async =>
+      (await _methodChannel.invokeMethod<bool>('launchActivityFromAction', 'android.settings.HOME_SETTINGS') ??
+          false) ||
+      (await _methodChannel.invokeMethod<bool>('openSettings') ?? false);
+
   Future<void> openAppInfo(String packageName) async => await _methodChannel.invokeMethod('openAppInfo', packageName);
 
   Future<void> uninstallApp(String packageName) async => await _methodChannel.invokeMethod('uninstallApp', packageName);

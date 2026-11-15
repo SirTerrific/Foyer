@@ -1743,6 +1743,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not download this image.'**
   String get bingDownloadFailed;
+
+  /// No description provided for @setupWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Foyer'**
+  String get setupWelcomeTitle;
+
+  /// No description provided for @setupWelcomeText.
+  ///
+  /// In en, this message translates to:
+  /// **'A few quick settings before you start. You can change everything later in the settings.'**
+  String get setupWelcomeText;
+
+  /// No description provided for @setupStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go'**
+  String get setupStart;
+
+  /// No description provided for @setupDefaultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Default launcher'**
+  String get setupDefaultTitle;
+
+  /// No description provided for @setupDefaultText.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Foyer as the home app so the Home button opens it. Some TVs (Google TV) do not offer this choice.'**
+  String get setupDefaultText;
+
+  /// No description provided for @setupDefaultYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Foyer is the default home app.'**
+  String get setupDefaultYes;
+
+  /// No description provided for @setupDefaultNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Foyer is not the default home app yet.'**
+  String get setupDefaultNo;
+
+  /// No description provided for @setupOpenSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get setupOpenSettings;
+
+  /// No description provided for @setupWallpaperText.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the background of the home screen.'**
+  String get setupWallpaperText;
+
+  /// No description provided for @setupParentalText.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a code typed on the remote to lock apps.'**
+  String get setupParentalText;
+
+  /// No description provided for @setupDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All set'**
+  String get setupDoneTitle;
+
+  /// No description provided for @setupDoneText.
+  ///
+  /// In en, this message translates to:
+  /// **'You can find these settings at any time in Foyer\'s settings.'**
+  String get setupDoneText;
+
+  /// No description provided for @setupNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get setupNext;
+
+  /// No description provided for @setupFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get setupFinish;
 }
 
 class _AppLocalizationsDelegate

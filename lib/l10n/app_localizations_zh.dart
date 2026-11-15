@@ -868,4 +868,47 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get bingDownloadFailed => '无法下载此图片。';
+
+  @override
+  String get setupWelcomeTitle => '欢迎使用 Foyer';
+
+  @override
+  String get setupWelcomeText => '开始前先做几项快速设置。之后可以在设置中随时更改。';
+
+  @override
+  String get setupStart => '开始';
+
+  @override
+  String get setupDefaultTitle => '默认启动器';
+
+  @override
+  String get setupDefaultText =>
+      '将 Foyer 选为主屏幕应用，这样按主页键就会打开它。部分电视（Google TV）不提供此选项。';
+
+  @override
+  String get setupDefaultYes => 'Foyer 是默认主屏幕应用。';
+
+  @override
+  String get setupDefaultNo => 'Foyer 还不是默认主屏幕应用。';
+
+  @override
+  String get setupOpenSettings => '打开设置';
+
+  @override
+  String get setupWallpaperText => '选择主屏幕的背景。';
+
+  @override
+  String get setupParentalText => '设置一个用遥控器输入的密码来锁定应用。';
+
+  @override
+  String get setupDoneTitle => '一切就绪';
+
+  @override
+  String get setupDoneText => '您可以随时在 Foyer 的设置中找到这些选项。';
+
+  @override
+  String get setupNext => '下一步';
+
+  @override
+  String get setupFinish => '完成';
 }

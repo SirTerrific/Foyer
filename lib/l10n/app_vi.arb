@@ -272,5 +272,19 @@
   "bingMarketAuto": "Tự động",
   "bingRecentImages": "Ảnh gần đây",
   "bingUnavailable": "Không kết nối được Bing. Kiểm tra mạng.",
-  "bingDownloadFailed": "Không tải được ảnh này."
+  "bingDownloadFailed": "Không tải được ảnh này.",
+    "setupWelcomeTitle": "Chào mừng đến với Foyer",
+    "setupWelcomeText": "Vài cài đặt nhanh trước khi bắt đầu. Bạn có thể thay đổi tất cả sau trong phần cài đặt.",
+    "setupStart": "Bắt đầu",
+    "setupDefaultTitle": "Trình khởi chạy mặc định",
+    "setupDefaultText": "Chọn Foyer làm ứng dụng màn hình chính để nút Home mở nó. Một số TV (Google TV) không có lựa chọn này.",
+    "setupDefaultYes": "Foyer là ứng dụng màn hình chính mặc định.",
+    "setupDefaultNo": "Foyer chưa phải là ứng dụng màn hình chính mặc định.",
+    "setupOpenSettings": "Mở cài đặt",
+    "setupWallpaperText": "Chọn hình nền của màn hình chính.",
+    "setupParentalText": "Đặt mã nhập bằng điều khiển để khóa ứng dụng.",
+    "setupDoneTitle": "Đã sẵn sàng",
+    "setupDoneText": "Bạn có thể tìm các cài đặt này bất cứ lúc nào trong cài đặt của Foyer.",
+    "setupNext": "Tiếp",
+    "setupFinish": "Hoàn tất"
 }

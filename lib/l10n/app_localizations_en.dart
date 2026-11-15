@@ -889,4 +889,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bingDownloadFailed => 'Could not download this image.';
+
+  @override
+  String get setupWelcomeTitle => 'Welcome to Foyer';
+
+  @override
+  String get setupWelcomeText =>
+      'A few quick settings before you start. You can change everything later in the settings.';
+
+  @override
+  String get setupStart => 'Let\'s go';
+
+  @override
+  String get setupDefaultTitle => 'Default launcher';
+
+  @override
+  String get setupDefaultText =>
+      'Choose Foyer as the home app so the Home button opens it. Some TVs (Google TV) do not offer this choice.';
+
+  @override
+  String get setupDefaultYes => 'Foyer is the default home app.';
+
+  @override
+  String get setupDefaultNo => 'Foyer is not the default home app yet.';
+
+  @override
+  String get setupOpenSettings => 'Open settings';
+
+  @override
+  String get setupWallpaperText => 'Choose the background of the home screen.';
+
+  @override
+  String get setupParentalText =>
+      'Set a code typed on the remote to lock apps.';
+
+  @override
+  String get setupDoneTitle => 'All set';
+
+  @override
+  String get setupDoneText =>
+      'You can find these settings at any time in Foyer\'s settings.';
+
+  @override
+  String get setupNext => 'Next';
+
+  @override
+  String get setupFinish => 'Finish';
 }

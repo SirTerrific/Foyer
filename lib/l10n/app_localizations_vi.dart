@@ -894,4 +894,51 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get bingDownloadFailed => 'Không tải được ảnh này.';
+
+  @override
+  String get setupWelcomeTitle => 'Chào mừng đến với Foyer';
+
+  @override
+  String get setupWelcomeText =>
+      'Vài cài đặt nhanh trước khi bắt đầu. Bạn có thể thay đổi tất cả sau trong phần cài đặt.';
+
+  @override
+  String get setupStart => 'Bắt đầu';
+
+  @override
+  String get setupDefaultTitle => 'Trình khởi chạy mặc định';
+
+  @override
+  String get setupDefaultText =>
+      'Chọn Foyer làm ứng dụng màn hình chính để nút Home mở nó. Một số TV (Google TV) không có lựa chọn này.';
+
+  @override
+  String get setupDefaultYes => 'Foyer là ứng dụng màn hình chính mặc định.';
+
+  @override
+  String get setupDefaultNo =>
+      'Foyer chưa phải là ứng dụng màn hình chính mặc định.';
+
+  @override
+  String get setupOpenSettings => 'Mở cài đặt';
+
+  @override
+  String get setupWallpaperText => 'Chọn hình nền của màn hình chính.';
+
+  @override
+  String get setupParentalText =>
+      'Đặt mã nhập bằng điều khiển để khóa ứng dụng.';
+
+  @override
+  String get setupDoneTitle => 'Đã sẵn sàng';
+
+  @override
+  String get setupDoneText =>
+      'Bạn có thể tìm các cài đặt này bất cứ lúc nào trong cài đặt của Foyer.';
+
+  @override
+  String get setupNext => 'Tiếp';
+
+  @override
+  String get setupFinish => 'Hoàn tất';
 }

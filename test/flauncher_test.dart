@@ -469,6 +469,7 @@ void main() {
 
 SettingsService mkSettingsService() {
   final settingsService = MockSettingsService();
+  when(settingsService.setupDone).thenReturn(true);
   when(settingsService.dateFormat).thenReturn(SettingsService.defaultDateFormat);
   when(settingsService.timeFormat).thenReturn(SettingsService.defaultTimeFormat);
   when(settingsService.appHighlightAnimationEnabled).thenReturn(true);

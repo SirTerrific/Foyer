@@ -474,6 +474,8 @@ class AppsService extends ChangeNotifier
 
   Future<void> openSettings() => _fLauncherChannel.openSettings();
 
+  Future<bool> openHomeSettings() => _fLauncherChannel.openHomeSettings();
+
   Future<bool> isDefaultLauncher() => _fLauncherChannel.isDefaultLauncher();
 
   Future<void> startAmbientMode() => _fLauncherChannel.startAmbientMode();

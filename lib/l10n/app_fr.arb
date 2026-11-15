@@ -270,5 +270,19 @@
     "bingMarketAuto": "Auto",
     "bingRecentImages": "Images récentes",
     "bingUnavailable": "Bing est injoignable. Vérifiez le réseau.",
-    "bingDownloadFailed": "Impossible de télécharger cette image."
+    "bingDownloadFailed": "Impossible de télécharger cette image.",
+    "setupWelcomeTitle": "Bienvenue dans Foyer",
+    "setupWelcomeText": "Quelques réglages rapides avant de commencer. Vous pourrez tout modifier plus tard dans les paramètres.",
+    "setupStart": "C'est parti",
+    "setupDefaultTitle": "Launcher par défaut",
+    "setupDefaultText": "Choisissez Foyer comme application d'accueil pour que le bouton Accueil l'ouvre. Certaines TV (Google TV) ne proposent pas ce choix.",
+    "setupDefaultYes": "Foyer est l'accueil par défaut.",
+    "setupDefaultNo": "Foyer n'est pas encore l'accueil par défaut.",
+    "setupOpenSettings": "Ouvrir les réglages",
+    "setupWallpaperText": "Choisissez le fond de l'écran d'accueil.",
+    "setupParentalText": "Définissez un code à saisir à la télécommande pour verrouiller des applications.",
+    "setupDoneTitle": "Tout est prêt",
+    "setupDoneText": "Retrouvez ces réglages à tout moment dans les paramètres de Foyer.",
+    "setupNext": "Suivant",
+    "setupFinish": "Terminer"
 }

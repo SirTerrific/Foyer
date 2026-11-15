@@ -1,5 +1,8 @@
 # Foyer — changements vs Arc Launcher
 
+### Assistant de première configuration (nouveau)
+- Au premier lancement : bienvenue, launcher par défaut (bouton vers les réglages Android), fond d'écran (Bing ou dégradé), code parental, fin. Chaque étape est facultative ; Retour revient d'une étape. Affiché une seule fois (jamais si un code existe déjà), en 6 langues.
+
 ### Contrôle parental (nouveau)
 - **Code D-pad** : combinaison de flèches (haut/bas/gauche/droite) et chiffres, validée par OK. 4 symboles minimum. Compatible télécommande, comme Projectivy.
 - **Apps protégées au choix** : appui long sur une app pour la protéger ou non. Les apps protégées demandent le code au lancement.

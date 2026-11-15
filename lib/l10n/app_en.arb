@@ -412,5 +412,19 @@
     "bingMarketAuto": "Auto",
     "bingRecentImages": "Recent images",
     "bingUnavailable": "Bing is unreachable. Check the network.",
-    "bingDownloadFailed": "Could not download this image."
+    "bingDownloadFailed": "Could not download this image.",
+    "setupWelcomeTitle": "Welcome to Foyer",
+    "setupWelcomeText": "A few quick settings before you start. You can change everything later in the settings.",
+    "setupStart": "Let's go",
+    "setupDefaultTitle": "Default launcher",
+    "setupDefaultText": "Choose Foyer as the home app so the Home button opens it. Some TVs (Google TV) do not offer this choice.",
+    "setupDefaultYes": "Foyer is the default home app.",
+    "setupDefaultNo": "Foyer is not the default home app yet.",
+    "setupOpenSettings": "Open settings",
+    "setupWallpaperText": "Choose the background of the home screen.",
+    "setupParentalText": "Set a code typed on the remote to lock apps.",
+    "setupDoneTitle": "All set",
+    "setupDoneText": "You can find these settings at any time in Foyer's settings.",
+    "setupNext": "Next",
+    "setupFinish": "Finish"
 }

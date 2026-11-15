@@ -904,4 +904,50 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get bingDownloadFailed => 'Impossible de télécharger cette image.';
+
+  @override
+  String get setupWelcomeTitle => 'Bienvenue dans Foyer';
+
+  @override
+  String get setupWelcomeText =>
+      'Quelques réglages rapides avant de commencer. Vous pourrez tout modifier plus tard dans les paramètres.';
+
+  @override
+  String get setupStart => 'C\'est parti';
+
+  @override
+  String get setupDefaultTitle => 'Launcher par défaut';
+
+  @override
+  String get setupDefaultText =>
+      'Choisissez Foyer comme application d\'accueil pour que le bouton Accueil l\'ouvre. Certaines TV (Google TV) ne proposent pas ce choix.';
+
+  @override
+  String get setupDefaultYes => 'Foyer est l\'accueil par défaut.';
+
+  @override
+  String get setupDefaultNo => 'Foyer n\'est pas encore l\'accueil par défaut.';
+
+  @override
+  String get setupOpenSettings => 'Ouvrir les réglages';
+
+  @override
+  String get setupWallpaperText => 'Choisissez le fond de l\'écran d\'accueil.';
+
+  @override
+  String get setupParentalText =>
+      'Définissez un code à saisir à la télécommande pour verrouiller des applications.';
+
+  @override
+  String get setupDoneTitle => 'Tout est prêt';
+
+  @override
+  String get setupDoneText =>
+      'Retrouvez ces réglages à tout moment dans les paramètres de Foyer.';
+
+  @override
+  String get setupNext => 'Suivant';
+
+  @override
+  String get setupFinish => 'Terminer';
 }
