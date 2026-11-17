@@ -21,6 +21,7 @@ import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/providers/launcher_state.dart';
 import 'package:flauncher/providers/parental_control_service.dart';
 import 'package:flauncher/providers/settings_service.dart';
+import 'package:flauncher/widgets/keep_focus.dart';
 import 'package:flauncher/widgets/parental_code_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,26 +48,16 @@ class SetupWizard extends StatefulWidget {
 
 class _SetupWizardState extends State<SetupWizard> with WidgetsBindingObserver {
   static const _lastStep = 4;
-  final _scope = FocusScopeNode();
   int _step = 0;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    FocusManager.instance.addListener(_keepFocus);
-  }
-
-  /// The home grid grabs the focus when the apps finish loading, behind the
-  /// wizard: take it back, unless a dialog (the code entry) is open above.
-  void _keepFocus() {
-    if (mounted && !_scope.hasFocus && (ModalRoute.of(context)?.isCurrent ?? false)) _scope.requestFocus();
   }
 
   @override
   void dispose() {
-    FocusManager.instance.removeListener(_keepFocus);
-    _scope.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -130,8 +121,7 @@ class _SetupWizardState extends State<SetupWizard> with WidgetsBindingObserver {
       },
       child: Dialog.fullscreen(
         backgroundColor: const Color(0xF21C1917),
-        child: FocusScope(
-          node: _scope,
+        child: KeepFocus(
           child: Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 640),

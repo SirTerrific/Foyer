@@ -1,5 +1,10 @@
 # Foyer — changements vs Arc Launcher
 
+### Correctifs 1.2.6 (contrôle parental)
+- **Code redemandé au hasard** : Android tue parfois Foyer pour libérer de la mémoire, et le déverrouillage de l'app protégée était perdu. Il est maintenant gardé sur disque, jusqu'à l'arrivée d'une autre app, d'un écran d'accueil, la mise en veille de l'écran ou un redémarrage.
+- **Code perdu au démarrage à froid** : le code tapé juste après un lancement pouvait être ignoré, le focus partant sur la grille d'accueil. Corrigé aussi dans l'assistant de première configuration.
+- **Bouton Accueil** : avec un autre launcher par défaut que Foyer, Accueil ne terminait pas le déverrouillage. Corrigé.
+
 ### Assistant de première configuration (nouveau)
 - Au premier lancement : bienvenue, launcher par défaut (bouton vers les réglages Android), fond d'écran (Bing ou dégradé), code parental, fin. Chaque étape est facultative ; Retour revient d'une étape. Affiché une seule fois (jamais si un code existe déjà), en 6 langues.
 

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:flauncher/providers/parental_control_service.dart';
+import 'package:flauncher/widgets/keep_focus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -221,48 +222,50 @@ class _ParentalCodeDialogState extends State<_ParentalCodeDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Focus(
-      autofocus: true,
-      onKeyEvent: _onKey,
-      child: AlertDialog(
-        title: Text(_title),
-        content: SizedBox(
-          width: 380,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(_hint, textAlign: TextAlign.center),
-              const SizedBox(height: 24),
-              if (_showingRecovery)
+    return KeepFocus(
+      child: Focus(
+        autofocus: true,
+        onKeyEvent: _onKey,
+        child: AlertDialog(
+          title: Text(_title),
+          content: SizedBox(
+            width: 380,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(_hint, textAlign: TextAlign.center),
+                const SizedBox(height: 24),
+                if (_showingRecovery)
+                  SizedBox(
+                    height: 36,
+                    child: Text(
+                      _shownRecovery == null ? "" : formatRecoveryCode(_shownRecovery!),
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineSmall?.copyWith(letterSpacing: 4),
+                    ),
+                  )
+                else
                 SizedBox(
-                  height: 36,
-                  child: Text(
-                    _shownRecovery == null ? "" : formatRecoveryCode(_shownRecovery!),
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.headlineSmall?.copyWith(letterSpacing: 4),
+                  height: 24,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var i = 0; i < _entered.length; i++)
+                        Container(
+                          width: 14,
+                          height: 14,
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(color: theme.colorScheme.primary, shape: BoxShape.circle),
+                        ),
+                    ],
                   ),
-                )
-              else
-              SizedBox(
-                height: 24,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var i = 0; i < _entered.length; i++)
-                      Container(
-                        width: 14,
-                        height: 14,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(color: theme.colorScheme.primary, shape: BoxShape.circle),
-                      ),
-                  ],
                 ),
-              ),
-              if (_error != null) ...[
-                const SizedBox(height: 16),
-                Text(_error!, style: TextStyle(color: theme.colorScheme.error)),
+                if (_error != null) ...[
+                  const SizedBox(height: 16),
+                  Text(_error!, style: TextStyle(color: theme.colorScheme.error)),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

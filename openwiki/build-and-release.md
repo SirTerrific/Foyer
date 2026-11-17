@@ -23,7 +23,7 @@ verified:
 
 ## Toolchain
 
-The Dart package is still named `flauncher` and the version in `pubspec.yaml` is `1.2.5+4132`. Flutter is pinned to `3.41.9` in `pubspec.yaml` and `.fvmrc`. Android builds use JDK 17.
+The Dart package is still named `flauncher` and the version in `pubspec.yaml` is `1.2.6+4133`. Flutter is pinned to `3.41.9` in `pubspec.yaml` and `.fvmrc`. Android builds use JDK 17.
 
 ## Flavors and app id
 

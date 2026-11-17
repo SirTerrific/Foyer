@@ -614,7 +614,7 @@ public class MainActivity extends FlutterActivity {
             // Dart already checked the code for whatever Foyer opens (app, system
             // settings, app info...): the accessibility guard must let it through.
             ComponentName target = intent.resolveActivity(getPackageManager());
-            if (target != null) ParentalGuardService.allow(target.getPackageName());
+            if (target != null) ParentalGuardService.allow(this, target.getPackageName());
             startActivity(intent);
         } catch (Exception ignored) {
             success = false;

@@ -84,4 +84,13 @@ void main() {
     expect(await service.verify(["L", "L", "R", "R"]), ParentalCheckResult.ok);
     expect(await service.verify(["U", "D", "L", "R"]), ParentalCheckResult.wrong);
   });
+
+  testWidgets("the code still reaches the dialog when the home screen grabs the focus", (tester) async {
+    await openDialog(tester);
+    // Cold start: the home grid finishes loading behind the dialog and requests the focus.
+    Focus.of(tester.element(find.text("open"))).requestFocus();
+    await tester.pumpAndSettle();
+    await type(tester, ["U", "D", "L", "R"]);
+    expect(result, isTrue);
+  });
 }

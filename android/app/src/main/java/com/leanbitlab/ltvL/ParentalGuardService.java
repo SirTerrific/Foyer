@@ -26,7 +26,8 @@ import java.util.Set;
  *
  * The protection settings are pushed here by Flutter ({@link #saveConfig}) and
  * kept in native preferences so the guard keeps working when Flutter is not running.
- * The unlocked package lives in memory only: a process restart locks everything.
+ * The unlocked package is kept on disk until another app shows, the screen turns off
+ * or the device reboots.
  */
 public class ParentalGuardService extends AccessibilityService {
     static final String EXTRA_LOCKED_PACKAGE = "foyer.parental_locked_package";
@@ -43,15 +44,39 @@ public class ParentalGuardService extends AccessibilityService {
     private static final String KEY_WINDOW_START = "window_start";
     private static final String KEY_WINDOW_END = "window_end";
 
-    /** Package Foyer launched after a correct code; cleared as soon as another app shows. */
-    private static volatile String allowedPackage;
+    private static final String KEY_ALLOWED = "allowed_package";
+    private static final String KEY_ALLOWED_BOOT = "allowed_boot";
     /** Package waiting for the code, read once by Flutter. */
     private static volatile String pendingLock;
 
     private BroadcastReceiver screenOffReceiver;
 
-    static void allow(String packageName) {
-        allowedPackage = packageName;
+    /**
+     * Package Foyer launched after a correct code; cleared as soon as another app
+     * shows or the screen turns off. Kept on disk, not in memory: Android often kills
+     * Foyer's process while a video plays, and the restarted guard must not take the
+     * app it is watching for a fresh launch and ask the code again.
+     */
+    static void allow(Context context, String packageName) {
+        context.getSharedPreferences(PREFS, MODE_PRIVATE).edit()
+                .putString(KEY_ALLOWED, packageName)
+                .putInt(KEY_ALLOWED_BOOT, bootCount(context))
+                .apply();
+    }
+
+    /** An unlock from before a reboot is void: a power cut sends no screen-off. */
+    private String allowedPackage() {
+        SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+        if (prefs.getInt(KEY_ALLOWED_BOOT, -2) != bootCount(this)) return null;
+        return prefs.getString(KEY_ALLOWED, null);
+    }
+
+    private static int bootCount(Context context) {
+        return Settings.Global.getInt(context.getContentResolver(), Settings.Global.BOOT_COUNT, -1);
+    }
+
+    private void clearAllowed() {
+        getSharedPreferences(PREFS, MODE_PRIVATE).edit().remove(KEY_ALLOWED).apply();
     }
 
     static String takePendingLock() {
@@ -121,10 +146,14 @@ public class ParentalGuardService extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
+        // shortcut: a standby that happens while Foyer's process is dead is missed by the
+        // receiver below; this only catches a screen still off at restart (reboots are
+        // caught by the boot count). Upgrade to a standby counter if this is ever reported.
+        if (!((android.os.PowerManager) getSystemService(POWER_SERVICE)).isInteractive()) clearAllowed();
         screenOffReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                allowedPackage = null;
+                clearAllowed();
             }
         };
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
@@ -156,15 +185,15 @@ public class ParentalGuardService extends AccessibilityService {
         if (!isActivity(pkg, clsSeq.toString())) return;
 
         if (pkg.equals(getPackageName())) {
-            allowedPackage = null;
+            clearAllowed();
             return;
         }
-        if (pkg.equals(allowedPackage)) return;
+        if (pkg.equals(allowedPackage())) return;
         boolean locked = isProtectedNow(pkg);
         // A system screen passing over the unlocked app (account picker,
         // permission prompt) must not ask the code again on the way back.
         if (!locked && isSystemSupportApp(pkg)) return;
-        allowedPackage = null;
+        clearAllowed();
         if (!locked) return;
 
         pendingLock = pkg;
@@ -198,7 +227,18 @@ public class ParentalGuardService extends AccessibilityService {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
-        return pm.getLeanbackLaunchIntentForPackage(pkg) == null && pm.getLaunchIntentForPackage(pkg) == null;
+        return pm.getLeanbackLaunchIntentForPackage(pkg) == null
+                && pm.getLaunchIntentForPackage(pkg) == null
+                && !isHomeScreen(pkg);
+    }
+
+    /** Any launcher (the stock one has no launcher entry): Home must end an unlock. */
+    private boolean isHomeScreen(String pkg) {
+        Intent home = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME);
+        for (android.content.pm.ResolveInfo ri : getPackageManager().queryIntentActivities(home, 0)) {
+            if (ri.activityInfo != null && pkg.equals(ri.activityInfo.packageName)) return true;
+        }
+        return false;
     }
 
     private boolean isSettingsPackage(String pkg) {

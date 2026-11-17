@@ -25,7 +25,7 @@ A code is a sequence of symbols: the arrows Up, Down, Left, Right (stored as U, 
 
 ## When the code is asked
 
-There is no grace period: the code is asked at every launch of a protected app and every entry into the launcher settings, with no unlocked state kept on disk.
+There is no grace period: the code is asked at every launch of a protected app and every entry into the launcher settings, with no grace period. The accessibility guard keeps the one unlocked package in SharedPreferences, together with the Android boot count, so a process kill does not ask the code again. The unlock ends when another app or any home screen shows, when the screen turns off, or after a reboot.
 
 - `isProtected(packageName)` is true when protection is enabled, the time window is active and the package is in the protected set (`parental_control_packages`).
 - `requiresCode(packageName)` is `isProtected`. For an unknown package (`null`, as with a Watch Next item that only carries an intent URI) it asks for the code whenever protection is on, the window is active and any app is protected.
